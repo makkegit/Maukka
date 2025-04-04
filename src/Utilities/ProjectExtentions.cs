@@ -15,7 +15,7 @@ namespace Maukka.Utilities
         /// <returns></returns>
         public static bool IsNullOrNew([NotNullWhen(false)] this Wardrobe? project)
         {
-            return project is null || project.ID == 0;
+            return project is null || project.Id == 0;
         }
     }
 }

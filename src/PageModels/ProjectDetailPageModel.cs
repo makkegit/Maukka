@@ -95,7 +95,7 @@ namespace Maukka.PageModels
                 return;
             }
 
-            //Clothes = await _taskRepository.ListAsync(_wardrobe.ID);
+            //Clothes = await _taskRepository.ListAsync(_wardrobe.Id);
             _wardrobe.Clothes = Tasks;
         }
 
@@ -117,13 +117,13 @@ namespace Maukka.PageModels
                 Tasks = _wardrobe.Clothes;
 
                 // Categories = await _categoryRepository.ListAsync();
-                // Category = Categories?.FirstOrDefault(c => c.ID == _wardrobe.CategoryID);
-                // CategoryIndex = Categories?.FindIndex(c => c.ID == _wardrobe.CategoryID) ?? -1;
+                // Category = Categories?.FirstOrDefault(c => c.Id == _wardrobe.CategoryID);
+                // CategoryIndex = Categories?.FindIndex(c => c.Id == _wardrobe.CategoryID) ?? -1;
                 //
                 // var allTags = await _tagRepository.ListAsync();
                 // foreach (var tag in allTags)
                 // {
-                //     tag.IsSelected = _wardrobe.Tags.Any(t => t.ID == tag.ID);
+                //     tag.IsSelected = _wardrobe.Tags.Any(t => t.Id == tag.Id);
                 // }
                 // AllTags = new(allTags);
             }
@@ -166,16 +166,16 @@ namespace Maukka.PageModels
                 // {
                 //     if (tag.IsSelected)
                 //     {
-                //         await _tagRepository.SaveItemAsync(tag, _wardrobe.ID);
+                //         await _tagRepository.SaveItemAsync(tag, _wardrobe.Id);
                 //     }
                 // }
             }
 
             foreach (var task in _wardrobe.Clothes)
             {
-                // if (task.ID == 0)
+                // if (task.Id == 0)
                 // {
-                //     task.ProjectID = _wardrobe.ID;
+                //     task.ProjectID = _wardrobe.Id;
                 //     await _taskRepository.SaveItemAsync(task);
                 // }
             }
@@ -219,7 +219,7 @@ namespace Maukka.PageModels
 
         [RelayCommand]
         private Task NavigateToTask(Clothing clothing) =>
-            Shell.Current.GoToAsync($"clothing?id={clothing.BrandClothingID}");
+            Shell.Current.GoToAsync($"clothing?id={clothing.BrandClothingId}");
 
         // [RelayCommand]
         // private async Task ToggleTag(Tag tag)
@@ -230,11 +230,11 @@ namespace Maukka.PageModels
         //     {
         //         if (tag.IsSelected)
         //         {
-        //             // await _tagRepository.SaveItemAsync(tag, _wardrobe.ID);
+        //             // await _tagRepository.SaveItemAsync(tag, _wardrobe.Id);
         //         }
         //         else
         //         {
-        //             // await _tagRepository.DeleteItemAsync(tag, _wardrobe.ID);
+        //             // await _tagRepository.DeleteItemAsync(tag, _wardrobe.Id);
         //         }
         //     }
         //

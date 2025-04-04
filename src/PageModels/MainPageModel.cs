@@ -127,11 +127,11 @@ namespace Maukka.PageModels
 
         [RelayCommand]
         private Task NavigateToProject(Wardrobe wardrobe)
-            => Shell.Current.GoToAsync($"wardrobe?id={wardrobe.ID}");
+            => Shell.Current.GoToAsync($"wardrobe?id={wardrobe.Id}");
 
         [RelayCommand]
         private Task NavigateToTask(Clothing clothing)
-            => Shell.Current.GoToAsync($"clothing?id={clothing.BrandClothingID}");
+            => Shell.Current.GoToAsync($"clothing?id={clothing.BrandClothingId}");
 
         // [RelayCommand]
         // private async Task CleanTasks()

@@ -46,7 +46,7 @@ namespace Maukka.Data
                         // if (wardrobe.Category is not null)
                         // {
                         //     await _categoryRepository.SaveItemAsync(wardrobe.Category);
-                        //     wardrobe.CategoryID = wardrobe.Category.ID;
+                        //     wardrobe.CategoryID = wardrobe.Category.Id;
                         // }
 
                         await _wardrobeRepository.SaveItemAsync(wardrobe);
@@ -55,7 +55,7 @@ namespace Maukka.Data
                         // {
                         //     foreach (var task in wardrobe.Clothes)
                         //     {
-                        //         task.ProjectID = wardrobe.ID;
+                        //         task.ProjectID = wardrobe.Id;
                         //         await _taskRepository.SaveItemAsync(task);
                         //     }
                         // }
@@ -64,7 +64,7 @@ namespace Maukka.Data
                         // {
                         //     foreach (var tag in wardrobe.Tags)
                         //     {
-                        //         await _tagRepository.SaveItemAsync(tag, wardrobe.ID);
+                        //         await _tagRepository.SaveItemAsync(tag, wardrobe.Id);
                         //     }
                         // }
                     }

@@ -6,7 +6,7 @@ public class ModelTests
 {
     private class TestClothing : Clothing
     {
-        public override BrandClothingId BrandClothingID { get; set; }
+        public override BrandClothingId BrandClothingId { get; set; }
         public override string ClothingName { get; set; }
         public override ClothingSize Size { get; set; }
     }
@@ -67,14 +67,14 @@ public class ModelTests
         var clothing = new TestClothing
         {
             Id = 1,
-            BrandClothingID = 200,
+            BrandClothingId = 200,
             ClothingName = "Test Jacket",
             Alias = "Winter Jacket",
             Size = testSize
         };
 
         Assert.Equal(1, clothing.Id.Value);
-        Assert.Equal(200, clothing.BrandClothingID);
+        Assert.Equal(200, clothing.BrandClothingId);
         Assert.Equal("Test Jacket", clothing.ClothingName);
         Assert.Equal("Winter Jacket", clothing.Alias);
         Assert.Equal(testSize, clothing.Size);
@@ -98,14 +98,14 @@ public class ModelTests
     {
         var wardrobe = new Wardrobe
         {
-            ID = 1,
+            Id = 1,
             Description = "Main Wardrobe"
         };
 
         var clothing = new TestClothing
         {
             Id = 10,
-            BrandClothingID = 300,
+            BrandClothingId = 300,
             ClothingName = "Test Sweater"
         };
 
@@ -118,7 +118,7 @@ public class ModelTests
     [Fact]
     public void WardrobesJson_Creation_Test()
     {
-        var wardrobe = new Wardrobe { ID = 1, Description = "Test Wardrobe" };
+        var wardrobe = new Wardrobe { Id = 1, Description = "Test Wardrobe" };
         var wardrobesJson = new WardrobesJson { Wardrobes = new List<Wardrobe> { wardrobe } };
 
         Assert.NotNull(wardrobesJson.Wardrobes);

@@ -37,7 +37,7 @@ namespace Maukka.Data
                 var createTableCmd = connection.CreateCommand();
                 createTableCmd.CommandText = @"
             CREATE TABLE IF NOT EXISTS Wardrobe (
-                ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Name TEXT NOT NULL,
                 Description TEXT NOT NULL,
                 Icon TEXT NOT NULL,
@@ -73,7 +73,7 @@ namespace Maukka.Data
             {
                 wardrobes.Add(new Wardrobe
                 {
-                    ID = reader.GetInt32(0),
+                    Id = reader.GetInt32(0),
                     Description = reader.GetString(2)
                 });
             }
@@ -82,9 +82,9 @@ namespace Maukka.Data
         }
 
         /// <summary>
-        /// Retrieves a specific wardrobe by its ID.
+        /// Retrieves a specific wardrobe by its Id.
         /// </summary>
-        /// <param name="id">The ID of the wardrobe.</param>
+        /// <param name="id">The Id of the wardrobe.</param>
         /// <returns>A <see cref="Wardrobe"/> object if found; otherwise, null.</returns>
         public async Task<Wardrobe?> GetAsync(int id)
         {
@@ -93,7 +93,7 @@ namespace Maukka.Data
             await connection.OpenAsync();
 
             var selectCmd = connection.CreateCommand();
-            selectCmd.CommandText = "SELECT * FROM Wardrobe WHERE ID = @id";
+            selectCmd.CommandText = "SELECT * FROM Wardrobe WHERE Id = @id";
             selectCmd.Parameters.AddWithValue("@id", id);
 
             await using var reader = await selectCmd.ExecuteReaderAsync();
@@ -101,7 +101,7 @@ namespace Maukka.Data
             {
                 var wardrobe = new Wardrobe
                 {
-                    ID = reader.GetInt32(0),
+                    Id = reader.GetInt32(0),
                     Description = reader.GetString(2)
                 };
                 
@@ -112,10 +112,10 @@ namespace Maukka.Data
         }
 
         /// <summary>
-        /// Saves a wardrobe to the database. If the wardrobe ID is 0, a new wardrobe is created; otherwise, the existing wardrobe is updated.
+        /// Saves a wardrobe to the database. If the wardrobe Id is 0, a new wardrobe is created; otherwise, the existing wardrobe is updated.
         /// </summary>
         /// <param name="item">The wardrobe to save.</param>
-        /// <returns>The ID of the saved wardrobe.</returns>
+        /// <returns>The Id of the saved wardrobe.</returns>
         public async Task<int> SaveItemAsync(Wardrobe item)
         {
             await Init();
@@ -123,7 +123,7 @@ namespace Maukka.Data
             await connection.OpenAsync();
 
             var saveCmd = connection.CreateCommand();
-            if (item.ID == 0)
+            if (item.Id == 0)
             {
                 saveCmd.CommandText = @"
                 INSERT INTO Wardrobe (Name, Description, Icon, CategoryID)
@@ -135,18 +135,18 @@ namespace Maukka.Data
                 saveCmd.CommandText = @"
                 UPDATE Wardrobe
                 SET Name = @Name, Description = @Description, Icon = @Icon, CategoryID = @CategoryID
-                WHERE ID = @ID";
-                saveCmd.Parameters.AddWithValue("@ID", item.ID);
+                WHERE Id = @Id";
+                saveCmd.Parameters.AddWithValue("@Id", item.Id);
             }
             saveCmd.Parameters.AddWithValue("@Description", item.Description);
 
             var result = await saveCmd.ExecuteScalarAsync();
-            if (item.ID == 0)
+            if (item.Id == 0)
             {
-                item.ID = Convert.ToInt32(result);
+                item.Id = Convert.ToInt32(result);
             }
 
-            return item.ID;
+            return item.Id.Value;
         }
 
         /// <summary>
@@ -161,8 +161,8 @@ namespace Maukka.Data
             await connection.OpenAsync();
 
             var deleteCmd = connection.CreateCommand();
-            deleteCmd.CommandText = "DELETE FROM Wardrobe WHERE ID = @ID";
-            deleteCmd.Parameters.AddWithValue("@ID", item.ID);
+            deleteCmd.CommandText = "DELETE FROM Wardrobe WHERE Id = @Id";
+            deleteCmd.Parameters.AddWithValue("@Id", item.Id);
 
             return await deleteCmd.ExecuteNonQueryAsync();
         }

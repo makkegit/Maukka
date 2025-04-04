@@ -4,7 +4,7 @@ namespace Maukka.Models
 {
     public class Wardrobe
     {
-        public int ID { get; set; }
+        public WardrobeId Id { get; set; }
         public string Description { get; set; } = string.Empty;
         public List<Clothing> Clothes { get; set; } = [];
     }

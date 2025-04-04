@@ -70,7 +70,7 @@ namespace Maukka.PageModels
             }
 
             // If the project is new, we don't need to load the project dropdown
-            if (Wardrobe?.ID == 0)
+            if (Wardrobe?.Id == 0)
             {
                 IsExistingProject = false;
             }
@@ -81,9 +81,9 @@ namespace Maukka.PageModels
             }
 
             if (Wardrobe is not null)
-                SelectedProjectIndex = Wardrobes.FindIndex(p => p.ID == Wardrobe.ID);
+                SelectedProjectIndex = Wardrobes.FindIndex(p => p.Id == Wardrobe.Id);
             // else if (_task?.ProjectID > 0)
-            //     SelectedProjectIndex = Wardrobes.FindIndex(p => p.ID == _task.ProjectID);
+            //     SelectedProjectIndex = Wardrobes.FindIndex(p => p.Id == _task.ProjectID);
 
             if (taskId > 0)
             {
@@ -101,7 +101,7 @@ namespace Maukka.PageModels
             {
                 // _task = new Clothing()
                 // {
-                //     ProjectID = Wardrobe?.ID ?? 0
+                //     ProjectID = Wardrobe?.Id ?? 0
                 // };
             }
         }
@@ -129,10 +129,10 @@ namespace Maukka.PageModels
 
             // _task.Title = Title;
 
-            int projectId = Wardrobe?.ID ?? 0;
+            int projectId = Wardrobe?.Id.Value ?? 0;
             
 
-            if (Wardrobe?.ID == projectId && !Wardrobe.Clothes.Contains(_task))
+            if (Wardrobe?.Id == projectId && !Wardrobe.Clothes.Contains(_task))
                 Wardrobe.Clothes.Add(_task);
 
             // if (_task.ProjectID > 0)
@@ -158,7 +158,7 @@ namespace Maukka.PageModels
             if (Wardrobe.Clothes.Contains(_task))
                 Wardrobe.Clothes.Remove(_task);
 
-            // if (_task.ID > 0)
+            // if (_task.Id > 0)
             //     await _taskRepository.DeleteItemAsync(_task);
 
             await Shell.Current.GoToAsync("..?refresh=true");

@@ -1,3 +1,4 @@
+// ReSharper disable InconsistentNaming
 namespace Maukka.Models
 {
     public enum CountryCode
