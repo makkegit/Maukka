@@ -52,7 +52,7 @@
             <VerticalStackLayout Spacing="{StaticResource LayoutSpacing}"
                 BindableLayout.ItemsSource="{Binding Categories}">
                 <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="models:Category">
+                    <DataTemplate x:DataType="models:ClotingCategory">
                         <Grid ColumnSpacing="{StaticResource LayoutSpacing}" ColumnDefinitions="4*,3*,30,Auto">
                             <Entry Text="{Binding Title}" Grid.Column="0"/>
                             <Entry Text="{Binding Color}" Grid.Column="1" x:Name="ColorEntry">
@@ -84,7 +84,7 @@
             <VerticalStackLayout Spacing="{StaticResource LayoutSpacing}"
                 BindableLayout.ItemsSource="{Binding Tags}">
                 <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="models:Tag">
+                    <DataTemplate x:DataType="models:BrandClothing">
                         <Grid ColumnSpacing="{StaticResource LayoutSpacing}" ColumnDefinitions="4*,3*,30,Auto">
                             <Entry Text="{Binding Title}" Grid.Column="0"/>
                             <Entry Text="{Binding Color}" Grid.Column="1" x:Name="ColorEntry">

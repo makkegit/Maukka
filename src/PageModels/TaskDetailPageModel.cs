@@ -140,8 +140,8 @@ namespace Maukka.PageModels
 
             await Shell.Current.GoToAsync("..?refresh=true");
 
-            if (_task.Id > 0)
-                await AppShell.DisplayToastAsync("Task saved");
+            // if (_task.Id > 0)
+            //     await AppShell.DisplayToastAsync("Task saved");
         }
 
         [RelayCommand(CanExecute = nameof(CanDelete))]

@@ -11,11 +11,11 @@ namespace Maukka.PageModels
     {
         private readonly SeedDataService _seedDataService;
 
-        [ObservableProperty]
-        private ObservableCollection<Category> _categories = [];
-
-        [ObservableProperty]
-        private ObservableCollection<Tag> _tags = [];
+        // [ObservableProperty]
+        // private ObservableCollection<Category> _categories = [];
+        //
+        // [ObservableProperty]
+        // private ObservableCollection<Tag> _tags = [];
 
         public ManageMetaPageModel(SeedDataService seedDataService)
         {
@@ -45,50 +45,50 @@ namespace Maukka.PageModels
             await AppShell.DisplayToastAsync("Categories saved");
         }
 
-        [RelayCommand]
-        private async Task DeleteCategory(Category category)
-        {
-            Categories.Remove(category);
-            //await _categoryRepository.DeleteItemAsync(category);
-            await AppShell.DisplayToastAsync("Category deleted");
-        }
-
-        [RelayCommand]
-        private async Task AddCategory()
-        {
-            var category = new Category();
-            Categories.Add(category);
-            //await _categoryRepository.SaveItemAsync(category);
-            await AppShell.DisplayToastAsync("Category added");
-        }
-
-        [RelayCommand]
-        private async Task SaveTags()
-        {
-            foreach (var tag in Tags)
-            {
-               // await _tagRepository.SaveItemAsync(tag);
-            }
-
-            await AppShell.DisplayToastAsync("Tags saved");
-        }
-
-        [RelayCommand]
-        private async Task DeleteTag(Tag tag)
-        {
-            Tags.Remove(tag);
-            //await _tagRepository.DeleteItemAsync(tag);
-            await AppShell.DisplayToastAsync("Tag deleted");
-        }
-
-        [RelayCommand]
-        private async Task AddTag()
-        {
-            var tag = new Tag();
-            Tags.Add(tag);
-            //await _tagRepository.SaveItemAsync(tag);
-            await AppShell.DisplayToastAsync("Tag added");
-        }
+        // [RelayCommand]
+        // private async Task DeleteCategory(Category category)
+        // {
+        //     Categories.Remove(category);
+        //     //await _categoryRepository.DeleteItemAsync(category);
+        //     await AppShell.DisplayToastAsync("Category deleted");
+        // }
+        //
+        // [RelayCommand]
+        // private async Task AddCategory()
+        // {
+        //     var category = new Category();
+        //     Categories.Add(category);
+        //     //await _categoryRepository.SaveItemAsync(category);
+        //     await AppShell.DisplayToastAsync("Category added");
+        // }
+        //
+        // [RelayCommand]
+        // private async Task SaveTags()
+        // {
+        //     foreach (var tag in Tags)
+        //     {
+        //        // await _tagRepository.SaveItemAsync(tag);
+        //     }
+        //
+        //     await AppShell.DisplayToastAsync("Tags saved");
+        // }
+        //
+        // [RelayCommand]
+        // private async Task DeleteTag(Tag tag)
+        // {
+        //     Tags.Remove(tag);
+        //     //await _tagRepository.DeleteItemAsync(tag);
+        //     await AppShell.DisplayToastAsync("Tag deleted");
+        // }
+        //
+        // [RelayCommand]
+        // private async Task AddTag()
+        // {
+        //     var tag = new Tag();
+        //     Tags.Add(tag);
+        //     //await _tagRepository.SaveItemAsync(tag);
+        //     await AppShell.DisplayToastAsync("Tag added");
+        // }
 
         [RelayCommand]
         private async Task Reset()

@@ -19,7 +19,7 @@ namespace Maukka.Pages
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            return (item as Tag)?.IsSelected ?? false ? SelectedTagTemplate : NormalTagTemplate;
+            return NormalTagTemplate;
         }
     }
 }

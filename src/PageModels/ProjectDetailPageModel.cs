@@ -19,17 +19,17 @@ namespace Maukka.PageModels
         [ObservableProperty]
         private List<Clothing> _tasks = [];
 
-        [ObservableProperty]
-        private List<Category> _categories = [];
-
-        [ObservableProperty]
-        private Category? _category;
+        // [ObservableProperty]
+        // private List<Category> _categories = [];
+        //
+        // [ObservableProperty]
+        // private Category? _category;
 
         [ObservableProperty]
         private int _categoryIndex = -1;
 
-        [ObservableProperty]
-        private List<Tag> _allTags = [];
+        // [ObservableProperty]
+        // private List<Tag> _allTags = [];
 
         [ObservableProperty]
         private string _icon = FluentUI.ribbon_24_regular;
@@ -221,25 +221,25 @@ namespace Maukka.PageModels
         private Task NavigateToTask(Clothing clothing) =>
             Shell.Current.GoToAsync($"clothing?id={clothing.BrandClothingID}");
 
-        [RelayCommand]
-        private async Task ToggleTag(Tag tag)
-        {
-            tag.IsSelected = !tag.IsSelected;
-
-            if (!_wardrobe.IsNullOrNew())
-            {
-                if (tag.IsSelected)
-                {
-                    // await _tagRepository.SaveItemAsync(tag, _wardrobe.ID);
-                }
-                else
-                {
-                    // await _tagRepository.DeleteItemAsync(tag, _wardrobe.ID);
-                }
-            }
-
-            AllTags = new(AllTags);
-        }
+        // [RelayCommand]
+        // private async Task ToggleTag(Tag tag)
+        // {
+        //     tag.IsSelected = !tag.IsSelected;
+        //
+        //     if (!_wardrobe.IsNullOrNew())
+        //     {
+        //         if (tag.IsSelected)
+        //         {
+        //             // await _tagRepository.SaveItemAsync(tag, _wardrobe.ID);
+        //         }
+        //         else
+        //         {
+        //             // await _tagRepository.DeleteItemAsync(tag, _wardrobe.ID);
+        //         }
+        //     }
+        //
+        //     AllTags = new(AllTags);
+        // }
 
         [RelayCommand]
         private async Task CleanTasks()

@@ -6,7 +6,7 @@ public class ModelTests
 {
     private class TestClothing : Clothing
     {
-        public override int BrandClothingID { get; set; }
+        public override BrandClothingId BrandClothingID { get; set; }
         public override string ClothingName { get; set; }
         public override ClothingSize Size { get; set; }
     }
@@ -17,7 +17,17 @@ public class ModelTests
     }
     
     [Fact]
-    public void BrandTest()
+    public void BrandId_Init_Test()
+    {
+        var newBrand = new Brand(1, "Makke");
+        BrandId newBrandId = 1;
+        
+        Assert.Equal(1, newBrandId);
+        Assert.Equal(newBrand.BrandId, newBrandId);
+    }
+    
+    [Fact]
+    public void Brand_Init_Test()
     {
         var newBrand = new Brand(1, "Makke");
         
@@ -63,7 +73,7 @@ public class ModelTests
             Size = testSize
         };
 
-        Assert.Equal(1, clothing.Id);
+        Assert.Equal(1, clothing.Id.Value);
         Assert.Equal(200, clothing.BrandClothingID);
         Assert.Equal("Test Jacket", clothing.ClothingName);
         Assert.Equal("Winter Jacket", clothing.Alias);

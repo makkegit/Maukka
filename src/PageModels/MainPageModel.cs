@@ -12,8 +12,8 @@ namespace Maukka.PageModels
         private readonly ModalErrorHandler _errorHandler;
         private readonly SeedDataService _seedDataService;
 
-        [ObservableProperty]
-        private List<CategoryChartData> _todoCategoryData = [];
+        // [ObservableProperty]
+        // private List<CategoryChartData> _todoCategoryData = [];
 
         [ObservableProperty]
         private List<Brush> _todoCategoryColors = [];

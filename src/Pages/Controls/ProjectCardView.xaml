@@ -45,11 +45,10 @@
                     Size="{StaticResource IconSize}"/>
                     </Image.Source>
                 </Image>
-                <Label Text="{Binding Name}" TextColor="{StaticResource Gray400}" FontSize="14" TextTransform="Uppercase"/>
-                <Label Text="{Binding Description}" LineBreakMode="WordWrap"/>
-                <HorizontalStackLayout Spacing="15" BindableLayout.ItemsSource="{Binding Tags}">
+                <Label Text="{Binding Description}" TextColor="{StaticResource Gray400}" FontSize="14" TextTransform="Uppercase"/>
+                <HorizontalStackLayout Spacing="15" BindableLayout.ItemsSource="{Binding Clothes}">
                     <BindableLayout.ItemTemplate>
-                        <DataTemplate x:DataType="models:Tag">
+                        <DataTemplate x:DataType="models:BrandClothing">
                             <controls:TagView />
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
