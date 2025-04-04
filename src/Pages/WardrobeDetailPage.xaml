@@ -7,7 +7,7 @@
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
              xmlns:controls="clr-namespace:Maukka.Pages.Controls"
              xmlns:fonts="clr-namespace:Fonts"
-             x:Class="Maukka.Pages.ProjectDetailPage"
+             x:Class="Maukka.Pages.WardrobeDetailPage"
              x:DataType="pageModels:ProjectDetailPageModel"
              Title="Wardrobe">
 
@@ -150,7 +150,7 @@
 
                 <Grid HeightRequest="44">
                     <Label 
-                        Text="Tasks" 
+                        Text="Clothes" 
                         Style="{StaticResource Title2}" 
                         VerticalOptions="Center"/>
                     <ImageButton 

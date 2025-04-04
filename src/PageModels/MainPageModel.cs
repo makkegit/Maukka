@@ -19,7 +19,7 @@ namespace Maukka.PageModels
         private List<Brush> _todoCategoryColors = [];
 
         [ObservableProperty]
-        private List<ProjectTask> _tasks = [];
+        private List<Clothing> _tasks = [];
 
         [ObservableProperty]
         private List<Wardrobe> _wardrobes = [];
@@ -34,7 +34,7 @@ namespace Maukka.PageModels
         private string _today = DateTime.Now.ToString("dddd, MMM d");
 
         public bool HasCompletedTasks
-            => Tasks?.Any(t => t.IsCompleted) ?? false;
+            => true;
 
         public MainPageModel(SeedDataService seedDataService, WardrobeRepository wardrobeRepository,
                 ModalErrorHandler errorHandler)
@@ -115,7 +115,7 @@ namespace Maukka.PageModels
         }
 
         // [RelayCommand]
-        // private Task TaskCompleted(ProjectTask task)
+        // private Task TaskCompleted(Clothing task)
         // {
         //     OnPropertyChanged(nameof(HasCompletedTasks));
         //     return _taskRepository.SaveItemAsync(task);
@@ -130,21 +130,21 @@ namespace Maukka.PageModels
             => Shell.Current.GoToAsync($"wardrobe?id={wardrobe.ID}");
 
         [RelayCommand]
-        private Task NavigateToTask(ProjectTask task)
-            => Shell.Current.GoToAsync($"task?id={task.ID}");
+        private Task NavigateToTask(Clothing clothing)
+            => Shell.Current.GoToAsync($"clothing?id={clothing.BrandClothingID}");
 
         // [RelayCommand]
         // private async Task CleanTasks()
         // {
-        //     var completedTasks = Tasks.Where(t => t.IsCompleted).ToList();
+        //     var completedTasks = Clothes.Where(t => t.IsCompleted).ToList();
         //     foreach (var task in completedTasks)
         //     {
         //         await _taskRepository.DeleteItemAsync(task);
-        //         Tasks.Remove(task);
+        //         Clothes.Remove(task);
         //     }
         //
         //     OnPropertyChanged(nameof(HasCompletedTasks));
-        //     Tasks = new(Tasks);
+        //     Clothes = new(Clothes);
         //     await AppShell.DisplayToastAsync("All cleaned up!");
         // }
     }

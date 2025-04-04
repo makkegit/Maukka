@@ -5,7 +5,7 @@ namespace Maukka.PageModels
 {
     public interface IProjectTaskPageModel
     {
-        IAsyncRelayCommand<ProjectTask> NavigateToTaskCommand { get; }
+        IAsyncRelayCommand<Clothing> NavigateToTaskCommand { get; }
         bool IsBusy { get; }
     }
 }

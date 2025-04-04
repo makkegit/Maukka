@@ -26,13 +26,13 @@ namespace Maukka.Pages.Controls
         {
             var checkbox = (CheckBox)sender;
 
-            if (checkbox.BindingContext is not ProjectTask task)
+            if (checkbox.BindingContext is not Clothing task)
                 return;
 
-            if (task.IsCompleted == e.Value)
-                return;
+            // if (task.IsCompleted == e.Value)
+            //     return;
 
-            task.IsCompleted = e.Value;
+            // task.IsCompleted = e.Value;
             TaskCompletedCommand?.Execute(task);
         }
     }

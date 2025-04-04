@@ -53,7 +53,7 @@
                             </HorizontalStackLayout>
                         </ScrollView>
                         <Grid HeightRequest="44">
-                            <Label Text="Tasks" Style="{StaticResource Title2}" VerticalOptions="Center"/>
+                            <Label Text="Clothes" Style="{StaticResource Title2}" VerticalOptions="Center"/>
                             <ImageButton 
                                 Source="{StaticResource IconClean}"
                                 HorizontalOptions="End"

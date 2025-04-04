@@ -74,10 +74,7 @@ namespace Maukka.Data
                 wardrobes.Add(new Wardrobe
                 {
                     ID = reader.GetInt32(0),
-                    Name = reader.GetString(1),
-                    Description = reader.GetString(2),
-                    Icon = reader.GetString(3),
-                    CategoryID = reader.GetInt32(4)
+                    Description = reader.GetString(2)
                 });
             }
 
@@ -105,10 +102,7 @@ namespace Maukka.Data
                 var wardrobe = new Wardrobe
                 {
                     ID = reader.GetInt32(0),
-                    Name = reader.GetString(1),
-                    Description = reader.GetString(2),
-                    Icon = reader.GetString(3),
-                    CategoryID = reader.GetInt32(4)
+                    Description = reader.GetString(2)
                 };
                 
                 return wardrobe;
@@ -144,11 +138,7 @@ namespace Maukka.Data
                 WHERE ID = @ID";
                 saveCmd.Parameters.AddWithValue("@ID", item.ID);
             }
-
-            saveCmd.Parameters.AddWithValue("@Name", item.Name);
             saveCmd.Parameters.AddWithValue("@Description", item.Description);
-            saveCmd.Parameters.AddWithValue("@Icon", item.Icon);
-            saveCmd.Parameters.AddWithValue("@CategoryID", item.CategoryID);
 
             var result = await saveCmd.ExecuteScalarAsync();
             if (item.ID == 0)

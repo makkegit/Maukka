@@ -22,10 +22,10 @@ namespace Maukka.Data
 
             await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_seedDataFilePath);
 
-            ProjectsJson? payload = null;
+            WardrobesJson? payload = null;
             try
             {
-                payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ProjectsJson);
+                payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.WardrobesJson);
             }
             catch (Exception e)
             {
@@ -51,9 +51,9 @@ namespace Maukka.Data
 
                         await _wardrobeRepository.SaveItemAsync(wardrobe);
 
-                        // if (wardrobe?.Tasks is not null)
+                        // if (wardrobe?.Clothes is not null)
                         // {
-                        //     foreach (var task in wardrobe.Tasks)
+                        //     foreach (var task in wardrobe.Clothes)
                         //     {
                         //         task.ProjectID = wardrobe.ID;
                         //         await _taskRepository.SaveItemAsync(task);

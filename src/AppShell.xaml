@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.SegmentedControl;assembly=Syncfusion.Maui.Toolkit"
     xmlns:pages="clr-namespace:Maukka.Pages"
-    Shell.FlyoutBehavior="Flyout"
+    FlyoutBehavior="Flyout"
     Title="Maukka">
 
     <ShellContent
@@ -17,7 +17,7 @@
     <ShellContent
         Title="Wardrobes"
         Icon="{StaticResource IconProjects}"
-        ContentTemplate="{DataTemplate pages:ProjectListPage}"
+        ContentTemplate="{DataTemplate pages:WardrobeListPage}"
         Route="projects" />
 
     <ShellContent

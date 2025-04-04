@@ -6,7 +6,7 @@ namespace Maukka.PageModels
 {
     public partial class ProjectDetailPageModel : ObservableObject, IQueryAttributable, IProjectTaskPageModel
     {
-        private Wardrobe? _project;
+        private Wardrobe? _wardrobe;
         private readonly WardrobeRepository _wardrobeRepository;
         private readonly ModalErrorHandler _errorHandler;
 
@@ -17,7 +17,7 @@ namespace Maukka.PageModels
         private string _description = string.Empty;
 
         [ObservableProperty]
-        private List<ProjectTask> _tasks = [];
+        private List<Clothing> _tasks = [];
 
         [ObservableProperty]
         private List<Category> _categories = [];
@@ -50,13 +50,12 @@ namespace Maukka.PageModels
         ];
 
         public bool HasCompletedTasks
-            => _project?.Tasks.Any(t => t.IsCompleted) ?? false;
+            => true;
 
         public ProjectDetailPageModel(WardrobeRepository wardrobeRepository, ModalErrorHandler errorHandler)
         {
             _wardrobeRepository = wardrobeRepository;
             _errorHandler = errorHandler;
-
             Tasks = [];
         }
 
@@ -74,10 +73,9 @@ namespace Maukka.PageModels
             else
             {
                 Task.WhenAll(LoadCategories(), LoadTags()).FireAndForgetSafeAsync(_errorHandler);
-                _project = new();
-                _project.Tags = [];
-                _project.Tasks = [];
-                Tasks = _project.Tasks;
+                _wardrobe = new();
+                _wardrobe.Clothes = [];
+                Tasks = _wardrobe.Clothes;
             }
         }
 
@@ -89,16 +87,16 @@ namespace Maukka.PageModels
 
         private async Task RefreshData()
         {
-            if (_project.IsNullOrNew())
+            if (_wardrobe.IsNullOrNew())
             {
-                if (_project is not null)
-                    Tasks = new(_project.Tasks);
+                if (_wardrobe is not null)
+                    Tasks = new(_wardrobe.Clothes);
 
                 return;
             }
 
-            //Tasks = await _taskRepository.ListAsync(_project.ID);
-            _project.Tasks = Tasks;
+            //Clothes = await _taskRepository.ListAsync(_wardrobe.ID);
+            _wardrobe.Clothes = Tasks;
         }
 
         private async Task LoadData(int id)
@@ -107,28 +105,25 @@ namespace Maukka.PageModels
             {
                 IsBusy = true;
 
-                _project = await _wardrobeRepository.GetAsync(id);
+                _wardrobe = await _wardrobeRepository.GetAsync(id);
 
-                if (_project.IsNullOrNew())
+                if (_wardrobe.IsNullOrNew())
                 {
                     _errorHandler.HandleError(new Exception($"Wardrobe with id {id} could not be found."));
                     return;
                 }
-
-                Name = _project.Name;
-                Description = _project.Description;
-                Tasks = _project.Tasks;
-
-                Icon = _project.Icon;
+                
+                Description = _wardrobe.Description;
+                Tasks = _wardrobe.Clothes;
 
                 // Categories = await _categoryRepository.ListAsync();
-                // Category = Categories?.FirstOrDefault(c => c.ID == _project.CategoryID);
-                // CategoryIndex = Categories?.FindIndex(c => c.ID == _project.CategoryID) ?? -1;
+                // Category = Categories?.FirstOrDefault(c => c.ID == _wardrobe.CategoryID);
+                // CategoryIndex = Categories?.FindIndex(c => c.ID == _wardrobe.CategoryID) ?? -1;
                 //
                 // var allTags = await _tagRepository.ListAsync();
                 // foreach (var tag in allTags)
                 // {
-                //     tag.IsSelected = _project.Tags.Any(t => t.ID == tag.ID);
+                //     tag.IsSelected = _wardrobe.Tags.Any(t => t.ID == tag.ID);
                 // }
                 // AllTags = new(allTags);
             }
@@ -144,7 +139,7 @@ namespace Maukka.PageModels
         }
 
         [RelayCommand]
-        private async Task TaskCompleted(ProjectTask task)
+        private async Task TaskCompleted(Clothing task)
         {
             //await _taskRepository.SaveItemAsync(task);
             OnPropertyChanged(nameof(HasCompletedTasks));
@@ -154,36 +149,33 @@ namespace Maukka.PageModels
         [RelayCommand]
         private async Task Save()
         {
-            if (_project is null)
+            if (_wardrobe is null)
             {
                 _errorHandler.HandleError(
                     new Exception("Wardrobe is null. Cannot Save."));
 
                 return;
             }
+            
+            _wardrobe.Description = Description;
+            await _wardrobeRepository.SaveItemAsync(_wardrobe);
 
-            _project.Name = Name;
-            _project.Description = Description;
-            _project.CategoryID = Category?.ID ?? 0;
-            _project.Icon = Icon ?? FluentUI.ribbon_24_regular;
-            await _wardrobeRepository.SaveItemAsync(_project);
-
-            if (_project.IsNullOrNew())
+            if (_wardrobe.IsNullOrNew())
             {
                 // foreach (var tag in AllTags)
                 // {
                 //     if (tag.IsSelected)
                 //     {
-                //         await _tagRepository.SaveItemAsync(tag, _project.ID);
+                //         await _tagRepository.SaveItemAsync(tag, _wardrobe.ID);
                 //     }
                 // }
             }
 
-            foreach (var task in _project.Tasks)
+            foreach (var task in _wardrobe.Clothes)
             {
                 // if (task.ID == 0)
                 // {
-                //     task.ProjectID = _project.ID;
+                //     task.ProjectID = _wardrobe.ID;
                 //     await _taskRepository.SaveItemAsync(task);
                 // }
             }
@@ -195,7 +187,7 @@ namespace Maukka.PageModels
         [RelayCommand]
         private async Task AddTask()
         {
-            if (_project is null)
+            if (_wardrobe is null)
             {
                 _errorHandler.HandleError(
                     new Exception("Wardrobe is null. Cannot navigate to task."));
@@ -207,42 +199,42 @@ namespace Maukka.PageModels
             // the tasks to the project and then save them all from here.
             await Shell.Current.GoToAsync($"task",
                 new ShellNavigationQueryParameters(){
-                    {TaskDetailPageModel.ProjectQueryKey, _project}
+                    {TaskDetailPageModel.ProjectQueryKey, _wardrobe}
                 });
         }
 
         [RelayCommand]
         private async Task Delete()
         {
-            if (_project.IsNullOrNew())
+            if (_wardrobe.IsNullOrNew())
             {
                 await Shell.Current.GoToAsync("..");
                 return;
             }
 
-            await _wardrobeRepository.DeleteItemAsync(_project);
+            await _wardrobeRepository.DeleteItemAsync(_wardrobe);
             await Shell.Current.GoToAsync("..");
             await AppShell.DisplayToastAsync("Wardrobe deleted");
         }
 
         [RelayCommand]
-        private Task NavigateToTask(ProjectTask task) =>
-            Shell.Current.GoToAsync($"task?id={task.ID}");
+        private Task NavigateToTask(Clothing clothing) =>
+            Shell.Current.GoToAsync($"clothing?id={clothing.BrandClothingID}");
 
         [RelayCommand]
         private async Task ToggleTag(Tag tag)
         {
             tag.IsSelected = !tag.IsSelected;
 
-            if (!_project.IsNullOrNew())
+            if (!_wardrobe.IsNullOrNew())
             {
                 if (tag.IsSelected)
                 {
-                    // await _tagRepository.SaveItemAsync(tag, _project.ID);
+                    // await _tagRepository.SaveItemAsync(tag, _wardrobe.ID);
                 }
                 else
                 {
-                    // await _tagRepository.DeleteItemAsync(tag, _project.ID);
+                    // await _tagRepository.DeleteItemAsync(tag, _wardrobe.ID);
                 }
             }
 
@@ -252,11 +244,11 @@ namespace Maukka.PageModels
         [RelayCommand]
         private async Task CleanTasks()
         {
-            var completedTasks = Tasks.Where(t => t.IsCompleted).ToArray();
+            var completedTasks = Tasks.ToArray();
             // foreach (var task in completedTasks)
             // {
             //     await _taskRepository.DeleteItemAsync(task);
-            //     Tasks.Remove(task);
+            //     Clothes.Remove(task);
             // }
 
             Tasks = new(Tasks);

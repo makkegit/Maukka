@@ -8,16 +8,19 @@
     xmlns:shimmer="clr-namespace:Syncfusion.Maui.Toolkit.Shimmer;assembly=Syncfusion.Maui.Toolkit"
     x:Class="Maukka.Pages.Controls.TaskView"
     StrokeShape="RoundRectangle 20"
-    Background="{AppThemeBinding Light={StaticResource LightSecondaryBackground}, Dark={StaticResource DarkSecondaryBackground}}"
-    x:DataType="models:ProjectTask">
+    Background="{AppThemeBinding Light={StaticResource LightSecondaryBackground}, 
+    Dark={StaticResource DarkSecondaryBackground}}"
+    x:DataType="models:Clothing">
     
     <effectsView:SfEffectsView
         TouchDownEffects="Highlight"
-        HighlightBackground="{AppThemeBinding Light={StaticResource DarkOnLightBackground}, Dark={StaticResource LightOnDarkBackground}}">
+        HighlightBackground="{AppThemeBinding Light={StaticResource DarkOnLightBackground}, 
+        Dark={StaticResource LightOnDarkBackground}}">
         <shimmer:SfShimmer
             BackgroundColor="Transparent"
             VerticalOptions="FillAndExpand"               
-            IsActive="{Binding IsBusy, Source={RelativeSource AncestorType={x:Type pageModels:IProjectTaskPageModel}}, x:DataType=pageModels:IProjectTaskPageModel}">
+            IsActive="{Binding IsBusy, Source={RelativeSource AncestorType={x:Type 
+            pageModels:IProjectTaskPageModel}}, x:DataType=pageModels:IProjectTaskPageModel}">
             <shimmer:SfShimmer.CustomView>
                 <Grid 
                     ColumnDefinitions="Auto,*"
@@ -38,11 +41,15 @@
                 <Grid ColumnDefinitions="Auto,*" ColumnSpacing="15" Padding="{OnIdiom 15, Desktop=20}">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding NavigateToTaskCommand, Source={RelativeSource AncestorType={x:Type pageModels:IProjectTaskPageModel}}, x:DataType=pageModels:IProjectTaskPageModel}" 
+                            Command="{Binding NavigateToTaskCommand, 
+                            Source={RelativeSource AncestorType={x:Type pageModels:IProjectTaskPageModel}}, 
+                            x:DataType=pageModels:IProjectTaskPageModel}" 
                             CommandParameter="{Binding .}"/>
                     </Grid.GestureRecognizers>
-                    <CheckBox Grid.Column="0" IsChecked="{Binding IsCompleted, Mode=OneTime}" VerticalOptions="Center" CheckedChanged="CheckBox_CheckedChanged"/>
-                    <Label Grid.Column="1" Text="{Binding Title}" VerticalOptions="Center" LineBreakMode="TailTruncation"/>
+                    <CheckBox Grid.Column="0" IsChecked="{Binding IsCompleted, Mode=OneTime}" 
+                              VerticalOptions="Center" CheckedChanged="CheckBox_CheckedChanged"/>
+                    <Label Grid.Column="1" Text="{Binding Title}" VerticalOptions="Center"
+                           LineBreakMode="TailTruncation"/>
                 </Grid>
             </shimmer:SfShimmer.Content>
         </shimmer:SfShimmer>

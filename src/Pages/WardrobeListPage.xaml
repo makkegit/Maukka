@@ -5,7 +5,7 @@
              xmlns:models="clr-namespace:Maukka.Models"
              xmlns:controls="clr-namespace:Maukka.Pages.Controls"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="Maukka.Pages.ProjectListPage"
+             x:Class="Maukka.Pages.WardrobeListPage"
              x:DataType="pageModels:ProjectListPageModel"
              Title="Wardrobes">
 

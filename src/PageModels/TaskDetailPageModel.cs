@@ -9,7 +9,7 @@ namespace Maukka.PageModels
     public partial class TaskDetailPageModel : ObservableObject, IQueryAttributable
     {
         public const string ProjectQueryKey = "project";
-        private ProjectTask? _task;
+        private Clothing? _task;
         private bool _canDelete;
         private readonly WardrobeRepository _wardrobeRepository;
         private readonly ModalErrorHandler _errorHandler;
@@ -62,11 +62,11 @@ namespace Maukka.PageModels
                 //     return;
                 // }
 
-                Wardrobe = await _wardrobeRepository.GetAsync(_task.ProjectID);
+                //Wardrobe = await _wardrobeRepository.GetAsync(_task.ProjectID);
             }
             else
             {
-                _task = new ProjectTask();
+                //_task = new Clothing();
             }
 
             // If the project is new, we don't need to load the project dropdown
@@ -82,8 +82,8 @@ namespace Maukka.PageModels
 
             if (Wardrobe is not null)
                 SelectedProjectIndex = Wardrobes.FindIndex(p => p.ID == Wardrobe.ID);
-            else if (_task?.ProjectID > 0)
-                SelectedProjectIndex = Wardrobes.FindIndex(p => p.ID == _task.ProjectID);
+            // else if (_task?.ProjectID > 0)
+            //     SelectedProjectIndex = Wardrobes.FindIndex(p => p.ID == _task.ProjectID);
 
             if (taskId > 0)
             {
@@ -93,16 +93,16 @@ namespace Maukka.PageModels
                     return;
                 }
 
-                Title = _task.Title;
-                IsCompleted = _task.IsCompleted;
+                // Title = _task.Title;
+                // IsCompleted = _task.IsCompleted;
                 CanDelete = true;
             }
             else
             {
-                _task = new ProjectTask()
-                {
-                    ProjectID = Wardrobe?.ID ?? 0
-                };
+                // _task = new Clothing()
+                // {
+                //     ProjectID = Wardrobe?.ID ?? 0
+                // };
             }
         }
 
@@ -127,24 +127,20 @@ namespace Maukka.PageModels
                 return;
             }
 
-            _task.Title = Title;
+            // _task.Title = Title;
 
             int projectId = Wardrobe?.ID ?? 0;
+            
 
-            if (Wardrobes.Count > SelectedProjectIndex && SelectedProjectIndex >= 0)
-                _task.ProjectID = projectId = Wardrobes[SelectedProjectIndex].ID;
-
-            _task.IsCompleted = IsCompleted;
-
-            if (Wardrobe?.ID == projectId && !Wardrobe.Tasks.Contains(_task))
-                Wardrobe.Tasks.Add(_task);
+            if (Wardrobe?.ID == projectId && !Wardrobe.Clothes.Contains(_task))
+                Wardrobe.Clothes.Add(_task);
 
             // if (_task.ProjectID > 0)
             //     _taskRepository.SaveItemAsync(_task).FireAndForgetSafeAsync(_errorHandler);
 
             await Shell.Current.GoToAsync("..?refresh=true");
 
-            if (_task.ID > 0)
+            if (_task.Id > 0)
                 await AppShell.DisplayToastAsync("Task saved");
         }
 
@@ -159,8 +155,8 @@ namespace Maukka.PageModels
                 return;
             }
 
-            if (Wardrobe.Tasks.Contains(_task))
-                Wardrobe.Tasks.Remove(_task);
+            if (Wardrobe.Clothes.Contains(_task))
+                Wardrobe.Clothes.Remove(_task);
 
             // if (_task.ID > 0)
             //     await _taskRepository.DeleteItemAsync(_task);

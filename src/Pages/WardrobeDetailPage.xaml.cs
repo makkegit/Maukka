@@ -2,9 +2,9 @@ using Maukka.Models;
 
 namespace Maukka.Pages
 {
-    public partial class ProjectDetailPage : ContentPage
+    public partial class WardrobeDetailPage : ContentPage
     {
-        public ProjectDetailPage(ProjectDetailPageModel model)
+        public WardrobeDetailPage(ProjectDetailPageModel model)
         {
             InitializeComponent();
 
