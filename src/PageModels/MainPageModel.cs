@@ -19,7 +19,7 @@ namespace Maukka.PageModels
         private List<Brush> _todoCategoryColors = [];
 
         [ObservableProperty]
-        private List<Clothing> _tasks = [];
+        private List<Clothing> _clothes = [];
 
         [ObservableProperty]
         private List<Wardrobe> _wardrobes = [];
