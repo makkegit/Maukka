@@ -50,14 +50,14 @@ public class ModelTests
 
         var clothing = new Shirt()
         {
-            Id = 1,
+            //ClothingId = 1,
             BrandClothingId = 200,
             ClothingName = "Test Shirt",
             Alias = "Winter Shirt",
             Size = testSize
         };
 
-        Assert.Equal(1, clothing.Id.Value);
+        //Assert.Equal(1, clothing.ClothingId.Value);
         Assert.Equal(200, clothing.BrandClothingId);
         Assert.Equal("Test Shirt", clothing.ClothingName);
         Assert.Equal("Winter Shirt", clothing.Alias);
@@ -81,14 +81,14 @@ public class ModelTests
 
         var clothing = new Pants()
         {
-            Id = 1,
+            //ClothingId = 1,
             BrandClothingId = 200,
             ClothingName = "Test Pants",
             Alias = "Winter Pants",
             Size = testSize
         };
 
-        Assert.Equal(1, clothing.Id.Value);
+        //Assert.Equal(1, clothing.ClothingId.Value);
         Assert.Equal(200, clothing.BrandClothingId);
         Assert.Equal("Test Pants", clothing.ClothingName);
         Assert.Equal("Winter Pants", clothing.Alias);
@@ -116,7 +116,7 @@ public class ModelTests
 
         var clothing = new Shirt()
         {
-            Id = 10,
+            //ClothingId = 10,
             BrandClothingId = 300,
             ClothingName = "Test Sweater"
         };

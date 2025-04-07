@@ -4,7 +4,7 @@ namespace Maukka.Pages
 {
     public partial class WardrobeDetailPage : ContentPage
     {
-        public WardrobeDetailPage(ProjectDetailPageModel model)
+        public WardrobeDetailPage(WardrobeDetailPageModel model)
         {
             InitializeComponent();
 

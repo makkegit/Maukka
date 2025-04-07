@@ -8,7 +8,7 @@
              xmlns:controls="clr-namespace:Maukka.Pages.Controls"
              xmlns:fonts="clr-namespace:Fonts"
              x:Class="Maukka.Pages.WardrobeDetailPage"
-             x:DataType="pageModels:ProjectDetailPageModel"
+             x:DataType="pageModels:WardrobeDetailPageModel"
              Title="Wardrobe">
 
     <ContentPage.Resources>
@@ -20,8 +20,8 @@
                         Padding="{OnPlatform '18,0,18,8',Android='18,0,18,0'}">
                         <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ToggleTagCommand, 
-                            Source={RelativeSource AncestorType={x:Type pageModels:ProjectDetailPageModel}}, 
-                            x:DataType=pageModels:ProjectDetailPageModel}" CommandParameter="{Binding .}"/>
+                            Source={RelativeSource AncestorType={x:Type pageModels:WardrobeDetailPageModel}}, 
+                            x:DataType=pageModels:WardrobeDetailPageModel}" CommandParameter="{Binding .}"/>
                         </Border.GestureRecognizers>
                         <Label Text="{Binding Title}"
                             TextColor="{AppThemeBinding Light={StaticResource DarkOnLightBackground},Dark={StaticResource LightOnDarkBackground}}"
@@ -38,7 +38,7 @@
                         Background="{Binding DisplayColor}" 
                         Padding="{OnPlatform '18,0,18,8',Android='18,0,18,0'}">
                 <Border.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ToggleTagCommand, Source={RelativeSource AncestorType={x:Type pageModels:ProjectDetailPageModel}}, x:DataType=pageModels:ProjectDetailPageModel}" CommandParameter="{Binding .}"/>
+                    <TapGestureRecognizer Command="{Binding ToggleTagCommand, Source={RelativeSource AncestorType={x:Type pageModels:WardrobeDetailPageModel}}, x:DataType=pageModels:WardrobeDetailPageModel}" CommandParameter="{Binding .}"/>
                 </Border.GestureRecognizers>
                 <Label Text="{Binding Title}"
                     TextColor="{AppThemeBinding Light={StaticResource LightBackground},Dark={StaticResource DarkBackground}}" 
@@ -171,7 +171,7 @@
                     BindableLayout.ItemsSource="{Binding Tasks}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <controls:TaskView TaskCompletedCommand="{Binding TaskCompletedCommand, Source={RelativeSource AncestorType={x:Type pageModels:ProjectDetailPageModel}}, x:DataType=pageModels:ProjectDetailPageModel}" />
+                            <controls:TaskView TaskCompletedCommand="{Binding TaskCompletedCommand, Source={RelativeSource AncestorType={x:Type pageModels:WardrobeDetailPageModel}}, x:DataType=pageModels:WardrobeDetailPageModel}" />
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </VerticalStackLayout>

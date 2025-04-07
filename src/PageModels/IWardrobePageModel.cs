@@ -3,9 +3,9 @@ using Maukka.Models;
 
 namespace Maukka.PageModels
 {
-    public interface IProjectTaskPageModel
+    public interface IWardrobePageModel
     {
-        IAsyncRelayCommand<Clothing> NavigateToTaskCommand { get; }
+        IAsyncRelayCommand<Clothing> NavigateToClothingCommand { get; }
         bool IsBusy { get; }
     }
 }

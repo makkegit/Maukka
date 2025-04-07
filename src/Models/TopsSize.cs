@@ -25,7 +25,8 @@ namespace Maukka.Models
         }
         
         public string SizeCode { get; set; }
-        
+
+        public TopsSize() {}
         public TopsSize(CountryCode countryCode, float heightCm, float chestCm, 
                float sizeNbr, string sizeCode)
         {

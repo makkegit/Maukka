@@ -1,0 +1,22 @@
+{
+  "Wardrobes": [
+    {
+      "WardrobeId": 1,
+      "Name": "Matildan kesävaatteet",
+      "Description": "Kesävaatteita Mattuselle. Kissojen ja koirien kuvia! 😽🐶",
+      "Clothes": [
+        { "BrandClothingId": 1, "Alias": "Kesäpaita", "ClothingName": "Summer Cat T-shirt", "ClothingCategory": "tops" },
+        { "BrandClothingId": 2, "Alias": "Kesähousut", "ClothingName": "Summer Pants", "ClothingCategory": "bottoms" }
+      ]
+    },
+    {
+      "WardrobeId": 2,
+      "Name": "Matildan talvivaatteet",
+      "Description": "Talvivaatteita Mattuselle. Kissojen ja koirien kuvia! 😽🐶",
+      "Clothes": [
+        { "BrandClothingId": 3, "Alias": "Talvipaita", "ClothingName": "Winter Cat T-shirt", "ClothingCategory": "tops" },
+        { "BrandClothingId": 4, "Alias": "Talvihousut", "ClothingName": "Winter Pants", "ClothingCategory": "bottoms" }
+      ]
+    }
+  ]
+}

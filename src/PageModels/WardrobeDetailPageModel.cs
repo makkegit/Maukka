@@ -4,7 +4,7 @@ using Maukka.Models;
 
 namespace Maukka.PageModels
 {
-    public partial class ProjectDetailPageModel : ObservableObject, IQueryAttributable, IProjectTaskPageModel
+    public partial class WardrobeDetailPageModel : ObservableObject, IQueryAttributable, IWardrobePageModel
     {
         private Wardrobe? _wardrobe;
         private readonly WardrobeRepository _wardrobeRepository;
@@ -52,7 +52,7 @@ namespace Maukka.PageModels
         public bool HasCompletedTasks
             => true;
 
-        public ProjectDetailPageModel(WardrobeRepository wardrobeRepository, ModalErrorHandler errorHandler)
+        public WardrobeDetailPageModel(WardrobeRepository wardrobeRepository, ModalErrorHandler errorHandler)
         {
             _wardrobeRepository = wardrobeRepository;
             _errorHandler = errorHandler;
@@ -95,7 +95,7 @@ namespace Maukka.PageModels
                 return;
             }
 
-            //Clothes = await _taskRepository.ListAsync(_wardrobe.Id);
+            //Clothes = await _taskRepository.ListAsync(_wardrobe.ClothingId);
             _wardrobe.Clothes = Tasks;
         }
 
@@ -117,13 +117,13 @@ namespace Maukka.PageModels
                 Tasks = _wardrobe.Clothes;
 
                 // Categories = await _categoryRepository.ListAsync();
-                // Category = Categories?.FirstOrDefault(c => c.Id == _wardrobe.CategoryID);
-                // CategoryIndex = Categories?.FindIndex(c => c.Id == _wardrobe.CategoryID) ?? -1;
+                // Category = Categories?.FirstOrDefault(c => c.ClothingId == _wardrobe.CategoryID);
+                // CategoryIndex = Categories?.FindIndex(c => c.ClothingId == _wardrobe.CategoryID) ?? -1;
                 //
                 // var allTags = await _tagRepository.ListAsync();
                 // foreach (var tag in allTags)
                 // {
-                //     tag.IsSelected = _wardrobe.Tags.Any(t => t.Id == tag.Id);
+                //     tag.IsSelected = _wardrobe.Tags.Any(t => t.ClothingId == tag.ClothingId);
                 // }
                 // AllTags = new(allTags);
             }
@@ -166,16 +166,16 @@ namespace Maukka.PageModels
                 // {
                 //     if (tag.IsSelected)
                 //     {
-                //         await _tagRepository.SaveItemAsync(tag, _wardrobe.Id);
+                //         await _tagRepository.SaveItemAsync(tag, _wardrobe.ClothingId);
                 //     }
                 // }
             }
 
             foreach (var task in _wardrobe.Clothes)
             {
-                // if (task.Id == 0)
+                // if (task.ClothingId == 0)
                 // {
-                //     task.ProjectID = _wardrobe.Id;
+                //     task.ProjectID = _wardrobe.ClothingId;
                 //     await _taskRepository.SaveItemAsync(task);
                 // }
             }
@@ -218,7 +218,7 @@ namespace Maukka.PageModels
         }
 
         [RelayCommand]
-        private Task NavigateToTask(Clothing clothing) =>
+        private Task NavigateToClothing(Clothing clothing) =>
             Shell.Current.GoToAsync($"clothing?id={clothing.BrandClothingId}");
 
         // [RelayCommand]
@@ -230,11 +230,11 @@ namespace Maukka.PageModels
         //     {
         //         if (tag.IsSelected)
         //         {
-        //             // await _tagRepository.SaveItemAsync(tag, _wardrobe.Id);
+        //             // await _tagRepository.SaveItemAsync(tag, _wardrobe.ClothingId);
         //         }
         //         else
         //         {
-        //             // await _tagRepository.DeleteItemAsync(tag, _wardrobe.Id);
+        //             // await _tagRepository.DeleteItemAsync(tag, _wardrobe.ClothingId);
         //         }
         //     }
         //
@@ -242,7 +242,7 @@ namespace Maukka.PageModels
         // }
 
         [RelayCommand]
-        private async Task CleanTasks()
+        private async Task CleanClothing()
         {
             var completedTasks = Tasks.ToArray();
             // foreach (var task in completedTasks)

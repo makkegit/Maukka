@@ -4,20 +4,14 @@ using Maukka.Models;
 
 namespace Maukka.PageModels
 {
-    public partial class MainPageModel : ObservableObject, IProjectTaskPageModel
+    public partial class MainPageModel : ObservableObject, IWardrobePageModel
     {
         private bool _isNavigatedTo;
         private bool _dataLoaded;
         private readonly WardrobeRepository _wardrobeRepository;
         private readonly ModalErrorHandler _errorHandler;
         private readonly SeedDataService _seedDataService;
-
-        // [ObservableProperty]
-        // private List<CategoryChartData> _todoCategoryData = [];
-
-        [ObservableProperty]
-        private List<Brush> _todoCategoryColors = [];
-
+        
         [ObservableProperty]
         private List<Clothing> _clothes = [];
 
@@ -126,11 +120,11 @@ namespace Maukka.PageModels
         //     => Shell.Current.GoToAsync($"task");
 
         [RelayCommand]
-        private Task NavigateToProject(Wardrobe wardrobe)
+        private Task NavigateToWardrobe(Wardrobe wardrobe)
             => Shell.Current.GoToAsync($"wardrobe?id={wardrobe.Id}");
 
         [RelayCommand]
-        private Task NavigateToTask(Clothing clothing)
+        private Task NavigateToClothing(Clothing clothing)
             => Shell.Current.GoToAsync($"clothing?id={clothing.BrandClothingId}");
 
         // [RelayCommand]

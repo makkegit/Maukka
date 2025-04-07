@@ -39,7 +39,7 @@ namespace Maukka
             builder.Services.AddSingleton<ProjectListPageModel>();
             builder.Services.AddSingleton<ManageMetaPageModel>();
 
-            builder.Services.AddTransientWithShellRoute<WardrobeDetailPage, ProjectDetailPageModel>("project");
+            builder.Services.AddTransientWithShellRoute<WardrobeDetailPage, WardrobeDetailPageModel>("project");
             builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
 
             return builder.Build();

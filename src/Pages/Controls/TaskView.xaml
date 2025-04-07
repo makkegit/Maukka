@@ -20,7 +20,7 @@
             BackgroundColor="Transparent"
             VerticalOptions="FillAndExpand"               
             IsActive="{Binding IsBusy, Source={RelativeSource AncestorType={x:Type 
-            pageModels:IProjectTaskPageModel}}, x:DataType=pageModels:IProjectTaskPageModel}">
+            pageModels:IWardrobePageModel}}, x:DataType=pageModels:IWardrobePageModel}">
             <shimmer:SfShimmer.CustomView>
                 <Grid 
                     ColumnDefinitions="Auto,*"
@@ -41,9 +41,9 @@
                 <Grid ColumnDefinitions="Auto,*" ColumnSpacing="15" Padding="{OnIdiom 15, Desktop=20}">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding NavigateToTaskCommand, 
-                            Source={RelativeSource AncestorType={x:Type pageModels:IProjectTaskPageModel}}, 
-                            x:DataType=pageModels:IProjectTaskPageModel}" 
+                            Command="{Binding NavigateToClothingCommand, 
+                            Source={RelativeSource AncestorType={x:Type pageModels:IWardrobePageModel}}, 
+                            x:DataType=pageModels:IWardrobePageModel}" 
                             CommandParameter="{Binding .}"/>
                     </Grid.GestureRecognizers>
                     <CheckBox Grid.Column="0" IsChecked="{Binding IsCompleted, Mode=OneTime}" 
