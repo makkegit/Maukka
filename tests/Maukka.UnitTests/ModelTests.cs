@@ -4,18 +4,6 @@ namespace Maukka.UnitTests;
 
 public class ModelTests
 {
-    private class TestClothing : Clothing
-    {
-        public override BrandClothingId BrandClothingId { get; set; }
-        public override string ClothingName { get; set; }
-        public override ClothingSize Size { get; set; }
-    }
-    
-    private class TestClothingSize : ClothingSize
-    {
-        public override ClotingCategory Category { get; set; }
-    }
-    
     [Fact]
     public void BrandId_Init_Test()
     {
@@ -44,53 +32,77 @@ public class ModelTests
             Id = 1,
             BrandId = 100,
             ClothingName = "Test Shirt",
-            Category = ClotingCategory.Shirt,
+            Category = ClothingCategory.Tops,
             ClothingSizes = new List<ClothingSize>()
         };
 
         Assert.Equal(1, clothing.Id);
         Assert.Equal(100, clothing.BrandId);
         Assert.Equal("Test Shirt", clothing.ClothingName);
-        Assert.Equal(ClotingCategory.Shirt, clothing.Category);
+        Assert.Equal(ClothingCategory.Tops, clothing.Category);
         Assert.NotNull(clothing.ClothingSizes);
     }
     
     [Fact]
-    public void Clothing_Creation_Test()
+    public void Shirt_Creation_Test()
     {
-        var testSize = new TestClothingSize
-        {
-            CountryCode = CountryCode.EU,
-            Category = ClotingCategory.Shirt
-        };
+        var testSize = new TopsSize(CountryCode.EU, 86f, 54f, 86f, "1 year");
 
-        var clothing = new TestClothing
+        var clothing = new Shirt()
         {
             Id = 1,
             BrandClothingId = 200,
-            ClothingName = "Test Jacket",
-            Alias = "Winter Jacket",
+            ClothingName = "Test Shirt",
+            Alias = "Winter Shirt",
             Size = testSize
         };
 
         Assert.Equal(1, clothing.Id.Value);
         Assert.Equal(200, clothing.BrandClothingId);
-        Assert.Equal("Test Jacket", clothing.ClothingName);
-        Assert.Equal("Winter Jacket", clothing.Alias);
+        Assert.Equal("Test Shirt", clothing.ClothingName);
+        Assert.Equal("Winter Shirt", clothing.Alias);
+        Assert.Equal(ClothingCategory.Tops, clothing.ClothingCategory);
         Assert.Equal(testSize, clothing.Size);
     }
     
     [Fact]
-    public void ClothingSize_Creation_Test()
+    public void TopsSize_Creation_Test()
     {
-        var size = new TestClothingSize
+        var size = new TopsSize(CountryCode.EU, 86, 52, 86, "1 - 1.5 years");
+        
+        Assert.NotEqual(CountryCode.US, size.CountryCode);
+        Assert.Equal(ClothingCategory.Tops, size.Category);
+    }
+    
+    [Fact]
+    public void Pants_Creation_Test()
+    {
+        var testSize = new BottomsSize(CountryCode.EU, 50f, 55f, 36.5f, "1 - 1.5 years");
+
+        var clothing = new Pants()
         {
-            CountryCode = CountryCode.US,
-            Category = ClotingCategory.Pants
+            Id = 1,
+            BrandClothingId = 200,
+            ClothingName = "Test Pants",
+            Alias = "Winter Pants",
+            Size = testSize
         };
 
-        Assert.Equal(CountryCode.US, size.CountryCode);
-        Assert.Equal(ClotingCategory.Pants, size.Category);
+        Assert.Equal(1, clothing.Id.Value);
+        Assert.Equal(200, clothing.BrandClothingId);
+        Assert.Equal("Test Pants", clothing.ClothingName);
+        Assert.Equal("Winter Pants", clothing.Alias);
+        Assert.Equal(ClothingCategory.Bottoms, clothing.ClothingCategory);
+        Assert.Equal(testSize, clothing.Size);
+    }
+    
+    [Fact]
+    public void BottomsSize_Creation_Test()
+    {
+        var size = new BottomsSize(CountryCode.EU, 50f, 55f, 36.5f, "1 - 1.5 years");
+        
+        Assert.Equal(CountryCode.EU, size.CountryCode);
+        Assert.Equal(ClothingCategory.Bottoms, size.Category);
     }
     
     [Fact]
@@ -102,7 +114,7 @@ public class ModelTests
             Description = "Main Wardrobe"
         };
 
-        var clothing = new TestClothing
+        var clothing = new Shirt()
         {
             Id = 10,
             BrandClothingId = 300,

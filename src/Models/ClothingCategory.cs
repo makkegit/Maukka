@@ -1,10 +1,10 @@
 namespace Maukka.Models
 {
-    public enum ClotingCategory
+    public enum ClothingCategory
     {
         NotSet = 0,
-        Shirt = 1,
-        Pants = 2,
+        Tops = 1,
+        Bottoms = 2,
         Shoes = 3,
         Hats = 4
     }
