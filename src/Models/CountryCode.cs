@@ -10,9 +10,13 @@ namespace Maukka.Models
         Unknown = 0,
         [Description("eu")]
         EU = 1,
+        [Description("uk")]
         UK = 2,
+        [Description("us")]
         US = 3,
+        [Description("jp")]
         JP = 4,
+        [Description("aus")]
         AUS = 5
     }
 }

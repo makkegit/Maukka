@@ -2,7 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Maukka.Models;
 
-namespace Maukka.Utilities
+namespace Maukka.Utilities.Converters
 {
     public class BrandClothingIdConverter : JsonConverter<BrandClothingId>
     {

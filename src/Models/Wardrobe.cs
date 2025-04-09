@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Maukka.Utilities.Converters;
 
 namespace Maukka.Models
 {
@@ -7,11 +8,7 @@ namespace Maukka.Models
         [JsonConverter(typeof(WardrobeIdConverter))]
         public WardrobeId Id { get; set; }
         public string Description { get; set; } = string.Empty;
-        public List<Clothing> Clothes { get; set; } = [];
+        public List<Clothing> Items { get; set; } = [];
     }
 
-    public class WardrobesJson
-    {
-        public List<Wardrobe> Wardrobes { get; set; } = [];
-    }
 }

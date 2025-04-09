@@ -38,7 +38,7 @@
                     Hint="Wardrobe">
                     <Picker 
                         ItemsSource="{Binding Wardrobes}"
-                        ItemDisplayBinding="{Binding Name, x:DataType=models:Wardrobe}"
+                        ItemDisplayBinding="{Binding ClothingName, x:DataType=models:Wardrobe}"
                         SelectedItem="{Binding Wardrobe}"
                         SelectedIndex="{Binding SelectedProjectIndex}" />
                 </sf:SfTextInputLayout>

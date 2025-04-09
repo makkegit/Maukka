@@ -1,18 +1,30 @@
 using System.Text.Json.Serialization;
+using Maukka.Utilities.Converters;
 
 namespace Maukka.Models
 {
-    [JsonConverter(typeof(ClothingConverter))]
-    public abstract class Clothing
+    public class Clothing
     {
-        //public ClothingId ClothingId { get; set; }
-        public abstract BrandClothingId BrandClothingId { get; set; }
-        
+        [JsonConverter(typeof(BrandClothingIdConverter))]
+        public BrandClothingId Id { get; set; }
+        public string BrandName { get; set; }
+        public string ClothingName { get; set; }
         [JsonConverter(typeof(ClothingCategoryConverter))]
-        public virtual ClothingCategory ClothingCategory => ClothingCategory.NotSet;
-        public abstract string ClothingName { get; set; }
-        public string Alias { get; set; } = string.Empty;
-        public ClothingSize? Size { get; set; }  
-    }
+        public ClothingCategory Category { get; set; }
+        public ClothingSize Size { get; set; }
+        public string Alias { get; set; }
 
+        public static Clothing InitClothing(BrandClothing brandClothing, ClothingSize clothingSize, string? alias = null)
+        {
+            return new Clothing
+            {
+                Id = brandClothing.Id,
+                BrandName = brandClothing.Brand.BrandName,
+                ClothingName = brandClothing.Name,
+                Category = brandClothing.Category,
+                Size = clothingSize,
+                Alias = alias ?? string.Empty,
+            };
+        }
+    }
 }

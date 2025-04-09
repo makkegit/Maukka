@@ -29,16 +29,16 @@ public class ModelTests
     {
         var clothing = new BrandClothing
         {
-            Id = 1,
-            BrandId = 100,
-            ClothingName = "Test Shirt",
+            Id = 11,
+            Brand = new Brand(1, "Makke"),
+            Name = "Test Shirt",
             Category = ClothingCategory.Tops,
             ClothingSizes = new List<ClothingSize>()
         };
 
-        Assert.Equal(1, clothing.Id);
-        Assert.Equal(100, clothing.BrandId);
-        Assert.Equal("Test Shirt", clothing.ClothingName);
+        Assert.Equal(11, clothing.Id);
+        Assert.Equal(1, clothing.Brand.BrandId);
+        Assert.Equal("Test Shirt", clothing.Name);
         Assert.Equal(ClothingCategory.Tops, clothing.Category);
         Assert.NotNull(clothing.ClothingSizes);
     }
@@ -46,63 +46,92 @@ public class ModelTests
     [Fact]
     public void Shirt_Creation_Test()
     {
-        var testSize = new TopsSize(CountryCode.EU, 86f, 54f, 86f, "1 year");
-
-        var clothing = new Shirt()
+        var testSize = ClothingSize.CreateTopsSize(CountryCode.EU, MeasurementUnit.Centimeter, "86",
+            12, 12+6, 86f, 55f, 1.5f);
+        var brandClothing = new BrandClothing()
         {
-            //ClothingId = 1,
-            BrandClothingId = 200,
-            ClothingName = "Test Shirt",
-            Alias = "Winter Shirt",
-            Size = testSize
+            Id = 11,
+            Brand = new Brand(1, "MakkeBrand"),
+            Category = ClothingCategory.Tops,
+            Name = "Test Shirt",
+            ClothingSizes = new List<ClothingSize>()
+            {
+                testSize
+            }
         };
+            
+        var clothing = Clothing.InitClothing(brandClothing, testSize, "Makee paita");
 
-        //Assert.Equal(1, clothing.ClothingId.Value);
-        Assert.Equal(200, clothing.BrandClothingId);
+        
+        Assert.Equal(11, clothing.Id);
         Assert.Equal("Test Shirt", clothing.ClothingName);
-        Assert.Equal("Winter Shirt", clothing.Alias);
-        Assert.Equal(ClothingCategory.Tops, clothing.ClothingCategory);
+        Assert.Equal("Makee paita", clothing.Alias);
+        Assert.Equal(ClothingCategory.Tops, clothing.Category);
         Assert.Equal(testSize, clothing.Size);
     }
     
     [Fact]
     public void TopsSize_Creation_Test()
     {
-        var size = new TopsSize(CountryCode.EU, 86, 52, 86, "1 - 1.5 years");
+        var testSize = ClothingSize.CreateTopsSize(CountryCode.EU, MeasurementUnit.Centimeter, "86",
+            12, 12+6, 86f, 55f, 1.5f);
         
-        Assert.NotEqual(CountryCode.US, size.CountryCode);
-        Assert.Equal(ClothingCategory.Tops, size.Category);
+        Assert.NotEqual(CountryCode.US, testSize.CountryCode);
+        Assert.Equal(ClothingCategory.Tops, testSize.Category);
+        Assert.True(testSize.Measurements.ContainsKey(ClothingSize.ChestKey));
+        Assert.True(testSize.Measurements.ContainsKey(ClothingSize.HeightKey));
     }
     
     [Fact]
     public void Pants_Creation_Test()
     {
-        var testSize = new BottomsSize(CountryCode.EU, 50f, 55f, 36.5f, "1 - 1.5 years");
-
-        var clothing = new Pants()
+        var testSize = ClothingSize.CreateBottomsSize(CountryCode.EU,
+            MeasurementUnit.Centimeter,
+            "86",
+            12,
+            12 + 6,
+            50f,
+            55f,
+            36.5f);
+        
+        var brandClothing = new BrandClothing()
         {
-            //ClothingId = 1,
-            BrandClothingId = 200,
-            ClothingName = "Test Pants",
-            Alias = "Winter Pants",
-            Size = testSize
+            Id = 12,
+            Brand = new Brand(1, "MakkeBrand"),
+            Category = ClothingCategory.Bottoms,
+            Name = "Test Pants",
+            ClothingSizes = new List<ClothingSize>()
+            {
+                testSize
+            }
         };
-
-        //Assert.Equal(1, clothing.ClothingId.Value);
-        Assert.Equal(200, clothing.BrandClothingId);
+        
+        var clothing = Clothing.InitClothing(brandClothing, testSize, "Makeet housut");
+        
+        Assert.Equal(12, clothing.Id);
         Assert.Equal("Test Pants", clothing.ClothingName);
-        Assert.Equal("Winter Pants", clothing.Alias);
-        Assert.Equal(ClothingCategory.Bottoms, clothing.ClothingCategory);
+        Assert.Equal("Makeet housut", clothing.Alias);
+        Assert.Equal(ClothingCategory.Bottoms, clothing.Category);
         Assert.Equal(testSize, clothing.Size);
     }
     
     [Fact]
     public void BottomsSize_Creation_Test()
     {
-        var size = new BottomsSize(CountryCode.EU, 50f, 55f, 36.5f, "1 - 1.5 years");
+        var testSize = ClothingSize.CreateBottomsSize(CountryCode.EU,
+            MeasurementUnit.Centimeter,
+            "86",
+            12,
+            12 + 6,
+            50f,
+            55f,
+            36.5f);
         
-        Assert.Equal(CountryCode.EU, size.CountryCode);
-        Assert.Equal(ClothingCategory.Bottoms, size.Category);
+        Assert.Equal(CountryCode.EU, testSize.CountryCode);
+        Assert.Equal(ClothingCategory.Bottoms, testSize.Category);
+        Assert.True(testSize.Measurements.ContainsKey(ClothingSize.WaistKey));
+        Assert.True(testSize.Measurements.ContainsKey(ClothingSize.HipsKey));
+        Assert.True(testSize.Measurements.ContainsKey(ClothingSize.InsideLegLengthKey));
     }
     
     [Fact]
@@ -114,17 +143,27 @@ public class ModelTests
             Description = "Main Wardrobe"
         };
 
-        var clothing = new Shirt()
+        var testSize = ClothingSize.CreateTopsSize(CountryCode.EU, MeasurementUnit.Centimeter, "86",
+            12, 12+6, 86f, 55f, 1.5f);
+        
+        var brandClothing = new BrandClothing()
         {
-            //ClothingId = 10,
-            BrandClothingId = 300,
-            ClothingName = "Test Sweater"
+            Id = 11,
+            Brand = new Brand(1, "MakkeBrand"),
+            Category = ClothingCategory.Tops,
+            Name = "Test Shirt",
+            ClothingSizes = new List<ClothingSize>()
+            {
+                testSize
+            }
         };
+            
+        var clothing = Clothing.InitClothing(brandClothing, testSize, "Makee paita");
 
-        wardrobe.Clothes.Add(clothing);
+        wardrobe.Items.Add(clothing);
 
-        Assert.Single(wardrobe.Clothes);
-        Assert.Equal(clothing, wardrobe.Clothes[0]);
+        Assert.Single(wardrobe.Items);
+        Assert.Equal(clothing, wardrobe.Items[0]);
     }
     
     [Fact]

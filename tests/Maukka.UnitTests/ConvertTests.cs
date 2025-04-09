@@ -1,6 +1,5 @@
 using System.Text.Json;
 using Maukka.Models;
-using Font = Microsoft.Maui.Font;
 
 namespace Maukka.UnitTests
 {
@@ -17,8 +16,8 @@ namespace Maukka.UnitTests
             var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.WardrobesJson);
             Assert.NotNull(payload);
             
-            var allClothes = payload.Wardrobes.SelectMany(wr => wr.Clothes).ToList();
-            Assert.DoesNotContain(allClothes, c => c.ClothingCategory == ClothingCategory.NotSet);
+            var allClothes = payload.Wardrobes.SelectMany(wr => wr.Items).ToList();
+            Assert.DoesNotContain(allClothes, c => c.Category == ClothingCategory.NotSet);
         }
     }
 }

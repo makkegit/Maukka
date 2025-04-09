@@ -24,7 +24,7 @@
                 <DataTemplate x:DataType="models:Wardrobe">
                     <Border>
                         <VerticalStackLayout Padding="10">
-                            <Label Text="{Binding Name}" FontSize="24" />
+                            <Label Text="{Binding ClothingName}" FontSize="24" />
                             <Label Text="{Binding Description}" />
                         </VerticalStackLayout>
                         <Border.GestureRecognizers>

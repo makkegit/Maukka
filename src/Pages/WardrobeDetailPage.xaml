@@ -67,7 +67,7 @@
         <ScrollView>
             <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
                 <sf:SfTextInputLayout 
-                    Hint="Name" >
+                    Hint="ClothingName" >
                     <Entry
                         Text="{Binding Name}" />
                 </sf:SfTextInputLayout>
@@ -152,7 +152,7 @@
 
                 <Grid HeightRequest="44">
                     <Label 
-                        Text="Clothes" 
+                        Text="Items" 
                         Style="{StaticResource Title2}" 
                         VerticalOptions="Center"/>
                     <ImageButton 

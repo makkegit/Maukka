@@ -4,8 +4,8 @@ namespace Maukka.Data
     {
         public const string InitialCreate = @"
             CREATE TABLE IF NOT EXISTS Wardrobes (
-                ClothingId INTEGER PRIMARY KEY AUTOINCREMENT,
-                Name TEXT NOT NULL,
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                ClothingName TEXT NOT NULL,
                 Description TEXT NOT NULL,
                 Icon TEXT NOT NULL,
                 CategoryID INTEGER NOT NULL

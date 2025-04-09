@@ -109,7 +109,7 @@ namespace Maukka.PageModels
         }
 
         // [RelayCommand]
-        // private Task TaskCompleted(Clothing task)
+        // private Task TaskCompleted(Items task)
         // {
         //     OnPropertyChanged(nameof(HasCompletedTasks));
         //     return _taskRepository.SaveItemAsync(task);
@@ -125,20 +125,20 @@ namespace Maukka.PageModels
 
         [RelayCommand]
         private Task NavigateToClothing(Clothing clothing)
-            => Shell.Current.GoToAsync($"clothing?id={clothing.BrandClothingId}");
+            => Shell.Current.GoToAsync($"clothing?id={clothing.Id}");
 
         // [RelayCommand]
         // private async Task CleanTasks()
         // {
-        //     var completedTasks = Clothes.Where(t => t.IsCompleted).ToList();
+        //     var completedTasks = Items.Where(t => t.IsCompleted).ToList();
         //     foreach (var task in completedTasks)
         //     {
         //         await _taskRepository.DeleteItemAsync(task);
-        //         Clothes.Remove(task);
+        //         Items.Remove(task);
         //     }
         //
         //     OnPropertyChanged(nameof(HasCompletedTasks));
-        //     Clothes = new(Clothes);
+        //     Items = new(Items);
         //     await AppShell.DisplayToastAsync("All cleaned up!");
         // }
     }
