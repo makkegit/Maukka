@@ -29,14 +29,14 @@ public class ModelTests
     {
         var clothing = new BrandClothing
         {
-            Id = 11,
+            BrandClothingId = 11,
             Brand = new Brand(1, "Makke"),
             Name = "Test Shirt",
             Category = ClothingCategory.Tops,
             ClothingSizes = new List<ClothingSize>()
         };
 
-        Assert.Equal(11, clothing.Id);
+        Assert.Equal(11, clothing.BrandClothingId);
         Assert.Equal(1, clothing.Brand.BrandId);
         Assert.Equal("Test Shirt", clothing.Name);
         Assert.Equal(ClothingCategory.Tops, clothing.Category);
@@ -50,7 +50,7 @@ public class ModelTests
             12, 12+6, 86f, 55f, 1.5f);
         var brandClothing = new BrandClothing()
         {
-            Id = 11,
+            BrandClothingId = 11,
             Brand = new Brand(1, "MakkeBrand"),
             Category = ClothingCategory.Tops,
             Name = "Test Shirt",
@@ -63,7 +63,7 @@ public class ModelTests
         var clothing = Clothing.InitClothing(brandClothing, testSize, "Makee paita");
 
         
-        Assert.Equal(11, clothing.Id);
+        Assert.Equal(11, clothing.ClothingId);
         Assert.Equal("Test Shirt", clothing.ClothingName);
         Assert.Equal("Makee paita", clothing.Alias);
         Assert.Equal(ClothingCategory.Tops, clothing.Category);
@@ -96,7 +96,7 @@ public class ModelTests
         
         var brandClothing = new BrandClothing()
         {
-            Id = 12,
+            BrandClothingId = 12,
             Brand = new Brand(1, "MakkeBrand"),
             Category = ClothingCategory.Bottoms,
             Name = "Test Pants",
@@ -108,7 +108,7 @@ public class ModelTests
         
         var clothing = Clothing.InitClothing(brandClothing, testSize, "Makeet housut");
         
-        Assert.Equal(12, clothing.Id);
+        Assert.Equal(12, clothing.ClothingId);
         Assert.Equal("Test Pants", clothing.ClothingName);
         Assert.Equal("Makeet housut", clothing.Alias);
         Assert.Equal(ClothingCategory.Bottoms, clothing.Category);
@@ -139,7 +139,7 @@ public class ModelTests
     {
         var wardrobe = new Wardrobe
         {
-            Id = 1,
+            WardrobeId = 1,
             Description = "Main Wardrobe"
         };
 
@@ -148,7 +148,7 @@ public class ModelTests
         
         var brandClothing = new BrandClothing()
         {
-            Id = 11,
+            BrandClothingId = 11,
             Brand = new Brand(1, "MakkeBrand"),
             Category = ClothingCategory.Tops,
             Name = "Test Shirt",
@@ -169,7 +169,7 @@ public class ModelTests
     [Fact]
     public void WardrobesJson_Creation_Test()
     {
-        var wardrobe = new Wardrobe { Id = 1, Description = "Test Wardrobe" };
+        var wardrobe = new Wardrobe { WardrobeId = 1, Description = "Test Wardrobe" };
         var wardrobesJson = new WardrobesJson { Wardrobes = new List<Wardrobe> { wardrobe } };
 
         Assert.NotNull(wardrobesJson.Wardrobes);

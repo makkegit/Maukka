@@ -18,7 +18,7 @@
         Title="Wardrobes"
         Icon="{StaticResource IconProjects}"
         ContentTemplate="{DataTemplate pages:WardrobeListPage}"
-        Route="projects" />
+        Route="wardrobes" />
 
     <ShellContent
         Title="Manage Meta"

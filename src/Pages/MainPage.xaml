@@ -8,7 +8,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Maukka.Pages.MainPage"
              x:DataType="pageModels:MainPageModel"
-             Title="{Binding Today}">
+             Title="ContentPage.Title">
 
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior
@@ -34,7 +34,8 @@
             RefreshCommand="{Binding RefreshCommand}">
             <pullToRefresh:SfPullToRefresh.PullableContent>
                 <ScrollView>
-                    <VerticalStackLayout Spacing="{StaticResource LayoutSpacing}" Padding="{StaticResource LayoutPadding}">
+                    <VerticalStackLayout Spacing="{StaticResource LayoutSpacing}" 
+                                         Padding="{StaticResource LayoutPadding}">
                         <controls:CategoryChart />
                         <Label Text="Wardrobes" Style="{StaticResource Title2}"/>
                         <ScrollView Orientation="Horizontal" Margin="-30,0">

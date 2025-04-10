@@ -6,7 +6,7 @@ namespace Maukka.Models
     public class Clothing
     {
         [JsonConverter(typeof(BrandClothingIdConverter))]
-        public BrandClothingId Id { get; set; }
+        public BrandClothingId ClothingId { get; set; }
         public string BrandName { get; set; }
         public string ClothingName { get; set; }
         [JsonConverter(typeof(ClothingCategoryConverter))]
@@ -18,7 +18,7 @@ namespace Maukka.Models
         {
             return new Clothing
             {
-                Id = brandClothing.Id,
+                ClothingId = brandClothing.BrandClothingId,
                 BrandName = brandClothing.Brand.BrandName,
                 ClothingName = brandClothing.Name,
                 Category = brandClothing.Category,

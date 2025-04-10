@@ -27,7 +27,7 @@ namespace Maukka.PageModels
 
         [RelayCommand]
         Task NavigateToProject(Wardrobe wardrobe)
-            => Shell.Current.GoToAsync($"wardrobe?id={wardrobe.Id}");
+            => Shell.Current.GoToAsync($"wardrobe?id={wardrobe.WardrobeId}");
 
         [RelayCommand]
         async Task AddProject()

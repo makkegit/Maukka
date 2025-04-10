@@ -1,21 +1,105 @@
 {
     "Wardrobes": [
         {
-            "Id": 1,
+            "WardrobeId": 1,
             "Name": "Matildan kesävaatteet",
             "Description": "Kesävaatteita Mattuselle. Kissojen ja koirien kuvia! 😽🐶",
-            "Clothes": [
-                { "BrandClothingId": 1, "Alias": "Kesäpaita", "ClothingName": "Summer Cat T-shirt", "ClothingCategory": "tops" },
-                { "BrandClothingId": 2, "Alias": "Kesähousut", "ClothingName": "Summer Pants", "ClothingCategory": "bottoms" }
+            "Items": [
+                {
+                    "Id": 1,
+                    "BrandName": "MakkeBrand",
+                    "ClothingName": "Summer Cat T-shirt",
+                    "Category": "tops",
+                    "Size": {
+                        "CountryCode": "eu",
+                        "MeasurementUnit": "cm",
+                        "Category": "tops",
+                        "SizeCode": "1 - 1.5 years",
+                        "AgeFromMonths": 12,
+                        "AgeToMonths": 18,
+                        "AgeFromYears": 1,
+                        "AgeToYears": 1.5,
+                        "Measurements": {
+                            "chest": 86,
+                            "height": 55,
+                            "sizeNbr": 1.5
+                        }
+                    },
+                    "Alias": "Kesäpaita"
+                },
+                {
+                    "Id": 2,
+                    "BrandName": "MakkeBrand",
+                    "ClothingName": "Summer Pants",
+                    "Category": "bottoms",
+                    "Size": {
+                        "CountryCode": "eu",
+                        "MeasurementUnit": "cm",
+                        "Category": "bottoms",
+                        "SizeCode": "1 - 1.5 years",
+                        "AgeFromMonths": 12,
+                        "AgeToMonths": 18,
+                        "AgeFromYears": 1,
+                        "AgeToYears": 1.5,
+                        "Measurements": {
+                            "waist": 50,
+                            "hips": 55,
+                            "insideLegLength": 36.5
+                        }
+                    },
+                    "Alias": "Kesähousut"
+                }
             ]
         },
         {
-            "Id": 2,
+            "WardrobeId": 2,
             "Name": "Matildan talvivaatteet",
             "Description": "Talvivaatteita Mattuselle. Kissojen ja koirien kuvia! 😽🐶",
-            "Clothes": [
-                { "BrandClothingId": 3, "Alias": "Talvipaita", "ClothingName": "Winter Cat T-shirt", "ClothingCategory": "tops" },
-                { "BrandClothingId": 4, "Alias": "Talvihousut", "ClothingName": "Winter Pants", "ClothingCategory": "bottoms" }
+            "Items": [
+                {
+                    "Id": 3,
+                    "BrandName": "MakkeBrand",
+                    "ClothingName": "Winter Cat T-shirt",
+                    "Category": "tops",
+                    "Size": {
+                        "CountryCode": "eu",
+                        "MeasurementUnit": "cm",
+                        "Category": "tops",
+                        "SizeCode": "1 - 1.5 years",
+                        "AgeFromMonths": 12,
+                        "AgeToMonths": 18,
+                        "AgeFromYears": 1,
+                        "AgeToYears": 1.5,
+                        "Measurements": {
+                            "chest": 86,
+                            "height": 55,
+                            "sizeNbr": 1.5
+                        }
+                    },
+                    "Alias": "Talvipaita"
+                },
+                {
+                    "Id": 4,
+                    "BrandName": "MakkeBrand",
+                    "ClothingName": "Winter Pants",
+                    "Category": "bottoms",
+                    "Size": {
+                        "CountryCode": "eu",
+                        "MeasurementUnit": "cm",
+                        "Category": "bottoms",
+                        "SizeCode": "1 - 1.5 years",
+                        "AgeFromMonths": 12,
+                        "AgeToMonths": 18,
+                        "AgeFromYears": 1,
+                        "AgeToYears": 1.5,
+                        "Measurements": {
+                            "waist": 50,
+                            "hips": 55,
+                            "insideLegLength": 36.5
+                        }
+                    },
+                    "Alias": "Talvihousut"
+                }
             ]
         }
     ]

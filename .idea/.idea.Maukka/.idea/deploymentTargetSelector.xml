@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="Maukka">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-04-07T11:30:42.720602500Z">
+        <DropdownSelection timestamp="2025-04-10T11:01:45.755555700Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\marku\.android\avd\pixel_7_-_api_35.avd" />
@@ -12,6 +12,9 @@
           </Target>
         </DropdownSelection>
         <DialogSelection />
+      </SelectionState>
+      <SelectionState runConfigName="Maukka.Tests">
+        <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
   </component>

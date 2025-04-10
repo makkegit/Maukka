@@ -58,7 +58,7 @@ namespace Maukka.PageModels
                 //
                 // if (_task is null)
                 // {
-                //     _errorHandler.HandleError(new Exception($"Task Id {taskId} isn't valid."));
+                //     _errorHandler.HandleError(new Exception($"Task WardrobeId {taskId} isn't valid."));
                 //     return;
                 // }
 
@@ -70,7 +70,7 @@ namespace Maukka.PageModels
             }
 
             // If the project is new, we don't need to load the project dropdown
-            if (Wardrobe?.Id == 0)
+            if (Wardrobe?.WardrobeId == 0)
             {
                 IsExistingProject = false;
             }
@@ -81,9 +81,9 @@ namespace Maukka.PageModels
             }
 
             if (Wardrobe is not null)
-                SelectedProjectIndex = Wardrobes.FindIndex(p => p.Id == Wardrobe.Id);
+                SelectedProjectIndex = Wardrobes.FindIndex(p => p.WardrobeId == Wardrobe.WardrobeId);
             // else if (_task?.ProjectID > 0)
-            //     SelectedProjectIndex = Wardrobes.FindIndex(p => p.Id == _task.ProjectID);
+            //     SelectedProjectIndex = Wardrobes.FindIndex(p => p.WardrobeId == _task.ProjectID);
 
             if (taskId > 0)
             {
@@ -101,7 +101,7 @@ namespace Maukka.PageModels
             {
                 // _task = new Items()
                 // {
-                //     ProjectID = Wardrobe?.Id ?? 0
+                //     ProjectID = Wardrobe?.WardrobeId ?? 0
                 // };
             }
         }
@@ -129,10 +129,10 @@ namespace Maukka.PageModels
 
             // _task.Title = Title;
 
-            int projectId = Wardrobe?.Id.Value ?? 0;
+            int projectId = Wardrobe?.WardrobeId.Value ?? 0;
             
 
-            if (Wardrobe?.Id == projectId && !Wardrobe.Items.Contains(_task))
+            if (Wardrobe?.WardrobeId == projectId && !Wardrobe.Items.Contains(_task))
                 Wardrobe.Items.Add(_task);
 
             // if (_task.ProjectID > 0)
@@ -140,7 +140,7 @@ namespace Maukka.PageModels
 
             await Shell.Current.GoToAsync("..?refresh=true");
 
-            // if (_task.Id > 0)
+            // if (_task.WardrobeId > 0)
             //     await AppShell.DisplayToastAsync("Task saved");
         }
 
@@ -158,7 +158,7 @@ namespace Maukka.PageModels
             if (Wardrobe.Items.Contains(_task))
                 Wardrobe.Items.Remove(_task);
 
-            // if (_task.Id > 0)
+            // if (_task.WardrobeId > 0)
             //     await _taskRepository.DeleteItemAsync(_task);
 
             await Shell.Current.GoToAsync("..?refresh=true");
