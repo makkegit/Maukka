@@ -60,10 +60,11 @@ public class ModelTests
             }
         };
             
-        var clothing = Clothing.InitClothing(brandClothing, testSize, "Makee paita");
+        var clothing = Clothing.InitClothing(1, brandClothing, testSize, "Makee paita");
 
         
-        Assert.Equal(11, clothing.ClothingId);
+        Assert.Equal(1, clothing.ClothingId);
+        Assert.Equal(11, clothing.BrandClothingId);
         Assert.Equal("Test Shirt", clothing.ClothingName);
         Assert.Equal("Makee paita", clothing.Alias);
         Assert.Equal(ClothingCategory.Tops, clothing.Category);
@@ -106,7 +107,7 @@ public class ModelTests
             }
         };
         
-        var clothing = Clothing.InitClothing(brandClothing, testSize, "Makeet housut");
+        var clothing = Clothing.InitClothing(12, brandClothing, testSize, "Makeet housut");
         
         Assert.Equal(12, clothing.ClothingId);
         Assert.Equal("Test Pants", clothing.ClothingName);
@@ -158,7 +159,7 @@ public class ModelTests
             }
         };
             
-        var clothing = Clothing.InitClothing(brandClothing, testSize, "Makee paita");
+        var clothing = Clothing.InitClothing(1, brandClothing, testSize, "Makee paita");
 
         wardrobe.Items.Add(clothing);
 

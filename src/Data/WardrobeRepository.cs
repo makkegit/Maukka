@@ -13,7 +13,15 @@ namespace Maukka.Data
     {
         private bool _hasBeenInitialized = false;
         private readonly ILogger _logger;
-
+        private readonly string[] _createTableCommands = [
+            WardrobeSqlCommands.CreateWardrobesTable,
+            WardrobeSqlCommands.CreateClothingTable,
+            WardrobeSqlCommands.CreateClothingXrefTable,
+            WardrobeSqlCommands.CreateBrandTable,
+            WardrobeSqlCommands.CreateBrandClothingTable,
+            WardrobeSqlCommands.CreateBrandClothingSizesTable,
+            WardrobeSqlCommands.CreateSizeMeasurementsTable
+        ];
         /// <summary>
         /// Initializes a new instance of the <see cref="WardrobeRepository"/> class.
         /// </summary>
@@ -38,16 +46,11 @@ namespace Maukka.Data
             {
                 var createTableCmd = connection.CreateCommand();
 
-                createTableCmd.CommandText = WardrobeSqlCommands.CreateWardrobesTable;
-                await createTableCmd.ExecuteNonQueryAsync();
-                
-                createTableCmd.CommandText = WardrobeSqlCommands.CreateClothingTable;
-                
-                await createTableCmd.ExecuteNonQueryAsync();
-                
-                createTableCmd.CommandText = WardrobeSqlCommands.CreateClothingXrefTable;
-                    
-                await createTableCmd.ExecuteNonQueryAsync();
+                foreach (var createCommand in _createTableCommands)
+                {
+                    createTableCmd.CommandText = createCommand;
+                    await createTableCmd.ExecuteNonQueryAsync(); 
+                }
             }
             catch (Exception e)
             {
@@ -140,7 +143,7 @@ namespace Maukka.Data
             await connection.OpenAsync();
 
             var saveCmd = connection.CreateCommand();
-            if (item.WardrobeId == 0)
+            if (item.WardrobeId.Value == 0)
             {
                 saveCmd.CommandText =
                 $"INSERT INTO Wardrobe ({nameof(Wardrobe.Description)})"+
@@ -153,17 +156,73 @@ namespace Maukka.Data
                 UPDATE Wardrobe
                 SET Description = @Description
                 WHERE WardrobeId = @WardrobeId";
-                saveCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId);
+                saveCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId.Value);
             }
             saveCmd.Parameters.AddWithValue("@Description", item.Description);
 
             var result = await saveCmd.ExecuteScalarAsync();
+            
+            saveCmd.Parameters.Clear();
+            saveCmd.CommandText =
+                "DELETE FROM ClothingXref WHERE WardrobeId = @WardrobeId;";
+            saveCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId.Value);
+            var affectedRows = await saveCmd.ExecuteNonQueryAsync();
+            foreach (var clothing in item.Items)
+            {
+                saveCmd.CommandText = 
+                    "INSERT INTO ClothingXref (WardrobeId, ClothingId) " +
+                    "VALUES (@WardrobeId, @ClothingId);";
+                saveCmd.Parameters.AddWithValue("@ClothingId", clothing.ClothingId.Value);
+                var clothingXrefResult = await saveCmd.ExecuteScalarAsync();
+            }
+            
             if (item.WardrobeId == 0)
             {
                 item.WardrobeId = Convert.ToInt32(result);
             }
-
+            
             return item.WardrobeId;
+        }
+        
+        public async Task<ClothingId> SaveItemAsync(Clothing item)
+        {
+            await Init();
+            await using var connection = new SqliteConnection(Constants.DatabasePath);
+            await connection.OpenAsync();
+
+            var saveCmd = connection.CreateCommand();
+            if (item.ClothingId.Value == 0)
+            {
+                saveCmd.CommandText =
+                    "INSERT INTO Clothing " +
+                    $"({nameof(Clothing.BrandName)},{nameof(Clothing.ClothingName)}," +
+                    $"{nameof(Clothing.Category)},{nameof(Clothing.Size)},{nameof(Clothing.Alias)})"+
+                    "VALUES (@BrandName, @ClothingName, @Category, @Size, @Alias);" +
+                    "SELECT last_insert_rowid();";
+            }
+            else
+            {
+                saveCmd.CommandText = @"
+                UPDATE ClothingId
+                SET BrandName = @BrandName, ClothingName = @ClothingName, Category = @Category, Size = @Size, Alias = @Alias
+                WHERE ClothingId = @ClothingId";
+                saveCmd.Parameters.AddWithValue("@ClothingId", item.ClothingId.Value);
+            }
+            
+            saveCmd.Parameters.AddWithValue("@BrandName", item.BrandName);
+            saveCmd.Parameters.AddWithValue("@ClothingName", item.ClothingName);
+            saveCmd.Parameters.AddWithValue("@Category", item.Category);
+            saveCmd.Parameters.AddWithValue("@Size", JsonSerializer.Serialize(item.Size));
+            saveCmd.Parameters.AddWithValue("@Alias", item.Alias);
+
+            var result = await saveCmd.ExecuteScalarAsync();
+            
+            if (item.ClothingId == 0)
+            {
+                item.ClothingId = Convert.ToInt32(result);
+            }
+            
+            return item.ClothingId;
         }
 
         /// <summary>
@@ -179,9 +238,13 @@ namespace Maukka.Data
 
             var deleteCmd = connection.CreateCommand();
             deleteCmd.CommandText = "DELETE FROM Wardrobe WHERE WardrobeId = @WardrobeId";
-            deleteCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId);
-
-            return await deleteCmd.ExecuteNonQueryAsync();
+            deleteCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId.Value);
+            var affectedRows = await deleteCmd.ExecuteNonQueryAsync();
+            
+            deleteCmd.CommandText = "DELETE FROM ClothingXref WHERE WardrobeId = @WardrobeId";
+            affectedRows += await deleteCmd.ExecuteNonQueryAsync();
+            
+            return affectedRows;
         }
 
         /// <summary>

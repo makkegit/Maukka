@@ -6,7 +6,7 @@ namespace Maukka.Models
 
         private ClothingId(int value)
         {
-            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(value);
+            ArgumentOutOfRangeException.ThrowIfNegative(value);
             Value = value;
         }
         

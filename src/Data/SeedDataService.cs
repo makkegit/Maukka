@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Text.Json;
 using Maukka.Models;
 using Microsoft.Extensions.Logging;
@@ -18,8 +19,9 @@ namespace Maukka.Data
 
         public async Task LoadSeedDataAsync()
         {
-            ClearTables();
-
+            await ClearTables();
+            await InitSampleData();
+            
             await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_seedDataFilePath);
 
             WardrobesJson? payload = null;
@@ -77,7 +79,23 @@ namespace Maukka.Data
             }
         }
 
-        private async void ClearTables()
+        private async Task InitSampleData()
+        {
+            try
+            {
+                await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_seedDataFilePath);
+                var brandClothing = 
+                    JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingJson);
+                
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        private async Task ClearTables()
         {
             try
             {

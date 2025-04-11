@@ -55,12 +55,12 @@ namespace Maukka.PageModels
 
         private async Task InitData(SeedDataService seedDataService)
         {
-            bool isSeeded = Preferences.Default.ContainsKey("is_seeded");
-
-            if (!isSeeded)
-            {
+            // bool isSeeded = Preferences.Default.ContainsKey("is_seeded");
+            //
+            // if (!isSeeded)
+            // {
                 await seedDataService.LoadSeedDataAsync();
-            }
+            // }
 
             Preferences.Default.Set("is_seeded", true);
             await Refresh();

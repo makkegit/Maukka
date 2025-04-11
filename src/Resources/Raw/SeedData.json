@@ -6,7 +6,7 @@
             "Description": "Kesävaatteita Mattuselle. Kissojen ja koirien kuvia! 😽🐶",
             "Items": [
                 {
-                    "Id": 1,
+                    "ClothingId": 1,
                     "BrandName": "MakkeBrand",
                     "ClothingName": "Summer Cat T-shirt",
                     "Category": "tops",
@@ -28,7 +28,7 @@
                     "Alias": "Kesäpaita"
                 },
                 {
-                    "Id": 2,
+                    "ClothingId": 2,
                     "BrandName": "MakkeBrand",
                     "ClothingName": "Summer Pants",
                     "Category": "bottoms",
@@ -57,7 +57,7 @@
             "Description": "Talvivaatteita Mattuselle. Kissojen ja koirien kuvia! 😽🐶",
             "Items": [
                 {
-                    "Id": 3,
+                    "ClothingId": 3,
                     "BrandName": "MakkeBrand",
                     "ClothingName": "Winter Cat T-shirt",
                     "Category": "tops",
@@ -79,7 +79,7 @@
                     "Alias": "Talvipaita"
                 },
                 {
-                    "Id": 4,
+                    "ClothingId": 4,
                     "BrandName": "MakkeBrand",
                     "ClothingName": "Winter Pants",
                     "Category": "bottoms",

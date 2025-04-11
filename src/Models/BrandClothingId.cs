@@ -5,7 +5,7 @@ namespace Maukka.Models
         public int Value { get; }
         private BrandClothingId(int value)
         {
-            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(value);
+            ArgumentOutOfRangeException.ThrowIfNegative(value, nameof(BrandClothingId));
             Value = value;
         }
         
