@@ -2,7 +2,7 @@ namespace Maukka.Models
 {
     public readonly record struct BrandId
     {
-        public int Value { get; init; }
+        public int Value { get; }
         public BrandId(int value) 
         {
             ArgumentOutOfRangeException.ThrowIfNegative(value, nameof(BrandId));

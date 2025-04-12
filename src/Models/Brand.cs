@@ -6,7 +6,7 @@ namespace Maukka.Models
     public class Brand
     {
         [JsonConverter(typeof(BrandIdConverter))]
-        public BrandId BrandId { get; init; }
+        public BrandId BrandId { get; set; }
         public string BrandName { get; set; }
         
 
@@ -15,5 +15,10 @@ namespace Maukka.Models
             BrandId = brandId;
             BrandName = brandName;
         }
+    }
+
+    public class BrandsJSON
+    {
+        public List<Brand> Brands { get; set; } = [];
     }
 }

@@ -1,0 +1,38 @@
+[
+  {
+    "Brand":
+    {
+      "BrandId": 1,
+      "BrandName": "Makkest"
+    },
+    "Name": "Summer Cat T-shirt",
+    "Categeory": "tops"
+  },
+  {
+    "Brand":
+    {
+      "BrandId": 1,
+      "BrandName": "Makkest"
+    },
+    "Name": "Summer Pants",
+    "Categeory": "bottoms"
+  },
+  {
+    "Brand":
+    {
+      "BrandId": 1,
+      "BrandName": "Makkest"
+    },
+    "Name": "Winter Cat T-shirt",
+    "Categeory": "tops"
+  },
+  {
+    "Brand":
+    {
+      "BrandId": 1,
+      "BrandName": "Makkest"
+    },
+    "Name": "Winter Pants",
+    "Categeory": "bottoms"
+  }
+]

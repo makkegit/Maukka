@@ -8,10 +8,14 @@ namespace Maukka.Data
     public class SeedDataService
     {
         private readonly WardrobeRepository _wardrobeRepository;
-        private readonly string _seedDataFilePath = "SeedData.json";
+        private readonly string _wardrobeDataFilePath = "wardrobes.json";
+        private readonly string _brandDataFilePath = "brands.json";
+        private readonly string _brandClothingDataFilePath = "brandClothing.json";
+        private readonly string _clothingSizeDataFilePath = "clothingSizes.json";
         private readonly ILogger<SeedDataService> _logger;
 
-        public SeedDataService(WardrobeRepository wardrobeRepository, ILogger<SeedDataService> logger)
+        public SeedDataService(
+            WardrobeRepository wardrobeRepository, ILogger<SeedDataService> logger)
         {
             _wardrobeRepository = wardrobeRepository;
             _logger = logger;
@@ -22,7 +26,7 @@ namespace Maukka.Data
             await ClearTables();
             await InitSampleData();
             
-            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_seedDataFilePath);
+            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_wardrobeDataFilePath);
 
             WardrobesJson? payload = null;
             try
@@ -83,15 +87,43 @@ namespace Maukka.Data
         {
             try
             {
-                await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_seedDataFilePath);
-                var brandClothing = 
-                    JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingJson);
-                
-                
+                await InitBrandData();
+                await InitClothingSizeData();
+                await InitBrandClothing();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+            }
+        }
+        private async Task InitBrandClothing()
+        {
+            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_brandClothingDataFilePath);
+            var brandClothing = JsonSerializer.Deserialize(templateStream, JsonContext.Default.BrandClothingJson);
+
+            foreach (var bc in brandClothing.BrandClothing)
+            {
+                await _wardrobeRepository.SaveItem(bc);
+            }
+        }
+        private async Task InitClothingSizeData()
+        {
+            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_clothingSizeDataFilePath);
+            var clothingSizes = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJSON);
+
+            foreach (var clothingSize in clothingSizes.ClothingSizes)
+            {
+                await _wardrobeRepository.SaveItem(clothingSize);
+            }
+        }
+        private async Task InitBrandData()
+        {
+            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_brandDataFilePath);
+            var brands = JsonSerializer.Deserialize(templateStream, JsonContext.Default.BrandsJSON);
+
+            foreach (var brand in brands.Brands)
+            {
+                await _wardrobeRepository.SaveItem(brand);
             }
         }
 

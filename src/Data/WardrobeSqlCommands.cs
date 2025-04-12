@@ -28,35 +28,34 @@ namespace Maukka.Data
         
         public const string CreateBrandClothingTable =
             "CREATE TABLE IF NOT EXISTS BrandClothing (" +
-            $"{nameof(BrandClothing.BrandClothingId)} INTEGER," +
-            $"{nameof(Brand.BrandId)} INTEGER," +
+            $"{nameof(BrandClothing.BrandClothingId)} INTEGER PRIMARY KEY AUTOINCREMENT," +
+            $"{nameof(Brand.BrandId)} INTEGER NOT NULL," +
             $"{nameof(BrandClothing.Name)} TEXT NOT NULL," +
             $"{nameof(BrandClothing.Category)} TEXT NOT NULL, " +
-            $"PRIMARY KEY({nameof(BrandClothing.BrandClothingId)})," +
             $"FOREIGN KEY({nameof(Brand.BrandId)}) REFERENCES {nameof(Brand)}({nameof(Brand.BrandId)});";
 
         public const string CreateBrandTable =
-            "CREATE TABLE IF NOT EXISTS Brand (" +
+            "CREATE TABLE IF NOT EXISTS Brands (" +
             $"{nameof(Brand.BrandId)} INTEGER," +
             $"{nameof(Brand.BrandName)} TEXT NOT NULL);";
         
         public const string CreateBrandClothingSizesTable =
             "CREATE TABLE IF NOT EXISTS BrandClothingSizes (" +
             "SizeId INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "BrandClothingId INTEGER NOT NULL," +
+            "BrandId INTEGER NOT NULL," +
             "CountryCode TEXT NOT NULL CHECK(CountryCode IN ('US', 'EU', 'UK', 'JP'))," +
             "Unit TEXT NOT NULL CHECK(Unit IN ('CM', 'INCH'))," +
             "Category TEXT NOT NULL," +
             "SizeCode TEXT," +
             "AgeFromMonths INTEGER," +
             "AgeToMonths INTEGER," +
-            "FOREIGN KEY(BrandClothingId) REFERENCES BrandClothing(BrandClothingId)" +
+            "FOREIGN KEY(BrandId) REFERENCES Brands(BrandId)" +
             ");";
 
-        public const string CreateSizeMeasurementsTable =
+        public const string CreateBrandSizeMeasurementsTable =
             "CREATE TABLE IF NOT EXISTS BrandSizeMeasurements (" +
             "SizeId INTEGER NOT NULL," +
-            "MeasurementKey TEXT NOT NULL CHECK(MeasurementKey IN ('chest', 'height', 'sizeNbr', 'waist', 'hips', 'insideLegLength'))," +
+            "MeasurementKey TEXT NOT NULL CHECK(MeasurementKey IN ('height', 'chest', 'sizeNbr', 'waist', 'hips', 'insideLegLength'))," +
             "Value REAL NOT NULL," +
             "PRIMARY KEY (SizeId, MeasurementKey)," +
             "FOREIGN KEY(SizeId) REFERENCES BrandClothingSizes(SizeId)" +

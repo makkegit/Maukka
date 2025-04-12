@@ -20,7 +20,7 @@ namespace Maukka.Data
             WardrobeSqlCommands.CreateBrandTable,
             WardrobeSqlCommands.CreateBrandClothingTable,
             WardrobeSqlCommands.CreateBrandClothingSizesTable,
-            WardrobeSqlCommands.CreateSizeMeasurementsTable
+            WardrobeSqlCommands.CreateBrandSizeMeasurementsTable
         ];
         /// <summary>
         /// Initializes a new instance of the <see cref="WardrobeRepository"/> class.
@@ -262,5 +262,131 @@ namespace Maukka.Data
 
             _hasBeenInitialized = false;
         }
+
+        #region Brands
+
+        public async Task<BrandId> SaveItem(Brand brand)
+        {
+            await Init();
+            await using var connection = new SqliteConnection(Constants.DatabasePath);
+            await connection.OpenAsync();
+            
+            var saveCmd = connection.CreateCommand();
+            
+            if (brand.BrandId == 0)
+            {
+                saveCmd.CommandText =
+                    "INSERT INTO Brand (BrandName) " +
+                    "VALUES (@BrandName);";
+            }
+            else
+            {
+                saveCmd.CommandText =
+                    "UPDATE Brand SET BrandName = @BrandName WHERE BrandId = @BrandId;";
+                saveCmd.Parameters.AddWithValue("@BrandId", brand.BrandId);
+            }
+            
+            saveCmd.Parameters.AddWithValue("@BrandName", brand.BrandName);
+            var result = await saveCmd.ExecuteScalarAsync();
+
+            if (brand.BrandId == 0)
+            {
+                brand.BrandId = Convert.ToInt32(result);
+            }
+            
+            return brand.BrandId;
+        }
+        #endregion
+
+        #region ClothingSizes
+
+        public async Task SaveItem(ClothingSize clothingSize)
+        {
+            await Init();
+            await using var connection = new SqliteConnection(Constants.DatabasePath);
+            await connection.OpenAsync();
+            using var transaction = connection.BeginTransaction();
+            
+            try
+            {
+                var saveCmd = connection.CreateCommand();
+                saveCmd.CommandText =
+                    "INSERT INTO BrandClothingSizes " +
+                    "(BrandId, CountryCode, Unit, Category, SizeCode, AgeFromMonths, AgeToMonths) " +
+                    "VALUES (@BrandId, @CountryCode, @Unit, @Category, @SizeCode, @AgeFromMonths, @AgeToMonths);";
+                saveCmd.Parameters.AddWithValue("@BrandId", clothingSize.BrandId);
+                saveCmd.Parameters.AddWithValue("@CountryCode", clothingSize.CountryCode);
+                saveCmd.Parameters.AddWithValue("@Unit", clothingSize.MeasurementUnit);
+                saveCmd.Parameters.AddWithValue("@Category", clothingSize.Category);
+                saveCmd.Parameters.AddWithValue("@SizeCode", clothingSize.SizeCode);
+                saveCmd.Parameters.AddWithValue("@AgeFromMonths", clothingSize.AgeFromMonths);
+                saveCmd.Parameters.AddWithValue("@AgeToMonths", clothingSize.AgeToMonths);
+                
+                var sizeId = await saveCmd.ExecuteScalarAsync();
+
+                foreach (var (key, value) in clothingSize.Measurements)
+                {
+                    saveCmd.Parameters.Clear();
+                    saveCmd.CommandText =
+                        "INSERT INTO BrandSizeMeasurements (SizeId, MeasurementKey, Value) " +
+                        "VALUES (@SizeId, @MeasurementKey, @Value);";
+                    saveCmd.Parameters.AddWithValue("@SizeId", sizeId);
+                    saveCmd.Parameters.AddWithValue("@MeasurementKey", key);
+                    saveCmd.Parameters.AddWithValue("@Value", value);
+                    
+                    await saveCmd.ExecuteNonQueryAsync();
+                }
+                
+                await transaction.CommitAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+
+        #endregion
+        
+        #region BrandClothing
+        public async Task<BrandClothingId> SaveItem(BrandClothing brandClothing)
+        {
+            await Init();
+            await using var connection = new SqliteConnection(Constants.DatabasePath);
+            await connection.OpenAsync();
+            
+            var saveCmd = connection.CreateCommand();
+            
+            if (brandClothing.BrandClothingId == 0)
+            {
+                saveCmd.CommandText =
+                    "INSERT INTO BrandClothing (BrandId, Name, Category) " +
+                    "VALUES (@BrandId, @Name, @Category);";
+            }
+            else
+            {
+                saveCmd.CommandText =
+                    "UPDATE BrandClothing " +
+                    "SET BrandId = @BrandId, Name = @Name, Category = @Category" +
+                    "WHERE BrandClothingId = @BrandClothingId;";
+                saveCmd.Parameters.AddWithValue("@BrandClothingId", brandClothing.BrandClothingId);
+            }
+            
+            saveCmd.Parameters.AddWithValue("@BrandId", brandClothing.Brand.BrandId);
+            saveCmd.Parameters.AddWithValue("@Name", brandClothing.Name);
+            saveCmd.Parameters.AddWithValue("@Category", brandClothing.Category);
+            
+            var result = await saveCmd.ExecuteScalarAsync();
+
+            if (brandClothing.BrandClothingId == 0)
+            {
+                brandClothing.BrandClothingId = Convert.ToInt32(result);
+            }
+            
+            return brandClothing.BrandClothingId;
+        }
+        
+        #endregion
     }
 }

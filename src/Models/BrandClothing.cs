@@ -9,4 +9,8 @@ namespace Maukka.Models
         public IList<ClothingSize> ClothingSizes { get; set; }
     }
 
+    public class BrandClothingJson
+    {
+        public List<BrandClothing> BrandClothing { get; set; } = [];
+    }
 }

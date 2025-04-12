@@ -5,12 +5,15 @@ namespace Maukka.Models
 {
     public class ClothingSize
     {
-        public const string ChestKey = "chest";
         public const string HeightKey = "height";
+        public const string ChestKey = "chest";
         public const string SizeNbrKey = "sizeNbr";
         public const string WaistKey = "waist";
         public const string HipsKey = "hips";
         public const string InsideLegLengthKey = "insideLegLength";
+        
+        [JsonConverter(typeof(BrandIdConverter))]
+        public BrandId BrandId { get; set; }
         
         [JsonConverter(typeof(CountryCodeConverter))]
         public CountryCode CountryCode { get; set; }
@@ -32,7 +35,7 @@ namespace Maukka.Models
 
         public static ClothingSize CreateTopsSize(CountryCode countryCode,
             MeasurementUnit measurementUnit, string sizeCode, int ageFromMonths, int ageToMonths,
-            float chest, float height, float sizeNbr)
+            float height, float chest, float sizeNbr)
         {
             var clothing = new ClothingSize()
             {
@@ -77,4 +80,8 @@ namespace Maukka.Models
         }
     }
 
+    public class ClothingSizesJSON
+    {
+        public List<ClothingSize> ClothingSizes { get; set; } = [];
+    }
 }
