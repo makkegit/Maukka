@@ -10,7 +10,7 @@ namespace Maukka.Utilities.Converters
         {
             var stringValue = reader.GetString();
             
-            if (stringValue is null) return MeasurementUnit.Centimeter;
+            if (stringValue is null) return MeasurementUnit.Cm;
             
             if (Enum.TryParse(typeof(MeasurementUnit), stringValue, true, out object result))
             {
@@ -20,10 +20,10 @@ namespace Maukka.Utilities.Converters
             // handle possible variations
             return stringValue.ToLowerInvariant() switch
             {
-                "cm" => MeasurementUnit.Centimeter,
-                "mm" => MeasurementUnit.Millimeter,
+                "cm" => MeasurementUnit.Cm,
+                "mm" => MeasurementUnit.Mm,
                 "in" => MeasurementUnit.Inch,
-                _ => MeasurementUnit.Centimeter,
+                _ => MeasurementUnit.Cm,
             };
         }
 
@@ -32,6 +32,6 @@ namespace Maukka.Utilities.Converters
         
         public static MeasurementUnit Parse(string category) 
             => Enum.TryParse(typeof(MeasurementUnit), category, true, out object result) ?
-                (MeasurementUnit)result : MeasurementUnit.Centimeter;
+                (MeasurementUnit)result : MeasurementUnit.Cm;
     }
 }

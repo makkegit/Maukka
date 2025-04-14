@@ -26,7 +26,7 @@
 		<ApplicationTitle>Maukka</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.maukka</ApplicationId>
+		<ApplicationId>com.aa-makkest.maukka</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

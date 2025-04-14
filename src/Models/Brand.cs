@@ -3,21 +3,15 @@ using Maukka.Utilities.Converters;
 
 namespace Maukka.Models
 {
-    public class Brand
+    public class Brand(BrandId brandId, string brandName)
     {
         [JsonConverter(typeof(BrandIdConverter))]
-        public BrandId BrandId { get; set; }
-        public string BrandName { get; set; }
-        
+        public BrandId BrandId { get; set; } = brandId;
 
-        public Brand(BrandId brandId, string brandName)
-        {
-            BrandId = brandId;
-            BrandName = brandName;
-        }
+        public string BrandName { get; set; } = brandName;
     }
 
-    public class BrandsJSON
+    public class BrandsJson
     {
         public List<Brand> Brands { get; set; } = [];
     }

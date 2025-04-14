@@ -12,6 +12,8 @@ namespace Maukka.Models
         public const string HipsKey = "hips";
         public const string InsideLegLengthKey = "insideLegLength";
         
+        public int SizeId { get; set; }
+        
         [JsonConverter(typeof(BrandIdConverter))]
         public BrandId BrandId { get; set; }
         

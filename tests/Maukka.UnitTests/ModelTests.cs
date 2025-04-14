@@ -46,7 +46,7 @@ public class ModelTests
     [Fact]
     public void Shirt_Creation_Test()
     {
-        var testSize = ClothingSize.CreateTopsSize(CountryCode.EU, MeasurementUnit.Centimeter, "86",
+        var testSize = ClothingSize.CreateTopsSize(CountryCode.EU, MeasurementUnit.Cm, "86",
             12, 12+6, 86f, 55f, 1.5f);
         var brandClothing = new BrandClothing()
         {
@@ -74,7 +74,7 @@ public class ModelTests
     [Fact]
     public void TopsSize_Creation_Test()
     {
-        var testSize = ClothingSize.CreateTopsSize(CountryCode.EU, MeasurementUnit.Centimeter, "86",
+        var testSize = ClothingSize.CreateTopsSize(CountryCode.EU, MeasurementUnit.Cm, "86",
             12, 12+6, 86f, 55f, 1.5f);
         
         Assert.NotEqual(CountryCode.US, testSize.CountryCode);
@@ -87,7 +87,7 @@ public class ModelTests
     public void Pants_Creation_Test()
     {
         var testSize = ClothingSize.CreateBottomsSize(CountryCode.EU,
-            MeasurementUnit.Centimeter,
+            MeasurementUnit.Cm,
             "86",
             12,
             12 + 6,
@@ -120,7 +120,7 @@ public class ModelTests
     public void BottomsSize_Creation_Test()
     {
         var testSize = ClothingSize.CreateBottomsSize(CountryCode.EU,
-            MeasurementUnit.Centimeter,
+            MeasurementUnit.Cm,
             "86",
             12,
             12 + 6,
@@ -144,7 +144,7 @@ public class ModelTests
             Description = "Main Wardrobe"
         };
 
-        var testSize = ClothingSize.CreateTopsSize(CountryCode.EU, MeasurementUnit.Centimeter, "86",
+        var testSize = ClothingSize.CreateTopsSize(CountryCode.EU, MeasurementUnit.Cm, "86",
             12, 12+6, 86f, 55f, 1.5f);
         
         var brandClothing = new BrandClothing()

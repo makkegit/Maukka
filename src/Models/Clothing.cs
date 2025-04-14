@@ -14,6 +14,7 @@ namespace Maukka.Models
         public string ClothingName { get; set; }
         [JsonConverter(typeof(ClothingCategoryConverter))]
         public ClothingCategory Category { get; set; }
+        public int SizeId { get; set; }
         public ClothingSize Size { get; set; }
         public string Alias { get; set; }
 

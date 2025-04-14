@@ -23,8 +23,8 @@ namespace Maukka.Data
 
         public async Task LoadSeedDataAsync()
         {
-            await ClearTables();
-            await InitSampleData();
+            await ClearTables().ConfigureAwait(false);
+            await InitSampleData().ConfigureAwait(false);
             
             await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_wardrobeDataFilePath);
 
@@ -87,13 +87,14 @@ namespace Maukka.Data
         {
             try
             {
-                await InitBrandData();
-                await InitClothingSizeData();
-                await InitBrandClothing();
+                await InitBrandData().ConfigureAwait(false);
+                await InitClothingSizeData().ConfigureAwait(false);
+                await InitBrandClothing().ConfigureAwait(false);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                throw;
             }
         }
         private async Task InitBrandClothing()
@@ -119,11 +120,11 @@ namespace Maukka.Data
         private async Task InitBrandData()
         {
             await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_brandDataFilePath);
-            var brands = JsonSerializer.Deserialize(templateStream, JsonContext.Default.BrandsJSON);
+            var brands = JsonSerializer.Deserialize(templateStream, JsonContext.Default.BrandsJson);
 
             foreach (var brand in brands.Brands)
             {
-                await _wardrobeRepository.SaveItem(brand);
+                await _wardrobeRepository.SaveItem(brand).ConfigureAwait(false);
             }
         }
 
