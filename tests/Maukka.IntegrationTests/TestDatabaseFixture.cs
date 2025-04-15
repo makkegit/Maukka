@@ -2,9 +2,11 @@
 
 namespace Maukka.IntegrationTests;
 
-public class TestDatabaseFixture : IDisposable
+public class TestDatabaseFixture : IAsyncLifetime
 {
     private SqliteConnection _connection;
+    
+    public SqliteConnection Connection => _connection;
     
     private readonly string[] _createTableCommands =
     [
@@ -18,10 +20,10 @@ public class TestDatabaseFixture : IDisposable
     ];
     
     
-    public TestDatabaseFixture()
+    public async ValueTask InitializeAsync()
     {
-        _connection = new SqliteConnection("Data Source=:memory:");
-        _connection.Open();
+        _connection = new SqliteConnection("Data Source=:memory:;Pooling=False");
+        await _connection.OpenAsync();
         
         // Initialize schema and seed data
         using var command = _connection.CreateCommand();
@@ -29,16 +31,16 @@ public class TestDatabaseFixture : IDisposable
         foreach (var sqlCmd in _createTableCommands)
         {
             command.CommandText = sqlCmd;
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
         }
     }
     
     public SqliteConnection GetConnection() => _connection;
 
-    public void Dispose()
+    public virtual async ValueTask DisposeAsync()
     {
-        _connection.Close();
-        _connection?.Dispose();
-        _connection = null;
+        // await _connection.CloseAsync();
+        // await _connection.DisposeAsync();
+        // GC.SuppressFinalize(this);
     } 
 }

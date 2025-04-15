@@ -4,47 +4,57 @@ using Maukka.Utilities.Converters;
 
 namespace Maukka.IntegrationTests
 {
-    public class WardrobeRepositoryTests : IClassFixture<TestDatabaseFixture>
+    public class WardrobeRepositoryTests(TestDatabaseFixture database) : RepositoryTestBase(database)
     {
-        private readonly TestDatabaseFixture _database;
         private readonly string _wardrobeDataFilePath = "wardrobes.json";
         private readonly string _brandDataFilePath = "brands.json";
         private readonly string _brandClothingDataFilePath = "brandClothing.json";
         private readonly string _clothingSizeDataFilePath = "clothingSizes.json";
 
-        public WardrobeRepositoryTests(TestDatabaseFixture database)
-        {
-            _database = database;
-        }
+        private WardrobeRepository CreateRepository() =>
+            new (_logger, _connection);
 
-        private void InitBrands(SqliteConnection connection)
+        private async Task InitBrands()
         {
             string testDirectory = Directory.GetCurrentDirectory();
             using var templateStream = File.OpenRead(Path.Combine(testDirectory, _brandDataFilePath));
             var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.BrandsJson);
-
+            
             foreach (var brand in payload.Brands)
             {
-                using var saveCmd = connection.CreateCommand();
+                using var saveCmd = _connection.CreateCommand();
                 saveCmd.Parameters.Clear();
                 saveCmd.CommandText = "INSERT INTO Brands (BrandName) VALUES (@BrandName)";
                 saveCmd.Parameters.AddWithValue("@BrandName", brand.BrandName);
-                saveCmd.ExecuteNonQuery();
+                await saveCmd.ExecuteNonQueryAsync();
+            }
+        }
+
+        [Fact]
+        public async Task AddClothingSizes()
+        {
+            string testDirectory = Directory.GetCurrentDirectory();
+            using var templateStream = File.OpenRead(Path.Combine(testDirectory, _clothingSizeDataFilePath));
+            var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJSON);
+            
+            var repository = CreateRepository();
+            await InitBrands();
+
+            foreach (var clothingSize in payload.ClothingSizes)
+            {
+                await repository.SaveItem(clothingSize);
             }
         }
 
         [Fact]
         public void UpsertClothingSizes()
         {
-            var connection = _database.GetConnection();
-            InitBrands(connection);
             string testDirectory = Directory.GetCurrentDirectory();
             using var templateStream = File.OpenRead(Path.Combine(testDirectory, _clothingSizeDataFilePath));
             var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJSON);
-
             
-            using var transaction = connection.BeginTransaction();
-            using var saveCmd = connection.CreateCommand();
+            using var transaction = _connection.BeginTransaction();
+            using var saveCmd = _connection.CreateCommand();
             saveCmd.Transaction = transaction;
             
             for (int i = 0; i < 2; i++)
