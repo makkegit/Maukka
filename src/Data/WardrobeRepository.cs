@@ -12,6 +12,7 @@ namespace Maukka.Data
     public class WardrobeRepository
     {
         private bool _hasBeenInitialized = false;
+        private readonly SqliteConnection _connection;
         private readonly ILogger _logger;
 
         private readonly string[] _createTableCommands =
@@ -29,25 +30,26 @@ namespace Maukka.Data
         /// Initializes a new instance of the <see cref="WardrobeRepository"/> class.
         /// </summary>
         /// <param name="logger">The logger instance.</param>
-        public WardrobeRepository(ILogger<WardrobeRepository> logger)
+        /// <param name="connection">The SQLite connection</param>
+        public WardrobeRepository(ILogger<WardrobeRepository> logger, 
+            SqliteConnection connection)
         {
             _logger = logger;
+            _connection = connection;
         }
 
         /// <summary>
         /// Initializes the database connection and creates the Wardrobe table if it does not exist.
         /// </summary>
-        private async Task Init()
+        private async Task InitAsync()
         {
-            if (_hasBeenInitialized)
-                return;
-
-            await using var connection = new SqliteConnection(Constants.DatabasePath);
-            await connection.OpenAsync().ConfigureAwait(false);
-            var createTableCmd = connection.CreateCommand();
-
+            if (_hasBeenInitialized) return;
+            var createTableCmd = _connection.CreateCommand();
+            
             try
             {
+                await _connection.OpenAsync().ConfigureAwait(false);
+                
                 foreach (var createCommand in _createTableCommands)
                 {
                     createTableCmd.CommandText = createCommand;
@@ -56,7 +58,7 @@ namespace Maukka.Data
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "Error creating tables in command: {commandText}", createTableCmd.CommandText);
+                _logger.LogError(e, "Error creating tables with command: {commandText}", createTableCmd.CommandText);
                 throw;
             }
 
@@ -69,11 +71,11 @@ namespace Maukka.Data
         /// <returns>A list of <see cref="Wardrobe"/> objects.</returns>
         public async Task<List<Wardrobe>> ListAsync()
         {
-            await Init();
-            await using var connection = new SqliteConnection(Constants.DatabasePath);
-            await connection.OpenAsync();
+            await InitAsync().ConfigureAwait(false);
 
-            var selectCmd = connection.CreateCommand();
+            await _connection.OpenAsync().ConfigureAwait(false);
+
+            var selectCmd = _connection.CreateCommand();
             selectCmd.CommandText = "SELECT * FROM Wardrobe";
             var wardrobes = new List<Wardrobe>();
 
@@ -97,11 +99,10 @@ namespace Maukka.Data
         /// <returns>A <see cref="Wardrobe"/> object if found; otherwise, null.</returns>
         public async Task<Wardrobe?> GetAsync(int id)
         {
-            await Init();
-            await using var connection = new SqliteConnection(Constants.DatabasePath);
-            await connection.OpenAsync();
+            await InitAsync().ConfigureAwait(false);
+            await _connection.OpenAsync().ConfigureAwait(false);
 
-            var selectCmd = connection.CreateCommand();
+            var selectCmd = _connection.CreateCommand();
             selectCmd.CommandText = WardrobeSqlCommands.GetWardrobes;
             selectCmd.Parameters.AddWithValue("@id", id);
 
@@ -140,17 +141,16 @@ namespace Maukka.Data
         /// <returns>The WardrobeId of the saved wardrobe.</returns>
         public async Task<WardrobeId> SaveItemAsync(Wardrobe item)
         {
-            await Init();
-            await using var connection = new SqliteConnection(Constants.DatabasePath);
-            await connection.OpenAsync();
+            await InitAsync().ConfigureAwait(false);
+            await _connection.OpenAsync().ConfigureAwait(false);
 
-            var saveCmd = connection.CreateCommand();
+            var saveCmd = _connection.CreateCommand();
 
             saveCmd.CommandText =
                 $"INSERT INTO Wardrobe ({nameof(Wardrobe.Description)})" +
                 "VALUES (@Description);" +
                 "SELECT last_insert_rowid();";
-            var queryCmd = connection.CreateCommand();
+            var queryCmd = _connection.CreateCommand();
             queryCmd.CommandText =
                 "SELECT COUNT(*) FROM Wardrobe WHERE WardrobeId = @WardrobeId;";
             queryCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId.Value);
@@ -232,11 +232,10 @@ namespace Maukka.Data
 
         public async Task<ClothingId> SaveItemAsync(Clothing item)
         {
-            await Init();
-            await using var connection = new SqliteConnection(Constants.DatabasePath);
-            await connection.OpenAsync();
+            await InitAsync().ConfigureAwait(false);
+            await _connection.OpenAsync().ConfigureAwait(false);
 
-            var saveCmd = connection.CreateCommand();
+            var saveCmd = _connection.CreateCommand();
             if (item.ClothingId.Value == 0)
             {
                 saveCmd.CommandText =
@@ -279,11 +278,10 @@ namespace Maukka.Data
         /// <returns>The number of rows affected.</returns>
         public async Task<int> DeleteItemAsync(Wardrobe item)
         {
-            await Init();
-            await using var connection = new SqliteConnection(Constants.DatabasePath);
-            await connection.OpenAsync();
+            await InitAsync().ConfigureAwait(false);
+            await _connection.OpenAsync().ConfigureAwait(false);
 
-            var deleteCmd = connection.CreateCommand();
+            var deleteCmd = _connection.CreateCommand();
             deleteCmd.CommandText = "DELETE FROM Wardrobe WHERE WardrobeId = @WardrobeId";
             deleteCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId.Value);
             var affectedRows = await deleteCmd.ExecuteNonQueryAsync();
@@ -299,11 +297,10 @@ namespace Maukka.Data
         /// </summary>
         public async Task DropTableAsync()
         {
-            await Init();
-            await using var connection = new SqliteConnection(Constants.DatabasePath);
-            await connection.OpenAsync();
+            await InitAsync().ConfigureAwait(false);
+            await _connection.OpenAsync().ConfigureAwait(false);
 
-            var dropCmd = connection.CreateCommand();
+            var dropCmd = _connection.CreateCommand();
             dropCmd.CommandText = "DROP TABLE IF EXISTS Wardrobe";
             await dropCmd.ExecuteNonQueryAsync();
 
@@ -314,11 +311,10 @@ namespace Maukka.Data
 
         public async Task<BrandId> SaveItem(Brand brand)
         {
-            await Init().ConfigureAwait(false);
-            await using var connection = new SqliteConnection(Constants.DatabasePath);
-            await connection.OpenAsync().ConfigureAwait(false);
+            await InitAsync().ConfigureAwait(false);
+            await _connection.OpenAsync().ConfigureAwait(false);
 
-            var saveCmd = connection.CreateCommand();
+            var saveCmd = _connection.CreateCommand();
 
             if (brand.BrandId == 0)
             {
@@ -355,14 +351,13 @@ namespace Maukka.Data
         /// <param name="clothingSize">The clothing size to save.</param>
         public async Task SaveItem(ClothingSize clothingSize)
         {
-            await Init();
-            await using var connection = new SqliteConnection(Constants.DatabasePath);
-            await connection.OpenAsync();
-            using var transaction = connection.BeginTransaction();
+            await InitAsync().ConfigureAwait(false);
+            await _connection.OpenAsync().ConfigureAwait(false);
+            using var transaction = _connection.BeginTransaction();
 
             try
             {
-                var saveCmd = connection.CreateCommand();
+                var saveCmd = _connection.CreateCommand();
                 saveCmd.Transaction = transaction;
                 saveCmd.CommandText = ClothingSizeSQLCommands.SizeIdsCount;
                 
@@ -422,11 +417,10 @@ namespace Maukka.Data
 
         public async Task<BrandClothingId> SaveItem(BrandClothing brandClothing)
         {
-            await Init();
-            await using var connection = new SqliteConnection(Constants.DatabasePath);
-            await connection.OpenAsync();
+            await InitAsync().ConfigureAwait(false);
+            await _connection.OpenAsync().ConfigureAwait(false);
 
-            var saveCmd = connection.CreateCommand();
+            var saveCmd = _connection.CreateCommand();
 
             if (brandClothing.BrandClothingId == 0)
             {

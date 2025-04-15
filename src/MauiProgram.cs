@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Toolkit.Hosting;
 
@@ -25,9 +26,12 @@ namespace Maukka
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
-    		builder.Services.AddLogging(configure => configure.AddDebug());
+            builder.Logging.AddDebug();
+            builder.Services.AddLogging(configure => configure.AddDebug());
 #endif
+            var databasePath = Path.Combine(AppContext.BaseDirectory, Constants.DatabasePath);
+            builder.Services.AddSingleton<SqliteConnection>(_ =>
+                new SqliteConnection($"Data Source = {databasePath}"));
 
             builder.Services.AddSingleton<WardrobeRepository>();
             // builder.Services.AddSingleton<TaskRepository>();
