@@ -1,10 +1,11 @@
 using System.Text.Json;
 using Maukka.Data;
+using Maukka.Models;
 using Maukka.Utilities.Converters;
 
 namespace Maukka.IntegrationTests
 {
-    public class WardrobeRepositoryTests(TestDatabaseFixture database) : RepositoryTestBase(database)
+    public class WardrobeRepositoryTests : RepositoryTestBase
     {
         private readonly string _wardrobeDataFilePath = "wardrobes.json";
         private readonly string _brandDataFilePath = "brands.json";
@@ -12,33 +13,42 @@ namespace Maukka.IntegrationTests
         private readonly string _clothingSizeDataFilePath = "clothingSizes.json";
 
         private WardrobeRepository CreateRepository() =>
-            new (_logger, _connection);
+            new(_logger, _connection);
 
-        private async Task InitBrands()
+        
+        [Fact]
+        public async Task InitTestData_Successfully()
+        {
+            var repository = CreateRepository();
+            await InitBrands(repository);
+            await InitClothingSizes(repository);
+            await InitBrandClothing(repository);
+
+            var brand = await repository.GetAsync(new BrandId(1));
+            Assert.NotNull(brand);
+            
+            var clothingSizes = await repository.GetClothingSizes(brand.BrandId);
+            Assert.NotEmpty(clothingSizes);
+            
+            // TODO: var brandClothing = await repository.GetClothingByBrandId(new BrandId(1));
+        }
+        
+        private async Task InitBrands(WardrobeRepository repository)
         {
             string testDirectory = Directory.GetCurrentDirectory();
             using var templateStream = File.OpenRead(Path.Combine(testDirectory, _brandDataFilePath));
             var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.BrandsJson);
-            
             foreach (var brand in payload.Brands)
             {
-                using var saveCmd = _connection.CreateCommand();
-                saveCmd.Parameters.Clear();
-                saveCmd.CommandText = "INSERT INTO Brands (BrandName) VALUES (@BrandName)";
-                saveCmd.Parameters.AddWithValue("@BrandName", brand.BrandName);
-                await saveCmd.ExecuteNonQueryAsync();
+                await repository.SaveItem(brand);
             }
         }
 
-        [Fact]
-        public async Task AddClothingSizes()
+        private async Task InitClothingSizes(WardrobeRepository repository)
         {
-            string testDirectory = Directory.GetCurrentDirectory();
-            using var templateStream = File.OpenRead(Path.Combine(testDirectory, _clothingSizeDataFilePath));
+            var testDirectory = Directory.GetCurrentDirectory();
+            await using var templateStream = File.OpenRead(Path.Combine(testDirectory, _clothingSizeDataFilePath));
             var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJSON);
-            
-            var repository = CreateRepository();
-            await InitBrands();
 
             foreach (var clothingSize in payload.ClothingSizes)
             {
@@ -46,67 +56,17 @@ namespace Maukka.IntegrationTests
             }
         }
 
-        [Fact]
-        public void UpsertClothingSizes()
+        private async Task InitBrandClothing(WardrobeRepository repository)
         {
-            string testDirectory = Directory.GetCurrentDirectory();
-            using var templateStream = File.OpenRead(Path.Combine(testDirectory, _clothingSizeDataFilePath));
-            var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJSON);
-            
-            using var transaction = _connection.BeginTransaction();
-            using var saveCmd = _connection.CreateCommand();
-            saveCmd.Transaction = transaction;
-            
-            for (int i = 0; i < 2; i++)
+            var testDirectory = Directory.GetCurrentDirectory();
+            await using var templateStream = File.OpenRead(Path.Combine(testDirectory, _brandClothingDataFilePath));
+            var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.BrandClothingJson);
+
+            foreach (var brandClothing in payload.BrandClothing)
             {
-                foreach (var clothingSize in payload.ClothingSizes)
-                {
-                    saveCmd.Parameters.Clear();
-                    saveCmd.CommandText = ClothingSizeSQLCommands.SizeIdsCount;
-                
-                    saveCmd.Parameters.AddWithValue("@SizeId", clothingSize.SizeId);
-
-                    var foundRows = saveCmd.ExecuteScalar();
-
-                    saveCmd.CommandText = Convert.ToInt32(foundRows) == 0
-                        ? ClothingSizeSQLCommands.InsertClothingSize
-                        : ClothingSizeSQLCommands.UpdateClothingSize;
-
-
-                    saveCmd.Parameters.AddValues(
-                        clothingSize.SizeId,
-                        clothingSize.BrandId,
-                        clothingSize.CountryCode,
-                        clothingSize.MeasurementUnit,
-                        clothingSize.Category,
-                        clothingSize.SizeCode,
-                        clothingSize.AgeToMonths,
-                        clothingSize.AgeFromMonths);
-
-                    var sizeId = saveCmd.ExecuteScalar();
-
-                    foreach (var (key, value) in clothingSize.Measurements)
-                    {
-                        saveCmd.Parameters.Clear();
-                        saveCmd.CommandText = SizeMeasurementsSQLCommands.GetAllWithKey;
-
-                        saveCmd.Parameters.AddWithValue("@SizeId", sizeId ?? clothingSize.SizeId);
-                        saveCmd.Parameters.AddWithValue("@MeasurementKey", key);
-
-                        var sizeMeasureResult = saveCmd.ExecuteScalar();
-
-                        saveCmd.CommandText = sizeMeasureResult is null
-                            ? SizeMeasurementsSQLCommands.Insert
-                            : SizeMeasurementsSQLCommands.Update;
-
-                        saveCmd.Parameters.AddWithValue("@Value", value);
-
-                        saveCmd.ExecuteNonQuery();
-                    }
-                }
+                await repository.SaveItem(brandClothing);
             }
-
-            transaction.Rollback();
         }
+        
     }
 }

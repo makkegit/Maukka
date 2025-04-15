@@ -104,8 +104,8 @@ namespace Maukka.PageModels
             try
             {
                 IsBusy = true;
-
-                _wardrobe = await _wardrobeRepository.GetAsync(id);
+                
+                _wardrobe = await _wardrobeRepository.GetAsync(new WardrobeId { Value = id });
 
                 if (_wardrobe.IsNullOrNew())
                 {

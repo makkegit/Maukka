@@ -4,38 +4,44 @@ using Xunit.Sdk;
 
 namespace Maukka.IntegrationTests
 {
-    public abstract class RepositoryTestBase : IClassFixture<TestDatabaseFixture>, IAsyncLifetime
+    public abstract class RepositoryTestBase : IAsyncLifetime
     {
-        protected readonly TestDatabaseFixture _fixture;
-        protected readonly SqliteConnection _connection;
-        protected readonly ILogger<WardrobeRepository> _logger;
-
-        protected RepositoryTestBase(TestDatabaseFixture fixture)
+        protected SqliteConnection _connection;
+        protected ILogger<WardrobeRepository> _logger;
+        protected TestDatabaseFixture _testDatabaseFixture;
+        private readonly string[] _tables = 
+            [
+                "Wardrobes", "Clothing", "Brands", 
+                "ClothingSizes", "BrandClothing", 
+                "SizeMeasurements", "ClothingXref"
+            ];
+        public async ValueTask InitializeAsync()
         {
-            _fixture = fixture;
-            _connection = _fixture.Connection;
-        
+            _testDatabaseFixture = new TestDatabaseFixture();
+            _connection = await _testDatabaseFixture.GetConnectionAsync();
+            
             // Create a test logger
             var loggerFactory = LoggerFactory.Create(builder => 
                 builder.AddXUnit()); 
             _logger = loggerFactory.CreateLogger<WardrobeRepository>();
         }
-
-        public ValueTask InitializeAsync() => ValueTask.CompletedTask;
-
+        
         public async ValueTask DisposeAsync()
         {
-            await ClearTable("Wardrobes");
-            await ClearTable("Clothing");
+            // foreach (var table in _tables)
+            // {
+            //     await ClearTable(table);
+            // }
+            //
             await _connection.CloseAsync();
             await _connection.DisposeAsync();
-            GC.SuppressFinalize(this);
+            await _testDatabaseFixture.DisposeAsync();
         }
 
         private async Task ClearTable(string tableName)
         {
-            using var cmd = _connection.CreateCommand();
-            cmd.CommandText = $"DELETE FROM {tableName}";
+            await using var cmd = _connection.CreateCommand();
+            cmd.CommandText = $"DROP TABLE {tableName}";
             await cmd.ExecuteNonQueryAsync();
         }
     }

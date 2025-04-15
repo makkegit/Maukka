@@ -1,3 +1,4 @@
+using System.Data;
 using System.Text.Json;
 using Maukka.Models;
 using Maukka.Utilities.Converters;
@@ -31,7 +32,7 @@ namespace Maukka.Data
         /// </summary>
         /// <param name="logger">The logger instance.</param>
         /// <param name="connection">The SQLite connection</param>
-        public WardrobeRepository(ILogger<WardrobeRepository> logger, 
+        public WardrobeRepository(ILogger<WardrobeRepository> logger,
             SqliteConnection connection)
         {
             _logger = logger;
@@ -44,12 +45,13 @@ namespace Maukka.Data
         private async Task InitAsync()
         {
             if (_hasBeenInitialized) return;
+
             var createTableCmd = _connection.CreateCommand();
-            
+
             try
             {
                 await _connection.OpenAsync().ConfigureAwait(false);
-                
+
                 foreach (var createCommand in _createTableCommands)
                 {
                     createTableCmd.CommandText = createCommand;
@@ -97,7 +99,7 @@ namespace Maukka.Data
         /// </summary>
         /// <param name="id">The WardrobeId of the wardrobe.</param>
         /// <returns>A <see cref="Wardrobe"/> object if found; otherwise, null.</returns>
-        public async Task<Wardrobe?> GetAsync(int id)
+        public async Task<Wardrobe?> GetAsync(WardrobeId id)
         {
             await InitAsync().ConfigureAwait(false);
             await _connection.OpenAsync().ConfigureAwait(false);
@@ -315,8 +317,12 @@ namespace Maukka.Data
             await _connection.OpenAsync().ConfigureAwait(false);
 
             var saveCmd = _connection.CreateCommand();
+            saveCmd.CommandText = "SELECT * FROM Brands WHERE BrandId = @BrandId";
+            saveCmd.Parameters.AddWithValue("@BrandId", brand.BrandId.Value);
+            var brandResult = await saveCmd.ExecuteScalarAsync();
 
-            if (brand.BrandId == 0)
+            if (brand.BrandId == 0 ||
+                !Convert.ToBoolean(brandResult))
             {
                 saveCmd.CommandText =
                     "INSERT INTO Brands (BrandName) " +
@@ -327,7 +333,6 @@ namespace Maukka.Data
             {
                 saveCmd.CommandText =
                     "UPDATE Brands SET BrandName = @BrandName WHERE BrandId = @BrandId;";
-                saveCmd.Parameters.AddWithValue("@BrandId", brand.BrandId.Value);
             }
 
             saveCmd.Parameters.AddWithValue("@BrandName", brand.BrandName);
@@ -341,6 +346,32 @@ namespace Maukka.Data
             return brand.BrandId;
         }
 
+        /// <summary>
+        /// Retrieves a specific brand by its WardrobeId.
+        /// </summary>
+        /// <param name="id">The WardrobeId of the brand.</param>
+        /// <returns>A <see cref="Brand"/> object if found; otherwise, null.</returns>
+        public async Task<Brand?> GetAsync(BrandId id)
+        {
+            await InitAsync().ConfigureAwait(false);
+            await _connection.OpenAsync().ConfigureAwait(false);
+
+            var selectCmd = _connection.CreateCommand();
+            selectCmd.CommandText = BrandsSQLCommands.GetWithBrandId;
+            selectCmd.Parameters.AddWithValue("@BrandId", id.Value);
+
+            await using var reader = await selectCmd.ExecuteReaderAsync();
+
+            if (!await reader.ReadAsync())
+            {
+                return null;
+            }
+
+            var brand = new Brand(reader.GetInt32(0), reader.GetString(1));
+
+            return brand;
+        }
+
         #endregion
 
         #region ClothingSizes
@@ -352,15 +383,20 @@ namespace Maukka.Data
         public async Task SaveItem(ClothingSize clothingSize)
         {
             await InitAsync().ConfigureAwait(false);
-            await _connection.OpenAsync().ConfigureAwait(false);
-            using var transaction = _connection.BeginTransaction();
+
+            if (_connection.State is ConnectionState.Closed)
+            {
+                await _connection.OpenAsync().ConfigureAwait(false);
+            }
+            
+            await using var transaction = _connection.BeginTransaction();
 
             try
             {
                 var saveCmd = _connection.CreateCommand();
                 saveCmd.Transaction = transaction;
                 saveCmd.CommandText = ClothingSizeSQLCommands.SizeIdsCount;
-                
+
                 saveCmd.Parameters.AddWithValue("@SizeId", clothingSize.SizeId);
 
                 var foundRows = await saveCmd.ExecuteScalarAsync();
@@ -411,6 +447,71 @@ namespace Maukka.Data
             }
         }
 
+
+        public async Task<IReadOnlyCollection<ClothingSize>> GetClothingSizes(BrandId brandId)
+        {
+            await InitAsync().ConfigureAwait(false);
+
+            if (_connection.State is not ConnectionState.Open)
+            {
+                await _connection.OpenAsync().ConfigureAwait(false);
+            }
+
+            await using var selectCmd = _connection.CreateCommand();
+
+            selectCmd.CommandText = ClothingSizeSQLCommands.GetByBrandId;
+            selectCmd.Parameters.AddWithValue("@BrandId", brandId.Value);
+            await using var reader = await selectCmd.ExecuteReaderAsync();
+            
+            var clothingSizes = new List<ClothingSize>();
+
+            while (await reader.ReadAsync().ConfigureAwait(false))
+            {
+                var clothingSize = new ClothingSize
+                {
+                    SizeId = reader.GetInt32(reader.GetOrdinal("SizeId")),
+                    BrandId = new BrandId(reader.GetInt32(reader.GetOrdinal("BrandId"))),
+                    CountryCode = EnumToStringConverter.StringToEnum<CountryCode>(reader.GetString(reader.GetOrdinal("CountryCode"))),
+                    MeasurementUnit = EnumToStringConverter.StringToEnum<MeasurementUnit>(reader.GetString(reader.GetOrdinal("Unit"))),
+                    Category = EnumToStringConverter.StringToEnum<ClothingCategory>(reader.GetString(reader.GetOrdinal("Category"))),
+                    SizeCode = reader.GetString(reader.GetOrdinal("SizeCode")),
+                    AgeFromMonths = reader.GetInt32(reader.GetOrdinal("AgeFromMonths")),
+                    AgeToMonths = reader.GetInt32(reader.GetOrdinal("AgeToMonths")),
+                    Measurements = new Dictionary<string, float>()
+                };
+                
+                // Retrieve measurements
+                await RetrieveMeasurements(clothingSize);
+
+                clothingSizes.Add(clothingSize);
+            }
+            
+            return clothingSizes.AsReadOnly();
+        }
+
+        private async Task RetrieveMeasurements(ClothingSize clothingSize)
+        {
+            using var measurementCmd = _connection.CreateCommand();
+            measurementCmd.CommandText = @"
+                    SELECT MeasurementKey, Value 
+                    FROM SizeMeasurements 
+                    WHERE SizeId = @SizeId";
+
+            measurementCmd.Parameters.AddWithValue("@SizeId", clothingSize.SizeId);
+
+            await using var measurementReader = await measurementCmd.ExecuteReaderAsync().ConfigureAwait(false);
+
+            while (await measurementReader.ReadAsync().ConfigureAwait(false))
+            {
+                var key = measurementReader.GetString(
+                    measurementReader.GetOrdinal("MeasurementKey"));
+                var value = (float)measurementReader.GetDouble(
+                    measurementReader.GetOrdinal("Value"));
+
+                clothingSize.Measurements.Add(key.ToLower(), value);
+            }
+        }
+
         #endregion
 
         #region BrandClothing
@@ -418,7 +519,11 @@ namespace Maukka.Data
         public async Task<BrandClothingId> SaveItem(BrandClothing brandClothing)
         {
             await InitAsync().ConfigureAwait(false);
-            await _connection.OpenAsync().ConfigureAwait(false);
+
+            if (_connection.State is not ConnectionState.Open)
+            {
+                await _connection.OpenAsync().ConfigureAwait(false);
+            }
 
             var saveCmd = _connection.CreateCommand();
 

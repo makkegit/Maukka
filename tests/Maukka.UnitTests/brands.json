@@ -2,11 +2,9 @@
   "Brands":
   [
     {
-      "BrandId": 1,
       "BrandName": "Makkest"
     },
     {
-      "BrandId": 2,
       "BrandName": "Polarn o Pyret"
     }
   ]

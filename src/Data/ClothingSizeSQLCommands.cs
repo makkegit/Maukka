@@ -6,13 +6,13 @@ namespace Maukka.Data
 {
     public static class ClothingSizeSQLCommands
     {
-        public static string InsertClothingSize =
+        public const string InsertClothingSize =
             @"INSERT INTO ClothingSizes
                             (BrandId, CountryCode, Unit, Category, SizeCode, AgeFromMonths, AgeToMonths) 
                             VALUES (@BrandId, @CountryCode, @Unit, @Category, @SizeCode, @AgeFromMonths, @AgeToMonths);
                             SELECT last_insert_rowid();";
 
-        public static string UpdateClothingSize =
+        public const string UpdateClothingSize =
             @"UPDATE ClothingSizes
                         SET BrandId = @BrandId,
                             CountryCode = @CountryCode,
@@ -22,8 +22,9 @@ namespace Maukka.Data
                             AgeFromMonths = @AgeFromMonths,
                             AgeToMonths = @AgeToMonths
                         WHERE SizeId = @SizeId;";
-
-        public static string SizeIdsCount = "SELECT COUNT(*) FROM ClothingSizes WHERE SizeId = @SizeId;";
+        
+        public const string GetByBrandId = "SELECT * FROM ClothingSizes WHERE BrandId = @BrandId ORDER BY SizeId ASC;";
+        public const string SizeIdsCount = "SELECT COUNT(*) FROM ClothingSizes WHERE SizeId = @SizeId;";
 
         public static void AddValues(this SqliteParameterCollection parameters,
             int sizeId, BrandId brandId, CountryCode countryCode, MeasurementUnit unit, ClothingCategory category, string sizeCode, int ageFromMonths, int ageToMonths)

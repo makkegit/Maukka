@@ -4,10 +4,7 @@ namespace Maukka.IntegrationTests;
 
 public class TestDatabaseFixture : IAsyncLifetime
 {
-    private SqliteConnection _connection;
-    
-    public SqliteConnection Connection => _connection;
-    
+    protected string _testDatabasePath;
     private readonly string[] _createTableCommands =
     [
         WardrobeSqlCommands.CreateWardrobesTable,
@@ -18,29 +15,36 @@ public class TestDatabaseFixture : IAsyncLifetime
         WardrobeSqlCommands.CreateClothingSizesTable,
         WardrobeSqlCommands.CreateSizeMeasurementsTable
     ];
-    
-    
-    public async ValueTask InitializeAsync()
+
+    public async Task<SqliteConnection> GetConnectionAsync()
     {
-        _connection = new SqliteConnection("Data Source=:memory:;Pooling=False");
-        await _connection.OpenAsync();
+        _testDatabasePath = Path.Combine(Path.GetTempPath(), 
+            $"test.db3");
+        
+        var connection = new SqliteConnection($"Data Source={_testDatabasePath};Pooling=False");
+        await connection.OpenAsync();
         
         // Initialize schema and seed data
-        using var command = _connection.CreateCommand();
+        using var command = connection.CreateCommand();
 
         foreach (var sqlCmd in _createTableCommands)
         {
             command.CommandText = sqlCmd;
             await command.ExecuteNonQueryAsync();
         }
+        
+        return connection;
     }
     
-    public SqliteConnection GetConnection() => _connection;
 
-    public virtual async ValueTask DisposeAsync()
+    public async ValueTask InitializeAsync() { await ValueTask.CompletedTask; }
+
+    public async ValueTask DisposeAsync()
     {
-        // await _connection.CloseAsync();
-        // await _connection.DisposeAsync();
-        // GC.SuppressFinalize(this);
+        if (File.Exists(_testDatabasePath))
+        {
+            try { File.Delete(_testDatabasePath); }
+            catch (Exception e) { Console.WriteLine(e); throw; }
+        }
     } 
 }
