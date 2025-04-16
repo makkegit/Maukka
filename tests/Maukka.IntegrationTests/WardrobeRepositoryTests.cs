@@ -1,7 +1,6 @@
 using System.Text.Json;
 using Maukka.Data;
 using Maukka.Models;
-using Maukka.Utilities.Converters;
 
 namespace Maukka.IntegrationTests
 {
@@ -69,7 +68,7 @@ namespace Maukka.IntegrationTests
         {
             var testDirectory = Directory.GetCurrentDirectory();
             await using var templateStream = File.OpenRead(Path.Combine(testDirectory, _clothingSizeDataFilePath));
-            var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJSON);
+            var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJson);
 
             foreach (var clothingSize in payload.ClothingSizes)
             {

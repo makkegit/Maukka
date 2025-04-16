@@ -13,7 +13,7 @@ namespace Maukka.Data
         public const string Update = @"UPDATE Clothing SET SizeId = @SizeId, Alias = @Alias
                                        WHERE ClothingId = @ClothingId;";
         
-        public const string GetById = @"SELECT * FROM Clothing WHERE ClothingId = @ClothingId;";
+        public const string GetById = "SELECT * FROM Clothing WHERE ClothingId = @ClothingId;";
 
         public static void AddValues(this SqliteParameterCollection parameters,
             Clothing clothing)

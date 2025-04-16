@@ -110,7 +110,7 @@ namespace Maukka.Data
         private async Task InitClothingSizeData()
         {
             await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_clothingSizeDataFilePath);
-            var clothingSizes = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJSON);
+            var clothingSizes = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJson);
 
             foreach (var clothingSize in clothingSizes.ClothingSizes)
             {

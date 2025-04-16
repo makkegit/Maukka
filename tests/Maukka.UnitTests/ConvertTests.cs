@@ -54,7 +54,7 @@ namespace Maukka.UnitTests
         {
             string testDirectory =  Directory.GetCurrentDirectory();
             using var templateStream = File.OpenRead(Path.Combine(testDirectory, _clothingSizeDataFilePath));
-            var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJSON);
+            var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJson);
             Assert.NotNull(payload);
             
             var allClothingSizes = payload.ClothingSizes.ToList();

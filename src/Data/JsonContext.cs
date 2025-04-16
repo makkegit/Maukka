@@ -10,7 +10,7 @@ namespace Maukka.Data
     [JsonSerializable(typeof(Wardrobe))]
     [JsonSerializable(typeof(BrandsJson))]
     [JsonSerializable(typeof(BrandClothingJson))]
-    [JsonSerializable(typeof(ClothingSizesJSON))]
+    [JsonSerializable(typeof(ClothingSizesJson))]
     [JsonSerializable(typeof(ClothingJson))]
     [JsonSerializable(typeof(WardrobesJson))]
     public partial class JsonContext : JsonSerializerContext

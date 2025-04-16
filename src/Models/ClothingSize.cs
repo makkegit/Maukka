@@ -99,8 +99,4 @@ namespace Maukka.Models
         }
     }
 
-    public class ClothingSizesJSON
-    {
-        public List<ClothingSize> ClothingSizes { get; set; } = [];
-    }
 }
