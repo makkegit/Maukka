@@ -4,15 +4,15 @@ using Microsoft.Data.Sqlite;
 
 namespace Maukka.Data
 {
-    public static class ClothingSizeSQLCommands
+    public static class ClothingSizeSqlCommands
     {
-        public const string InsertClothingSize =
+        public const string Insert =
             @"INSERT INTO ClothingSizes
                             (BrandId, CountryCode, Unit, Category, SizeCode, AgeFromMonths, AgeToMonths) 
                             VALUES (@BrandId, @CountryCode, @Unit, @Category, @SizeCode, @AgeFromMonths, @AgeToMonths);
                             SELECT last_insert_rowid();";
 
-        public const string UpdateClothingSize =
+        public const string Update =
             @"UPDATE ClothingSizes
                         SET BrandId = @BrandId,
                             CountryCode = @CountryCode,
@@ -30,12 +30,7 @@ namespace Maukka.Data
             int sizeId, BrandId brandId, CountryCode countryCode, MeasurementUnit unit, ClothingCategory category, string sizeCode, int ageFromMonths, int ageToMonths)
         {
             parameters.Clear();
-            
-            if (!parameters.Contains(new SqliteParameter("@SizeId", sizeId)))
-            {
-                parameters.AddWithValue("@SizeId", sizeId);
-            }
-            
+            parameters.AddWithValue("@SizeId", sizeId);
             parameters.AddWithValue("@BrandId", brandId.Value);
             parameters.AddWithValue("@CountryCode",
                 EnumToStringConverter.EnumToString(countryCode));

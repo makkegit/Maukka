@@ -2,6 +2,7 @@
   "BrandClothing":
   [
     {
+      "BrandClothingId": 1,
       "Brand":
       {
         "BrandId": 1,
@@ -11,6 +12,7 @@
       "Category": "tops"
     },
     {
+      "BrandClothingId": 2,
       "Brand":
       {
         "BrandId": 1,
@@ -20,6 +22,7 @@
       "Category": "bottoms"
     },
     {
+      "BrandClothingId": 3,
       "Brand":
       {
         "BrandId": 1,
@@ -29,6 +32,7 @@
       "Category": "tops"
     },
     {
+      "BrandClothingId": 4,
       "Brand":
       {
         "BrandId": 1,

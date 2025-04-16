@@ -1,6 +1,6 @@
 namespace Maukka.Data
 {
-    public static class SizeMeasurementsSQLCommands
+    public static class SizeMeasurementsSqlCommands
     {
         public const string GetAllWithKey = @"SELECT * FROM SizeMeasurements 
                             WHERE SizeId = @SizeId AND MeasurementKey = @MeasurementKey;";

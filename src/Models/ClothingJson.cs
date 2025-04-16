@@ -2,6 +2,6 @@ namespace Maukka.Models
 {
     public class ClothingJson
     {
-        public List<BrandClothing> Clothing { get; set; } = [];
+        public List<Clothing> Clothing { get; set; } = [];
     }
 }

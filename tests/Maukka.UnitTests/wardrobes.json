@@ -6,11 +6,13 @@
       "Description": "Kesävaatteita Mattuselle. Kissojen ja koirien kuvia! 😽🐶",
       "Items": [
         {
-          "Id": 1,
+          "ClothingId": 1,
+          "BrandClothingId": 1,
           "BrandName": "MakkeBrand",
           "ClothingName": "Summer Cat T-shirt",
           "Category": "tops",
           "Size": {
+            "SizeId": 8,
             "CountryCode": "eu",
             "MeasurementUnit": "cm",
             "Category": "tops",
@@ -28,11 +30,13 @@
           "Alias": "Kesäpaita"
         },
         {
-          "Id": 2,
+          "ClothingId": 2,
+          "BrandClothingId": 2,
           "BrandName": "MakkeBrand",
           "ClothingName": "Summer Pants",
           "Category": "bottoms",
           "Size": {
+            "SizeId": 27,
             "CountryCode": "eu",
             "MeasurementUnit": "cm",
             "Category": "bottoms",
@@ -57,11 +61,13 @@
       "Description": "Talvivaatteita Mattuselle. Kissojen ja koirien kuvia! 😽🐶",
       "Items": [
         {
-          "Id": 3,
+          "ClothingId": 3,
+          "BrandClothingId": 3,
           "BrandName": "MakkeBrand",
           "ClothingName": "Winter Cat T-shirt",
           "Category": "tops",
           "Size": {
+            "SizeId": 8,
             "CountryCode": "eu",
             "MeasurementUnit": "cm",
             "Category": "tops",
@@ -79,11 +85,13 @@
           "Alias": "Talvipaita"
         },
         {
-          "Id": 4,
+          "ClothingId": 4,
+          "BrandClothingId": 4,
           "BrandName": "MakkeBrand",
           "ClothingName": "Winter Pants",
           "Category": "bottoms",
           "Size": {
+            "SizeId": 27,
             "CountryCode": "eu",
             "MeasurementUnit": "cm",
             "Category": "bottoms",

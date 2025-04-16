@@ -20,9 +20,7 @@ namespace Maukka.IntegrationTests
         public async Task InitTestData_Successfully()
         {
             var repository = CreateRepository();
-            await InitBrands(repository);
-            await InitClothingSizes(repository);
-            await InitBrandClothing(repository);
+            await InitTestData(repository);
 
             var brand = await repository.GetAsync(new BrandId(1));
             Assert.NotNull(brand);
@@ -30,9 +28,32 @@ namespace Maukka.IntegrationTests
             var clothingSizes = await repository.GetClothingSizes(brand.BrandId);
             Assert.NotEmpty(clothingSizes);
             
-            // TODO: var brandClothing = await repository.GetClothingByBrandId(new BrandId(1));
+            var brandClothing = await repository.GetClothingByBrandId(new BrandId(1));
+            Assert.NotEmpty(brandClothing);
+
+            var wardrobes = await repository.ListAsync();
+            Assert.NotEmpty(wardrobes);
         }
         
+        private async Task InitTestData(WardrobeRepository repository)
+        {
+            await InitBrands(repository);
+            await InitClothingSizes(repository);
+            await InitBrandClothing(repository);
+            await InitWardrobes(repository);
+        }
+
+        private async Task InitWardrobes(WardrobeRepository repository)
+        {
+            string testDirectory = Directory.GetCurrentDirectory();
+            using var templateStream = File.OpenRead(Path.Combine(testDirectory, _wardrobeDataFilePath));
+            var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.WardrobesJson);
+            foreach (var wardrobe in payload.Wardrobes)
+            {
+                await repository.SaveItemAsync(wardrobe);
+            }
+        }
+
         private async Task InitBrands(WardrobeRepository repository)
         {
             string testDirectory = Directory.GetCurrentDirectory();

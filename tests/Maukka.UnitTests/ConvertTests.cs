@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Maukka.Data;
 using Maukka.Models;
 
 namespace Maukka.UnitTests

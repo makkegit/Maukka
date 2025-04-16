@@ -1,6 +1,7 @@
 {
     "Wardrobes": [
         {
+            "WardrobeId": 1,
             "Name": "Matildan kesävaatteet",
             "Description": "Kesävaatteita Mattuselle. Kissojen ja koirien kuvia! 😽🐶",
             "Items": [
@@ -10,8 +11,8 @@
                     "BrandName": "MakkeBrand",
                     "ClothingName": "Summer Cat T-shirt",
                     "Category": "tops",
-                    "SizeId": 8,
                     "Size": {
+                        "SizeId": 8,
                         "CountryCode": "eu",
                         "MeasurementUnit": "cm",
                         "Category": "tops",
@@ -34,8 +35,8 @@
                     "BrandName": "MakkeBrand",
                     "ClothingName": "Summer Pants",
                     "Category": "bottoms",
-                    "SizeId": 27,
                     "Size": {
+                        "SizeId": 27,
                         "CountryCode": "eu",
                         "MeasurementUnit": "cm",
                         "Category": "bottoms",
@@ -55,6 +56,7 @@
             ]
         },
         {
+            "WardrobeId": 2,
             "Name": "Matildan talvivaatteet",
             "Description": "Talvivaatteita Mattuselle. Kissojen ja koirien kuvia! 😽🐶",
             "Items": [
@@ -64,8 +66,8 @@
                     "BrandName": "MakkeBrand",
                     "ClothingName": "Winter Cat T-shirt",
                     "Category": "tops",
-                    "SizeId": 8,
                     "Size": {
+                        "SizeId": 8,
                         "CountryCode": "eu",
                         "MeasurementUnit": "cm",
                         "Category": "tops",
@@ -88,8 +90,8 @@
                     "BrandName": "MakkeBrand",
                     "ClothingName": "Winter Pants",
                     "Category": "bottoms",
-                    "SizeId": 27,
                     "Size": {
+                        "SizeId": 27,
                         "CountryCode": "eu",
                         "MeasurementUnit": "cm",
                         "Category": "bottoms",

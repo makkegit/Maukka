@@ -4,6 +4,10 @@ namespace Maukka.Data
 {
     public static class WardrobeSqlCommands
     {
+        public const string Insert = "INSERT INTO Wardrobes (Description) VALUES (@Description); SELECT last_insert_rowid();";
+        public const string Update = "UPDATE Wardrobes SET Description = @Description WHERE WardrobeId = @WardrobeId;";
+        public const string GetAny = "SELECT * FROM Wardrobes WHERE WardrobeId = @WardrobeId LIMIT 1;";
+        
         public const string CreateWardrobesTable =
             @"CREATE TABLE IF NOT EXISTS Wardrobes (
             WardrobeId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -65,10 +69,11 @@ namespace Maukka.Data
             )";
 
         public const string GetWardrobes =
-            @$"SELECT w.*, c.*
-                FROM WardrobeId AS w
-                LEFT JOIN ClothingXref x ON w.{nameof(Wardrobe.WardrobeId)} = x.{nameof(Wardrobe.WardrobeId)}
-                LEFT JOIN {nameof(Clothing)} c ON x.{nameof(Clothing.ClothingId)} = c.{nameof(Clothing.ClothingId)}
-                WHERE w.WardrobeId = @id;";
+            @"SELECT w.*
+                FROM Wardrobes AS w
+                LEFT JOIN ClothingXref as x ON w.WardrobeId = x.WardrobeId";
+
+        public const string GetWardrobeById = "SELECT * FROM Wardrobes WHERE WardrobeId = @WardrobeId;";
+
     }
 }

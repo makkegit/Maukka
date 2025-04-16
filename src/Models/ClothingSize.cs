@@ -34,6 +34,23 @@ namespace Maukka.Models
         
         public Dictionary<string, float> Measurements { get; set; } 
             = new Dictionary<string, float>();
+        
+        public ClothingSize() {}
+
+        public ClothingSize(int sizeId, BrandId brandId, CountryCode countryCode, MeasurementUnit measurementUnit,
+            ClothingCategory category, string sizeCode, int ageFromMonths, int ageToMonths)
+        {
+                SizeId = sizeId;
+                BrandId = brandId;
+                CountryCode = countryCode;
+                MeasurementUnit = measurementUnit;
+                Category = category;
+                SizeCode = sizeCode;
+                AgeFromMonths = ageFromMonths;
+                AgeToMonths = ageToMonths;
+                AgeFromYears = (float)Math.Round(ageFromMonths / 12f * 2f, 1) / 2f;
+                AgeToYears = (float)Math.Round(ageFromMonths / 12f * 2f, 1) / 2f;
+        }
 
         public static ClothingSize CreateTopsSize(CountryCode countryCode,
             MeasurementUnit measurementUnit, string sizeCode, int ageFromMonths, int ageToMonths,
