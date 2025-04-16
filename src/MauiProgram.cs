@@ -29,9 +29,8 @@ namespace Maukka
             builder.Logging.AddDebug();
             builder.Services.AddLogging(configure => configure.AddDebug());
 #endif
-            var databasePath = Path.Combine(AppContext.BaseDirectory, Constants.DatabasePath);
             builder.Services.AddSingleton<SqliteConnection>(_ =>
-                new SqliteConnection($"Data Source = {databasePath}"));
+                new SqliteConnection(Constants.DatabaseConnectionString));
 
             builder.Services.AddSingleton<WardrobeRepository>();
             // builder.Services.AddSingleton<TaskRepository>();

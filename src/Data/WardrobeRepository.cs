@@ -185,7 +185,7 @@ namespace Maukka.Data
                 sqlCmd.CommandText = WardrobeSqlCommands.GetAny;
                 sqlCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId.Value);
 
-                var queryResult = await sqlCmd.ExecuteScalarAsync();
+                var queryResult = await sqlCmd.ExecuteScalarAsync().ConfigureAwait(false);
 
                sqlCmd.CommandText = queryResult is not null 
                    ? sqlCmd.CommandText = WardrobeSqlCommands.Update
@@ -193,7 +193,7 @@ namespace Maukka.Data
                
                 sqlCmd.Parameters.AddWithValue("@Description", item.Description);
 
-                var result = await sqlCmd.ExecuteScalarAsync();
+                var result = await sqlCmd.ExecuteScalarAsync().ConfigureAwait(false);
                 
                 await transaction.CommitAsync();
                     
@@ -204,12 +204,12 @@ namespace Maukka.Data
             }
             catch (Exception e)
             {
-                await transaction.RollbackAsync();
+                await transaction.RollbackAsync().ConfigureAwait(false);
                 Console.WriteLine(e);
                 throw;
             }
             
-            await AddClothingXref(item);
+            await AddClothingXref(item).ConfigureAwait(false);
             
             return item.WardrobeId;
         }
@@ -320,7 +320,7 @@ namespace Maukka.Data
             await _connection.OpenAsync().ConfigureAwait(false);
 
             var deleteCmd = _connection.CreateCommand();
-            deleteCmd.CommandText = "DELETE FROM Wardrobe WHERE WardrobeId = @WardrobeId";
+            deleteCmd.CommandText = "DELETE FROM Wardrobes WHERE WardrobeId = @WardrobeId";
             deleteCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId.Value);
             var affectedRows = await deleteCmd.ExecuteNonQueryAsync();
 
@@ -339,7 +339,7 @@ namespace Maukka.Data
             await _connection.OpenAsync().ConfigureAwait(false);
 
             var dropCmd = _connection.CreateCommand();
-            dropCmd.CommandText = "DROP TABLE IF EXISTS Wardrobe";
+            dropCmd.CommandText = "DROP TABLE IF EXISTS Wardrobes";
             await dropCmd.ExecuteNonQueryAsync();
 
             _hasBeenInitialized = false;
