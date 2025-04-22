@@ -39,7 +39,7 @@ namespace Maukka
             builder.Services.AddSingleton<SeedDataService>();
             builder.Services.AddSingleton<ModalErrorHandler>();
             builder.Services.AddSingleton<MainPageModel>();
-            builder.Services.AddSingleton<ProjectListPageModel>();
+            builder.Services.AddSingleton<WardrobeListPageModel>();
             builder.Services.AddSingleton<ManageMetaPageModel>();
 
             builder.Services.AddTransientWithShellRoute<WardrobeDetailPage, WardrobeDetailPageModel>("project");

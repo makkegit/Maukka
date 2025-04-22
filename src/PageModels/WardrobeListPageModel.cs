@@ -7,14 +7,14 @@ using Maukka.Services;
 
 namespace Maukka.PageModels
 {
-    public partial class ProjectListPageModel : ObservableObject
+    public partial class WardrobeListPageModel : ObservableObject
     {
         private readonly WardrobeRepository _wardrobeRepository;
 
         [ObservableProperty]
-        private List<Wardrobe> _projects = [];
+        private List<Wardrobe> _wardrobes = [];
 
-        public ProjectListPageModel(WardrobeRepository wardrobeRepository)
+        public WardrobeListPageModel(WardrobeRepository wardrobeRepository)
         {
             _wardrobeRepository = wardrobeRepository;
         }
@@ -22,17 +22,17 @@ namespace Maukka.PageModels
         [RelayCommand]
         private async Task Appearing()
         {
-            Projects = await _wardrobeRepository.ListAsync();
+            Wardrobes = await _wardrobeRepository.ListAsync();
         }
 
         [RelayCommand]
-        Task NavigateToProject(Wardrobe wardrobe)
+        Task NavigateToWardrobe(Wardrobe wardrobe)
             => Shell.Current.GoToAsync($"wardrobe?id={wardrobe.WardrobeId}");
 
         [RelayCommand]
-        async Task AddProject()
+        async Task AddWardrobe()
         {
-            await Shell.Current.GoToAsync($"project");
+            await Shell.Current.GoToAsync($"wardrobe");
         }
     }
 }

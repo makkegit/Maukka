@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:Maukka.Pages.Controls"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Maukka.Pages.WardrobeListPage"
-             x:DataType="pageModels:ProjectListPageModel"
+             x:DataType="pageModels:WardrobeListPageModel"
              Title="Wardrobes">
 
 
@@ -17,18 +17,21 @@
     </ContentPage.Behaviors>
     <Grid>
         <VerticalStackLayout 
-            BindableLayout.ItemsSource="{Binding Projects}" 
+            BindableLayout.ItemsSource="{Binding Wardrobes}" 
             Margin="{StaticResource LayoutPadding}" 
             Spacing="{StaticResource LayoutSpacing}">
             <BindableLayout.ItemTemplate>
                 <DataTemplate x:DataType="models:Wardrobe">
                     <Border>
                         <VerticalStackLayout Padding="10">
-                            <Label Text="{Binding ClothingName}" FontSize="24" />
+                            <Label Text="{Binding Name}" FontSize="24" />
                             <Label Text="{Binding Description}" />
                         </VerticalStackLayout>
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:ProjectListPageModel}}, x:DataType=pageModels:ProjectListPageModel}" CommandParameter="{Binding .}"/>
+                            <TapGestureRecognizer 
+                                Command="{Binding NavigateToWardrobeCommand, 
+                                Source={RelativeSource AncestorType={x:Type pageModels:WardrobeListPageModel}}, x:DataType=pageModels:WardrobeListPageModel}" 
+                                CommandParameter="{Binding .}"/>
                         </Border.GestureRecognizers>
                     </Border>
                 </DataTemplate>

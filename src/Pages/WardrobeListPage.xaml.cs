@@ -2,7 +2,7 @@ namespace Maukka.Pages
 {
     public partial class WardrobeListPage : ContentPage
     {
-        public WardrobeListPage(ProjectListPageModel model)
+        public WardrobeListPage(WardrobeListPageModel model)
         {
             BindingContext = model;
             InitializeComponent();

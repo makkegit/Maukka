@@ -4,13 +4,14 @@ namespace Maukka.Data
 {
     public static class WardrobeSqlCommands
     {
-        public const string Insert = "INSERT INTO Wardrobes (Description) VALUES (@Description); SELECT last_insert_rowid();";
-        public const string Update = "UPDATE Wardrobes SET Description = @Description WHERE WardrobeId = @WardrobeId;";
-        public const string GetAny = "SELECT * FROM Wardrobes WHERE WardrobeId = @WardrobeId LIMIT 1;";
+        public const string Insert = "INSERT INTO Wardrobes (Name, Description) VALUES (@Name, @Description); SELECT last_insert_rowid();";
+        public const string Update = "UPDATE Wardrobes SET Name = @Name, Description = @Description WHERE WardrobeId = @WardrobeId;";
+        public const string GetSingleById = "SELECT * FROM Wardrobes WHERE WardrobeId = @WardrobeId LIMIT 1;";
         
         public const string CreateWardrobesTable =
             @"CREATE TABLE IF NOT EXISTS Wardrobes (
             WardrobeId INTEGER PRIMARY KEY AUTOINCREMENT,
+            Name TEXT NOT NULL,
             Description TEXT NOT NULL)";
 
         public const string CreateClothingTable =

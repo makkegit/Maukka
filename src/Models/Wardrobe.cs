@@ -7,6 +7,7 @@ namespace Maukka.Models
     {
         [JsonConverter(typeof(WardrobeIdConverter))]
         public WardrobeId WardrobeId { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; } = string.Empty;
         public List<Clothing> Items { get; set; } = [];
     }

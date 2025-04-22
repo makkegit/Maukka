@@ -74,7 +74,7 @@ namespace Maukka.Data
         public async Task<List<Wardrobe>> ListAsync()
         {
             await InitAsync().ConfigureAwait(false);
-            
+
             if (_connection.State is not ConnectionState.Open)
             {
                 await _connection.OpenAsync().ConfigureAwait(false);
@@ -87,9 +87,15 @@ namespace Maukka.Data
             await using var reader = await selectCmd.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                var wardrobe = await GetAsync(new WardrobeId{ Value = reader.GetInt32(0)});
-                
-                if (wardrobe is not null) { wardrobes.Add(wardrobe); }
+                var wardrobe = await GetAsync(new WardrobeId
+                {
+                    Value = reader.GetInt32(0)
+                });
+
+                if (wardrobe is not null)
+                {
+                    wardrobes.Add(wardrobe);
+                }
             }
 
             return wardrobes;
@@ -103,7 +109,7 @@ namespace Maukka.Data
         public async Task<Wardrobe?> GetAsync(WardrobeId id)
         {
             await InitAsync().ConfigureAwait(false);
-            
+
             if (_connection.State is not ConnectionState.Open)
             {
                 await _connection.OpenAsync().ConfigureAwait(false);
@@ -122,7 +128,7 @@ namespace Maukka.Data
                     Description = reader.GetString(reader.GetOrdinal("Description")),
                     Items = []
                 };
-                
+
                 await using var itemsCmd = _connection.CreateCommand();
                 itemsCmd.CommandText = ClothingXrefSqlCommands.GetClothingByWardrobeId;
                 itemsCmd.Parameters.AddWithValue("@WardrobeId", id.Value);
@@ -138,9 +144,8 @@ namespace Maukka.Data
                         Category = EnumToStringConverter.StringToEnum<ClothingCategory>(readerItems.GetString(readerItems.GetOrdinal("ClothingCategory"))),
                         Alias = readerItems.GetString(readerItems.GetOrdinal("Alias"))
                     };
-                    
-                    clothing.Size = new ClothingSize
-                    (
+
+                    clothing.Size = new ClothingSize(
                         readerItems.GetInt32(readerItems.GetOrdinal("SizeId")),
                         readerItems.GetInt32(readerItems.GetOrdinal("BrandId")),
                         EnumToStringConverter.StringToEnum<CountryCode>(readerItems.GetString(readerItems.GetOrdinal("CountryCode"))),
@@ -152,10 +157,10 @@ namespace Maukka.Data
                     );
 
                     await RetrieveMeasurements(clothing.Size);
-                    
+
                     wardrobe.Items.Add(clothing);
                 }
-                
+
                 return wardrobe;
             }
 
@@ -170,33 +175,34 @@ namespace Maukka.Data
         public async Task<WardrobeId> SaveItemAsync(Wardrobe item)
         {
             await InitAsync().ConfigureAwait(false);
-            
+
             if (_connection.State is not ConnectionState.Open)
             {
                 await _connection.OpenAsync().ConfigureAwait(false);
             }
-            
+
             await using var transaction = _connection.BeginTransaction();
             try
             {
                 await using var sqlCmd = _connection.CreateCommand();
                 sqlCmd.Transaction = transaction;
-                
-                sqlCmd.CommandText = WardrobeSqlCommands.GetAny;
+
+                sqlCmd.CommandText = WardrobeSqlCommands.GetSingleById;
                 sqlCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId.Value);
 
                 var queryResult = await sqlCmd.ExecuteScalarAsync().ConfigureAwait(false);
 
-               sqlCmd.CommandText = queryResult is not null 
-                   ? sqlCmd.CommandText = WardrobeSqlCommands.Update
-                   : sqlCmd.CommandText = WardrobeSqlCommands.Insert;
-               
+                sqlCmd.CommandText = queryResult is not null
+                    ? sqlCmd.CommandText = WardrobeSqlCommands.Update
+                    : sqlCmd.CommandText = WardrobeSqlCommands.Insert;
+
+                sqlCmd.Parameters.AddWithValue("@Name", item.Name);
                 sqlCmd.Parameters.AddWithValue("@Description", item.Description);
 
                 var result = await sqlCmd.ExecuteScalarAsync().ConfigureAwait(false);
-                
+
                 await transaction.CommitAsync();
-                    
+
                 if (item.WardrobeId == 0)
                 {
                     item.WardrobeId = Convert.ToInt32(result);
@@ -208,9 +214,9 @@ namespace Maukka.Data
                 Console.WriteLine(e);
                 throw;
             }
-            
+
             await AddClothingXref(item).ConfigureAwait(false);
-            
+
             return item.WardrobeId;
         }
 
@@ -233,29 +239,29 @@ namespace Maukka.Data
         private async Task AddClothingXref(Wardrobe item)
         {
             await AddClothing(item.Items).ConfigureAwait(false);
-            
+
             await using var transaction = _connection.BeginTransaction();
             try
             {
                 await using var sqlCmd = _connection.CreateCommand();
                 sqlCmd.Transaction = transaction;
-                
+
                 foreach (var clothing in item.Items)
                 {
                     sqlCmd.CommandText = ClothingXrefSqlCommands.Get;
                     sqlCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId.Value);
                     sqlCmd.Parameters.AddWithValue("@ClothingId", clothing.ClothingId.Value);
                     var result = await sqlCmd.ExecuteScalarAsync();
-                    
+
                     if (result is null)
                     {
                         sqlCmd.CommandText = ClothingXrefSqlCommands.Insert;
                         await sqlCmd.ExecuteNonQueryAsync();
                     }
-                    
+
                     sqlCmd.Parameters.Clear();
                 }
-                
+
                 await transaction.CommitAsync();
             }
             catch (Exception e)
@@ -269,27 +275,27 @@ namespace Maukka.Data
         public async Task<ClothingId> SaveItemAsync(Clothing item)
         {
             await InitAsync().ConfigureAwait(false);
-            
+
             if (_connection.State is not ConnectionState.Open)
             {
                 await _connection.OpenAsync().ConfigureAwait(false);
             }
-            
+
             await using var transaction = _connection.BeginTransaction();
             try
             {
                 await using var saveCmd = _connection.CreateCommand();
                 saveCmd.Transaction = transaction;
                 saveCmd.CommandText = ClothingSqlCommands.GetById;
-                
+
                 saveCmd.Parameters.AddValues(item);
                 var existing = await saveCmd.ExecuteScalarAsync();
-                
-                saveCmd.CommandText = existing is null || 
-                    item.ClothingId.Value == 0 
+
+                saveCmd.CommandText = existing is null ||
+                                      item.ClothingId.Value == 0
                     ? ClothingSqlCommands.Insert
                     : ClothingSqlCommands.Update;
-                
+
 
                 var result = await saveCmd.ExecuteScalarAsync();
 
@@ -298,7 +304,7 @@ namespace Maukka.Data
                     item.ClothingId = Convert.ToInt32(result);
                 }
                 await transaction.CommitAsync();
-                
+
                 return item.ClothingId;
             }
             catch (Exception e)
@@ -351,7 +357,7 @@ namespace Maukka.Data
         {
             await InitAsync().ConfigureAwait(false);
             await _connection.OpenAsync().ConfigureAwait(false);
-            
+
             await using var transaction = _connection.BeginTransaction();
 
             try
@@ -373,9 +379,9 @@ namespace Maukka.Data
                 {
                     brand.BrandId = Convert.ToInt32(result);
                 }
-                
+
                 await transaction.CommitAsync();
-                
+
                 return brand.BrandId;
             }
             catch (Exception e)
@@ -395,7 +401,7 @@ namespace Maukka.Data
         {
             await InitAsync().ConfigureAwait(false);
             await _connection.OpenAsync().ConfigureAwait(false);
-            
+
             try
             {
                 await using var selectCmd = _connection.CreateCommand();
@@ -410,7 +416,7 @@ namespace Maukka.Data
                 }
 
                 var brand = new Brand(reader.GetInt32(0), reader.GetString(1));
-                
+
                 return brand;
             }
             catch (Exception e)
@@ -436,7 +442,7 @@ namespace Maukka.Data
             {
                 await _connection.OpenAsync().ConfigureAwait(false);
             }
-            
+
             await using var transaction = _connection.BeginTransaction();
 
             try
@@ -504,14 +510,14 @@ namespace Maukka.Data
             {
                 await _connection.OpenAsync().ConfigureAwait(false);
             }
-            
+
             try
             {
                 await using var selectCmd = _connection.CreateCommand();
                 selectCmd.CommandText = ClothingSizeSqlCommands.GetByBrandId;
                 selectCmd.Parameters.AddWithValue("@BrandId", brandId.Value);
                 await using var reader = await selectCmd.ExecuteReaderAsync();
-            
+
                 var clothingSizes = new List<ClothingSize>();
 
                 while (await reader.ReadAsync().ConfigureAwait(false))
@@ -528,12 +534,12 @@ namespace Maukka.Data
                         AgeToMonths = reader.GetInt32(reader.GetOrdinal("AgeToMonths")),
                         Measurements = new Dictionary<string, float>()
                     };
-                    
+
                     await RetrieveMeasurements(clothingSize);
 
                     clothingSizes.Add(clothingSize);
                 }
-                
+
                 return clothingSizes;
             }
             catch (Exception e)
@@ -579,34 +585,36 @@ namespace Maukka.Data
                 await _connection.OpenAsync().ConfigureAwait(false);
             }
             await using var transaction = _connection.BeginTransaction();
-            
+
             try
             {
                 await using var saveCmd = _connection.CreateCommand();
                 saveCmd.Transaction = transaction;
-                
+
                 saveCmd.Parameters.AddValues(
-                    brandClothing.BrandClothingId, brandClothing.Brand.BrandId,
-                    brandClothing.Name, brandClothing.Category);
-                
+                    brandClothing.BrandClothingId,
+                    brandClothing.Brand.BrandId,
+                    brandClothing.Name,
+                    brandClothing.Category);
+
                 saveCmd.CommandText = BrandClothingSqlCommands.GetSingleById;
-                
+
                 var existing = await saveCmd.ExecuteScalarAsync();
-                
-                saveCmd.CommandText = existing is null  || 
-                                      brandClothing.BrandClothingId == 0 
-                    ? BrandClothingSqlCommands.Insert 
+
+                saveCmd.CommandText = existing is null ||
+                                      brandClothing.BrandClothingId == 0
+                    ? BrandClothingSqlCommands.Insert
                     : BrandClothingSqlCommands.Update;
-                
+
                 var result = await saveCmd.ExecuteScalarAsync();
 
                 if (brandClothing.BrandClothingId == 0)
                 {
                     brandClothing.BrandClothingId = Convert.ToInt32(result);
                 }
-                
+
                 await transaction.CommitAsync();
-                
+
                 return brandClothing.BrandClothingId;
             }
             catch (Exception e)
@@ -616,7 +624,7 @@ namespace Maukka.Data
                 throw;
             }
         }
-        
+
         public async Task<IEnumerable<BrandClothing>> GetClothingByBrandId(BrandId brandId)
         {
             await InitAsync().ConfigureAwait(false);
@@ -624,18 +632,21 @@ namespace Maukka.Data
             {
                 await _connection.OpenAsync().ConfigureAwait(false);
             }
-            
+
             try
             {
                 await using var getCmd = _connection.CreateCommand();
-                
-                if (brandId.Value == 0) { return []; }
-                
+
+                if (brandId.Value == 0)
+                {
+                    return [];
+                }
+
                 var foundClothing = new List<BrandClothing>();
-                
+
                 getCmd.CommandText = BrandClothingSqlCommands.GetByBrandId;
                 getCmd.Parameters.AddWithValue("@BrandId", brandId.Value);
-                
+
                 var reader = await getCmd.ExecuteReaderAsync().ConfigureAwait(false);
                 while (await reader.ReadAsync().ConfigureAwait(false))
                 {
@@ -647,12 +658,12 @@ namespace Maukka.Data
                         Category = EnumToStringConverter.StringToEnum<ClothingCategory>(reader.GetString(reader.GetOrdinal("Category"))),
                         ClothingSizes = [],
                     };
-                    
+
                     brandClothing.ClothingSizes = await GetClothingSizes(brandClothing.Brand.BrandId);
-                    
+
                     foundClothing.Add(brandClothing);
                 }
-                
+
                 return foundClothing;
             }
             catch (Exception e)
@@ -661,7 +672,8 @@ namespace Maukka.Data
                 throw;
             }
         }
-        
+
         #endregion
+
     }
 }
