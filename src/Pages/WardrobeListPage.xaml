@@ -50,10 +50,11 @@
                                         <HorizontalStackLayout Spacing="0" Padding="0" Margin="-10">
 
                                             <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
-                                                   Text="{x:Static fonts:ClothesUI.Trousers}"
+                                                   Text="{x:Static fonts:ClothesUI.Shirt}"
                                                    FontAttributes="Bold"
+                                                   Padding="1, 1, 6, 1"
                                                    FontSize="{StaticResource IconSize}" />
-                                            <Label Text="156"
+                                            <Label Text="{Binding Statistics.TotalTops}"
                                                    VerticalOptions="Center" />
                                         </HorizontalStackLayout>
                                     </Border>
@@ -65,8 +66,9 @@
                                             <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
                                                    Text="{x:Static fonts:ClothesUI.Trousers}"
                                                    FontAttributes="Bold"
+                                                   Padding="1, 1, 6, 1"
                                                    FontSize="{StaticResource IconSize}" />
-                                            <Label Text="11" />
+                                            <Label Text="{Binding Statistics.TotalBottoms}" />
                                         </HorizontalStackLayout>
                                     </Border>
                                     <Border StrokeShape="RoundRectangle 12"
@@ -76,8 +78,9 @@
                                             <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
                                                    Text="{x:Static fonts:ClothesUI.Shoe}"
                                                    FontAttributes="Bold"
+                                                   Padding="1, 1, 6, 1"
                                                    FontSize="{StaticResource IconSize}" />
-                                            <Label Text="3" />
+                                            <Label Text="{Binding Statistics.TotalShoes}" />
                                         </HorizontalStackLayout>
                                     </Border>
                                     <Border StrokeShape="RoundRectangle 12"
@@ -87,8 +90,9 @@
                                             <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
                                                    Text="{x:Static fonts:ClothesUI.Hat}"
                                                    FontAttributes="Bold"
+                                                   Padding="1, 1, 6, 1"
                                                    FontSize="{StaticResource IconSize}" />
-                                            <Label Text="2" />
+                                            <Label Text="{Binding Statistics.TotalAccessories}" />
                                         </HorizontalStackLayout>
                                     </Border>
                                 </HorizontalStackLayout>

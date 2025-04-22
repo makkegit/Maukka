@@ -13,7 +13,7 @@ namespace Maukka.PageModels
 
         [ObservableProperty]
         private List<Wardrobe> _wardrobes = [];
-
+        
         public WardrobeListPageModel(WardrobeRepository wardrobeRepository)
         {
             _wardrobeRepository = wardrobeRepository;

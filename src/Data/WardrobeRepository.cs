@@ -122,13 +122,11 @@ namespace Maukka.Data
             await using var reader = await selectCmd.ExecuteReaderAsync();
             if (await reader.ReadAsync())
             {
-                var wardrobe = new Wardrobe
-                {
-                    WardrobeId = reader.GetInt32(reader.GetOrdinal("WardrobeId")),
-                    Name = reader.GetString(reader.GetOrdinal("Name")),
-                    Description = reader.GetString(reader.GetOrdinal("Description")),
-                    Items = []
-                };
+                var wardrobe = Wardrobe.InitWardrobe(
+                    reader.GetInt32(reader.GetOrdinal("WardrobeId")),
+                    reader.GetString(reader.GetOrdinal("Name")),
+                    reader.GetString(reader.GetOrdinal("Description")),
+                    []);
 
                 await using var itemsCmd = _connection.CreateCommand();
                 itemsCmd.CommandText = ClothingXrefSqlCommands.GetClothingByWardrobeId;
@@ -159,7 +157,7 @@ namespace Maukka.Data
 
                     await RetrieveMeasurements(clothing.Size);
 
-                    wardrobe.Items.Add(clothing);
+                    wardrobe.AddClothing(clothing);
                 }
 
                 return wardrobe;
