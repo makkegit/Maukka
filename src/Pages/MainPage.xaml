@@ -44,13 +44,13 @@
                                 BindableLayout.ItemsSource="{Binding Wardrobes}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate x:DataType="models:Wardrobe">
-                                        <controls:ProjectCardView WidthRequest="200">
-                                            <controls:ProjectCardView.GestureRecognizers>
+                                        <controls:WardrobeCardView WidthRequest="200">
+                                            <controls:WardrobeCardView.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding NavigateToWardrobe, 
                                                 Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, 
                                                 x:DataType=pageModels:MainPageModel}" CommandParameter="{Binding .}"/>
-                                            </controls:ProjectCardView.GestureRecognizers>
-                                        </controls:ProjectCardView>
+                                            </controls:WardrobeCardView.GestureRecognizers>
+                                        </controls:WardrobeCardView>
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
                             </HorizontalStackLayout>

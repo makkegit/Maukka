@@ -21,8 +21,10 @@ namespace Maukka
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                    fonts.AddFont("SegoeUI-Semibold.ttf", "SegoeSemibold");
+                    fonts.AddFont("SegueUI-Semibold.ttf", "SegueSemibold");
                     fonts.AddFont("FluentSystemIcons-Regular.ttf", FluentUI.FontFamily);
+                    fonts.AddFont("MaterialSymbolsSharp-VariableFont_FILL.ttf", MaterialIcons.FontFamily);
+                    fonts.AddFont("Clothes.ttf", ClothesUI.FontFamily);
                 });
 
 #if DEBUG
@@ -42,7 +44,7 @@ namespace Maukka
             builder.Services.AddSingleton<WardrobeListPageModel>();
             builder.Services.AddSingleton<ManageMetaPageModel>();
 
-            builder.Services.AddTransientWithShellRoute<WardrobeDetailPage, WardrobeDetailPageModel>("project");
+            builder.Services.AddTransientWithShellRoute<WardrobeDetailPage, WardrobeDetailPageModel>("wardrobe");
             builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
 
             return builder.Build();

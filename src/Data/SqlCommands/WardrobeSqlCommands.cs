@@ -72,7 +72,8 @@ namespace Maukka.Data
         public const string GetWardrobes =
             @"SELECT w.*
                 FROM Wardrobes AS w
-                LEFT JOIN ClothingXref as x ON w.WardrobeId = x.WardrobeId";
+                LEFT JOIN ClothingXref as x ON w.WardrobeId = x.WardrobeId
+                GROUP BY w.WardrobeId";
 
         public const string GetWardrobeById = "SELECT * FROM Wardrobes WHERE WardrobeId = @WardrobeId;";
 

@@ -37,6 +37,12 @@
              Default="12">
         <OnIdiom.Desktop>18</OnIdiom.Desktop>
     </OnIdiom>
+    
+    <OnIdiom x:Key="IconSizeLarge"
+             x:TypeArguments="x:Double"
+             Default="48">
+            <OnIdiom.Desktop>56</OnIdiom.Desktop>
+    </OnIdiom>
 
     <OnIdiom x:Key="LayoutPadding"
              x:TypeArguments="Thickness"

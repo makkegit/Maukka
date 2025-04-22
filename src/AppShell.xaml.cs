@@ -12,6 +12,15 @@ namespace Maukka
             var currentTheme = Application.Current!.UserAppTheme;
             ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
         }
+
+        // protected override void OnAppearing()
+        // {
+        //     base.OnAppearing();
+        //
+        //     Task.Delay(100);
+        //     Shell.Current.GoToAsync("//wardrobes");
+        // }
+        
         public static async Task DisplaySnackbarAsync(string message)
         {
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();

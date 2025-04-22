@@ -125,6 +125,7 @@ namespace Maukka.Data
                 var wardrobe = new Wardrobe
                 {
                     WardrobeId = reader.GetInt32(reader.GetOrdinal("WardrobeId")),
+                    Name = reader.GetString(reader.GetOrdinal("Name")),
                     Description = reader.GetString(reader.GetOrdinal("Description")),
                     Items = []
                 };
