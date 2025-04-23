@@ -4,8 +4,8 @@ namespace Maukka.Pages
     {
         public WardrobeListPage(WardrobeListPageModel model)
         {
-            BindingContext = model;
             InitializeComponent();
+            BindingContext = model;
         }
     }
 }

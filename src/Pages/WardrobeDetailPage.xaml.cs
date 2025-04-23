@@ -7,7 +7,6 @@ namespace Maukka.Pages
         public WardrobeDetailPage(WardrobeDetailPageModel model)
         {
             InitializeComponent();
-
             BindingContext = model;
         }
     }

@@ -113,6 +113,7 @@ namespace Maukka.PageModels
                     return;
                 }
                 
+                Name = _wardrobe.Name;
                 Description = _wardrobe.Description;
                 Items = _wardrobe.Items;
 
