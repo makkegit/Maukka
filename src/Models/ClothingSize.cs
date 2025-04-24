@@ -11,6 +11,10 @@ namespace Maukka.Models
         public const string WaistKey = "waist";
         public const string HipsKey = "hips";
         public const string InsideLegLengthKey = "insideLegLength";
+        public const string FootLengthFromKey = "footLengthFrom";
+        public const string FootLengthToKey = "footLengthTo";
+        public const string HeadCircumferenceFromKey = "headCircumferenceFrom";
+        public const string HeadCircumferenceToKey = "headCircumferenceTo";
         
         public int SizeId { get; set; }
         
@@ -94,6 +98,50 @@ namespace Maukka.Models
             clothing.Measurements.Add(WaistKey, waist);
             clothing.Measurements.Add(HipsKey, hips);
             clothing.Measurements.Add(InsideLegLengthKey, insideLegLength);
+            
+            return clothing;
+        }
+
+        public static ClothingSize CreateShoeSize(CountryCode countryCode,
+            MeasurementUnit measurementUnit, string sizeCode, int ageFromMonths, int ageToMonths,
+            float footLengthFrom, float footLengthTo)
+        {
+            var clothing = new ClothingSize()
+            {
+                CountryCode = countryCode,
+                MeasurementUnit = measurementUnit,
+                Category = ClothingCategory.Shoes,
+                SizeCode = sizeCode,
+                AgeFromMonths = ageFromMonths,
+                AgeToMonths = ageToMonths,
+                AgeFromYears = (float)Math.Round(ageFromMonths / 12f * 2f, 1) / 2f,
+                AgeToYears = (float)Math.Round(ageToMonths / 12f * 2f, 1) / 2f
+            };
+            
+            clothing.Measurements.Add(FootLengthFromKey, footLengthFrom);
+            clothing.Measurements.Add(FootLengthToKey, footLengthTo);
+            
+            return clothing;
+        }
+
+        public static ClothingSize CreateHatSize(CountryCode countryCode,
+            MeasurementUnit measurementUnit, string sizeCode, int ageFromMonths, int ageToMonths,
+            float headCircumferenceFrom, float headCircumferenceTo)
+        {
+            var clothing = new ClothingSize()
+            {
+                CountryCode = countryCode,
+                MeasurementUnit = measurementUnit,
+                Category = ClothingCategory.Hats,
+                SizeCode = sizeCode,
+                AgeFromMonths = ageFromMonths,
+                AgeToMonths = ageToMonths,
+                AgeFromYears = (float)Math.Round(ageFromMonths / 12f * 2f, 1) / 2f,
+                AgeToYears = (float)Math.Round(ageToMonths / 12f * 2f, 1) / 2f
+            };
+            
+            clothing.Measurements.Add(HeadCircumferenceFromKey, headCircumferenceFrom);
+            clothing.Measurements.Add(HeadCircumferenceToKey, headCircumferenceTo);
             
             return clothing;
         }

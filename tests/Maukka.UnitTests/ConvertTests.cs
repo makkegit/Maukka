@@ -59,6 +59,16 @@ namespace Maukka.UnitTests
             
             var allClothingSizes = payload.ClothingSizes.ToList();
             Assert.NotEmpty(allClothingSizes);
+
+            int i = 1;
+            foreach (var size in allClothingSizes)
+            {
+                size.SizeId = i;
+                i++;
+            }
+
+            var json = JsonSerializer.Serialize(allClothingSizes);
+            Assert.NotNull(json);
         }
     }
 }

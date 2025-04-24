@@ -6,7 +6,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "Premature",
+      "SizeCode": "44",
       "AgeFromMonths": 0,
       "AgeToMonths": 0,
       "AgeFromYears": 0,
@@ -22,7 +22,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "0 - 1 months",
+      "SizeCode": "50",
       "AgeFromMonths": 0,
       "AgeToMonths": 1,
       "AgeFromYears": 0,
@@ -38,7 +38,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "1 - 2 months",
+      "SizeCode": "56",
       "AgeFromMonths": 1,
       "AgeToMonths": 2,
       "AgeFromYears": 0,
@@ -54,7 +54,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "2 - 4 months",
+      "SizeCode": "62",
       "AgeFromMonths": 2,
       "AgeToMonths": 4,
       "AgeFromYears": 0,
@@ -70,7 +70,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "4 - 6 months",
+      "SizeCode": "68",
       "AgeFromMonths": 4,
       "AgeToMonths": 6,
       "AgeFromYears": 0,
@@ -86,7 +86,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "6 - 9 months",
+      "SizeCode": "74",
       "AgeFromMonths": 6,
       "AgeToMonths": 9,
       "AgeFromYears": 0,
@@ -102,7 +102,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "9 - 12 months",
+      "SizeCode": "80",
       "AgeFromMonths": 9,
       "AgeToMonths": 12,
       "AgeFromYears": 0,
@@ -118,7 +118,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "1 - 1.5 years",
+      "SizeCode": "86",
       "AgeFromMonths": 12,
       "AgeToMonths": 18,
       "AgeFromYears": 0,
@@ -134,7 +134,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "1.5 - 2 years",
+      "SizeCode": "92",
       "AgeFromMonths": 18,
       "AgeToMonths": 24,
       "AgeFromYears": 0,
@@ -150,7 +150,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "2 - 3 years",
+      "SizeCode": "98",
       "AgeFromMonths": 24,
       "AgeToMonths": 36,
       "AgeFromYears": 0,
@@ -166,7 +166,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "3 - 4 years",
+      "SizeCode": "104",
       "AgeFromMonths": 36,
       "AgeToMonths": 48,
       "AgeFromYears": 0,
@@ -182,7 +182,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "4 - 5 years",
+      "SizeCode": "110",
       "AgeFromMonths": 48,
       "AgeToMonths": 60,
       "AgeFromYears": 0,
@@ -198,7 +198,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "5 - 6 years",
+      "SizeCode": "116",
       "AgeFromMonths": 60,
       "AgeToMonths": 72,
       "AgeFromYears": 0,
@@ -214,7 +214,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "6 - 7 years",
+      "SizeCode": "122",
       "AgeFromMonths": 72,
       "AgeToMonths": 84,
       "AgeFromYears": 0,
@@ -230,7 +230,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "7 - 8 years",
+      "SizeCode": "128",
       "AgeFromMonths": 84,
       "AgeToMonths": 96,
       "AgeFromYears": 0,
@@ -246,7 +246,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "8 - 9 years",
+      "SizeCode": "134",
       "AgeFromMonths": 96,
       "AgeToMonths": 108,
       "AgeFromYears": 0,
@@ -262,7 +262,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "9 - 10 years",
+      "SizeCode": "140",
       "AgeFromMonths": 108,
       "AgeToMonths": 120,
       "AgeFromYears": 0,
@@ -278,7 +278,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "10 - 11 years",
+      "SizeCode": "146",
       "AgeFromMonths": 120,
       "AgeToMonths": 132,
       "AgeFromYears": 0,
@@ -294,7 +294,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "11 - 12 years",
+      "SizeCode": "152",
       "AgeFromMonths": 132,
       "AgeToMonths": 144,
       "AgeFromYears": 0,
@@ -310,7 +310,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "Premature",
+      "SizeCode": "44",
       "AgeFromMonths": 0,
       "AgeToMonths": 0,
       "AgeFromYears": 0,
@@ -327,7 +327,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "0 - 1 months",
+      "SizeCode": "50",
       "AgeFromMonths": 0,
       "AgeToMonths": 1,
       "AgeFromYears": 0,
@@ -344,7 +344,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "1 - 2 months",
+      "SizeCode": "56",
       "AgeFromMonths": 1,
       "AgeToMonths": 2,
       "AgeFromYears": 0,
@@ -361,7 +361,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "2 - 4 months",
+      "SizeCode": "62",
       "AgeFromMonths": 2,
       "AgeToMonths": 4,
       "AgeFromYears": 0,
@@ -378,7 +378,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "4 - 6 months",
+      "SizeCode": "68",
       "AgeFromMonths": 4,
       "AgeToMonths": 6,
       "AgeFromYears": 0,
@@ -395,7 +395,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "6 - 9 months",
+      "SizeCode": "74",
       "AgeFromMonths": 6,
       "AgeToMonths": 9,
       "AgeFromYears": 0,
@@ -412,7 +412,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "9 - 12 months",
+      "SizeCode": "80",
       "AgeFromMonths": 9,
       "AgeToMonths": 12,
       "AgeFromYears": 0,
@@ -429,7 +429,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "1 - 1.5 years",
+      "SizeCode": "86",
       "AgeFromMonths": 12,
       "AgeToMonths": 18,
       "AgeFromYears": 0,
@@ -446,7 +446,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "1.5 - 2 years",
+      "SizeCode": "92",
       "AgeFromMonths": 18,
       "AgeToMonths": 24,
       "AgeFromYears": 0,
@@ -463,7 +463,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "2 - 3 years",
+      "SizeCode": "98",
       "AgeFromMonths": 24,
       "AgeToMonths": 36,
       "AgeFromYears": 0,
@@ -480,7 +480,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "3 - 4 years",
+      "SizeCode": "104",
       "AgeFromMonths": 36,
       "AgeToMonths": 48,
       "AgeFromYears": 0,
@@ -497,7 +497,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "4 - 5 years",
+      "SizeCode": "110",
       "AgeFromMonths": 48,
       "AgeToMonths": 60,
       "AgeFromYears": 0,
@@ -514,7 +514,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "5 - 6 years",
+      "SizeCode": "116",
       "AgeFromMonths": 60,
       "AgeToMonths": 72,
       "AgeFromYears": 0,
@@ -531,7 +531,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "6 - 7 years",
+      "SizeCode": "122",
       "AgeFromMonths": 72,
       "AgeToMonths": 84,
       "AgeFromYears": 0,
@@ -548,7 +548,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "7 - 8 years",
+      "SizeCode": "128",
       "AgeFromMonths": 84,
       "AgeToMonths": 96,
       "AgeFromYears": 0,
@@ -565,7 +565,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "8 - 9 years",
+      "SizeCode": "134",
       "AgeFromMonths": 96,
       "AgeToMonths": 108,
       "AgeFromYears": 0,
@@ -582,7 +582,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "9 - 10 years",
+      "SizeCode": "140",
       "AgeFromMonths": 108,
       "AgeToMonths": 120,
       "AgeFromYears": 0,
@@ -599,7 +599,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "10 - 11 years",
+      "SizeCode": "146",
       "AgeFromMonths": 120,
       "AgeToMonths": 132,
       "AgeFromYears": 0,
@@ -616,7 +616,7 @@
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "11 - 12 years",
+      "SizeCode": "152",
       "AgeFromMonths": 132,
       "AgeToMonths": 144,
       "AgeFromYears": 0,
@@ -629,11 +629,619 @@
     },
     {
       "SizeId": 39,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "10-12",
+      "AgeFromMonths": 0,
+      "AgeToMonths": 0,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 6.9,
+        "footLengthTo": 8
+      }
+    },
+    {
+      "SizeId": 40,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "10-12",
+      "AgeFromMonths": 0,
+      "AgeToMonths": 1,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 6.9,
+        "footLengthTo": 8
+      }
+    },
+    {
+      "SizeId": 41,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "13-15",
+      "AgeFromMonths": 1,
+      "AgeToMonths": 2,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 8,
+        "footLengthTo": 9.5
+      }
+    },
+    {
+      "SizeId": 42,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "13-15",
+      "AgeFromMonths": 2,
+      "AgeToMonths": 4,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 8,
+        "footLengthTo": 9.5
+      }
+    },
+    {
+      "SizeId": 43,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "16-18",
+      "AgeFromMonths": 4,
+      "AgeToMonths": 6,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 9.5,
+        "footLengthTo": 11
+      }
+    },
+    {
+      "SizeId": 44,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "16-18",
+      "AgeFromMonths": 6,
+      "AgeToMonths": 9,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 9.5,
+        "footLengthTo": 11
+      }
+    },
+    {
+      "SizeId": 45,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "19-21",
+      "AgeFromMonths": 9,
+      "AgeToMonths": 12,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 11,
+        "footLengthTo": 13
+      }
+    },
+    {
+      "SizeId": 46,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "22-24",
+      "AgeFromMonths": 12,
+      "AgeToMonths": 18,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 13,
+        "footLengthTo": 15
+      }
+    },
+    {
+      "SizeId": 47,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "22-24",
+      "AgeFromMonths": 18,
+      "AgeToMonths": 24,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 13,
+        "footLengthTo": 15
+      }
+    },
+    {
+      "SizeId": 48,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "25-27",
+      "AgeFromMonths": 24,
+      "AgeToMonths": 36,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 15,
+        "footLengthTo": 17
+      }
+    },
+    {
+      "SizeId": 49,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "25-27",
+      "AgeFromMonths": 36,
+      "AgeToMonths": 48,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 15,
+        "footLengthTo": 17
+      }
+    },
+    {
+      "SizeId": 50,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "28-30",
+      "AgeFromMonths": 48,
+      "AgeToMonths": 60,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 17,
+        "footLengthTo": 19
+      }
+    },
+    {
+      "SizeId": 51,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "28-30",
+      "AgeFromMonths": 60,
+      "AgeToMonths": 72,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 17,
+        "footLengthTo": 19
+      }
+    },
+    {
+      "SizeId": 52,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "31-33",
+      "AgeFromMonths": 72,
+      "AgeToMonths": 84,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 19,
+        "footLengthTo": 21
+      }
+    },
+    {
+      "SizeId": 53,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "31-33",
+      "AgeFromMonths": 84,
+      "AgeToMonths": 96,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 19,
+        "footLengthTo": 21
+      }
+    },
+    {
+      "SizeId": 54,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "34-36",
+      "AgeFromMonths": 96,
+      "AgeToMonths": 108,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 21,
+        "footLengthTo": 23
+      }
+    },
+    {
+      "SizeId": 55,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "34-36",
+      "AgeFromMonths": 108,
+      "AgeToMonths": 120,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 21,
+        "footLengthTo": 23
+      }
+    },
+    {
+      "SizeId": 56,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "37-39",
+      "AgeFromMonths": 120,
+      "AgeToMonths": 132,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 23,
+        "footLengthTo": 25
+      }
+    },
+    {
+      "SizeId": 57,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "40-42",
+      "AgeFromMonths": 132,
+      "AgeToMonths": 144,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 25,
+        "footLengthTo": 27
+      }
+    },
+    {
+      "SizeId": 58,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "36",
+      "AgeFromMonths": 0,
+      "AgeToMonths": 0,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 36,
+        "headCircumferenceTo": 36
+      }
+    },
+    {
+      "SizeId": 59,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "36-38",
+      "AgeFromMonths": 0,
+      "AgeToMonths": 1,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 36,
+        "headCircumferenceTo": 38
+      }
+    },
+    {
+      "SizeId": 60,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "40-42",
+      "AgeFromMonths": 1,
+      "AgeToMonths": 2,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 40,
+        "headCircumferenceTo": 42
+      }
+    },
+    {
+      "SizeId": 61,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "40-42",
+      "AgeFromMonths": 2,
+      "AgeToMonths": 4,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 40,
+        "headCircumferenceTo": 42
+      }
+    },
+    {
+      "SizeId": 62,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "44-46",
+      "AgeFromMonths": 4,
+      "AgeToMonths": 6,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 44,
+        "headCircumferenceTo": 46
+      }
+    },
+    {
+      "SizeId": 63,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "44-46",
+      "AgeFromMonths": 6,
+      "AgeToMonths": 9,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 44,
+        "headCircumferenceTo": 46
+      }
+    },
+    {
+      "SizeId": 64,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "48-50",
+      "AgeFromMonths": 9,
+      "AgeToMonths": 12,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 48,
+        "headCircumferenceTo": 50
+      }
+    },
+    {
+      "SizeId": 65,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "48-50",
+      "AgeFromMonths": 12,
+      "AgeToMonths": 18,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 48,
+        "headCircumferenceTo": 50
+      }
+    },
+    {
+      "SizeId": 66,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "48-50",
+      "AgeFromMonths": 18,
+      "AgeToMonths": 24,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 48,
+        "headCircumferenceTo": 50
+      }
+    },
+    {
+      "SizeId": 67,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 24,
+      "AgeToMonths": 36,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 68,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 36,
+      "AgeToMonths": 48,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 69,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 48,
+      "AgeToMonths": 60,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 70,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 60,
+      "AgeToMonths": 72,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 71,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 72,
+      "AgeToMonths": 84,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 72,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 84,
+      "AgeToMonths": 96,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 73,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 96,
+      "AgeToMonths": 108,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 74,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "56-58",
+      "AgeFromMonths": 108,
+      "AgeToMonths": 120,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 56,
+        "headCircumferenceTo": 58
+      }
+    },
+    {
+      "SizeId": 75,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "56-58",
+      "AgeFromMonths": 120,
+      "AgeToMonths": 132,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 56,
+        "headCircumferenceTo": 58
+      }
+    },
+    {
+      "SizeId": 76,
+      "BrandId": 1,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "56-58",
+      "AgeFromMonths": 132,
+      "AgeToMonths": 144,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 56,
+        "headCircumferenceTo": 58
+      }
+    },
+    {
+      "SizeId": 77,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "Premature",
+      "SizeCode": "44",
       "AgeFromMonths": 0,
       "AgeToMonths": 0,
       "AgeFromYears": 0,
@@ -644,12 +1252,12 @@
       }
     },
     {
-      "SizeId": 40,
+      "SizeId": 78,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "0 - 1 months",
+      "SizeCode": "50",
       "AgeFromMonths": 0,
       "AgeToMonths": 1,
       "AgeFromYears": 0,
@@ -660,12 +1268,12 @@
       }
     },
     {
-      "SizeId": 41,
+      "SizeId": 79,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "1 - 2 months",
+      "SizeCode": "56",
       "AgeFromMonths": 1,
       "AgeToMonths": 2,
       "AgeFromYears": 0,
@@ -676,12 +1284,12 @@
       }
     },
     {
-      "SizeId": 42,
+      "SizeId": 80,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "2 - 4 months",
+      "SizeCode": "62",
       "AgeFromMonths": 2,
       "AgeToMonths": 4,
       "AgeFromYears": 0,
@@ -692,12 +1300,12 @@
       }
     },
     {
-      "SizeId": 43,
+      "SizeId": 81,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "4 - 6 months",
+      "SizeCode": "68",
       "AgeFromMonths": 4,
       "AgeToMonths": 6,
       "AgeFromYears": 0,
@@ -708,12 +1316,12 @@
       }
     },
     {
-      "SizeId": 44,
+      "SizeId": 82,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "6 - 9 months",
+      "SizeCode": "74",
       "AgeFromMonths": 6,
       "AgeToMonths": 9,
       "AgeFromYears": 0,
@@ -724,12 +1332,12 @@
       }
     },
     {
-      "SizeId": 45,
+      "SizeId": 83,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "9 - 12 months",
+      "SizeCode": "80",
       "AgeFromMonths": 9,
       "AgeToMonths": 12,
       "AgeFromYears": 0,
@@ -740,12 +1348,12 @@
       }
     },
     {
-      "SizeId": 46,
+      "SizeId": 84,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "1 - 1.5 years",
+      "SizeCode": "86",
       "AgeFromMonths": 12,
       "AgeToMonths": 18,
       "AgeFromYears": 0,
@@ -756,12 +1364,12 @@
       }
     },
     {
-      "SizeId": 47,
+      "SizeId": 85,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "1.5 - 2 years",
+      "SizeCode": "92",
       "AgeFromMonths": 18,
       "AgeToMonths": 24,
       "AgeFromYears": 0,
@@ -772,12 +1380,12 @@
       }
     },
     {
-      "SizeId": 48,
+      "SizeId": 86,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "2 - 3 years",
+      "SizeCode": "98",
       "AgeFromMonths": 24,
       "AgeToMonths": 36,
       "AgeFromYears": 0,
@@ -788,12 +1396,12 @@
       }
     },
     {
-      "SizeId": 49,
+      "SizeId": 87,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "3 - 4 years",
+      "SizeCode": "104",
       "AgeFromMonths": 36,
       "AgeToMonths": 48,
       "AgeFromYears": 0,
@@ -804,12 +1412,12 @@
       }
     },
     {
-      "SizeId": 50,
+      "SizeId": 88,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "4 - 5 years",
+      "SizeCode": "110",
       "AgeFromMonths": 48,
       "AgeToMonths": 60,
       "AgeFromYears": 0,
@@ -820,12 +1428,12 @@
       }
     },
     {
-      "SizeId": 51,
+      "SizeId": 89,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "5 - 6 years",
+      "SizeCode": "116",
       "AgeFromMonths": 60,
       "AgeToMonths": 72,
       "AgeFromYears": 0,
@@ -836,12 +1444,12 @@
       }
     },
     {
-      "SizeId": 52,
+      "SizeId": 90,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "6 - 7 years",
+      "SizeCode": "122",
       "AgeFromMonths": 72,
       "AgeToMonths": 84,
       "AgeFromYears": 0,
@@ -852,12 +1460,12 @@
       }
     },
     {
-      "SizeId": 53,
+      "SizeId": 91,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "7 - 8 years",
+      "SizeCode": "128",
       "AgeFromMonths": 84,
       "AgeToMonths": 96,
       "AgeFromYears": 0,
@@ -868,12 +1476,12 @@
       }
     },
     {
-      "SizeId": 54,
+      "SizeId": 92,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "8 - 9 years",
+      "SizeCode": "134",
       "AgeFromMonths": 96,
       "AgeToMonths": 108,
       "AgeFromYears": 0,
@@ -884,12 +1492,12 @@
       }
     },
     {
-      "SizeId": 55,
+      "SizeId": 93,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "9 - 10 years",
+      "SizeCode": "140",
       "AgeFromMonths": 108,
       "AgeToMonths": 120,
       "AgeFromYears": 0,
@@ -900,12 +1508,12 @@
       }
     },
     {
-      "SizeId": 56,
+      "SizeId": 94,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "10 - 11 years",
+      "SizeCode": "146",
       "AgeFromMonths": 120,
       "AgeToMonths": 132,
       "AgeFromYears": 0,
@@ -916,12 +1524,12 @@
       }
     },
     {
-      "SizeId": 57,
+      "SizeId": 95,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "tops",
-      "SizeCode": "11 - 12 years",
+      "SizeCode": "152",
       "AgeFromMonths": 132,
       "AgeToMonths": 144,
       "AgeFromYears": 0,
@@ -932,12 +1540,12 @@
       }
     },
     {
-      "SizeId": 58,
+      "SizeId": 96,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "Premature",
+      "SizeCode": "44",
       "AgeFromMonths": 0,
       "AgeToMonths": 0,
       "AgeFromYears": 0,
@@ -949,12 +1557,12 @@
       }
     },
     {
-      "SizeId": 59,
+      "SizeId": 97,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "0 - 1 months",
+      "SizeCode": "50",
       "AgeFromMonths": 0,
       "AgeToMonths": 1,
       "AgeFromYears": 0,
@@ -966,12 +1574,12 @@
       }
     },
     {
-      "SizeId": 60,
+      "SizeId": 98,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "1 - 2 months",
+      "SizeCode": "56",
       "AgeFromMonths": 1,
       "AgeToMonths": 2,
       "AgeFromYears": 0,
@@ -983,12 +1591,12 @@
       }
     },
     {
-      "SizeId": 61,
+      "SizeId": 99,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "2 - 4 months",
+      "SizeCode": "62",
       "AgeFromMonths": 2,
       "AgeToMonths": 4,
       "AgeFromYears": 0,
@@ -1000,12 +1608,12 @@
       }
     },
     {
-      "SizeId": 62,
+      "SizeId": 100,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "4 - 6 months",
+      "SizeCode": "68",
       "AgeFromMonths": 4,
       "AgeToMonths": 6,
       "AgeFromYears": 0,
@@ -1017,12 +1625,12 @@
       }
     },
     {
-      "SizeId": 63,
+      "SizeId": 101,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "6 - 9 months",
+      "SizeCode": "74",
       "AgeFromMonths": 6,
       "AgeToMonths": 9,
       "AgeFromYears": 0,
@@ -1034,12 +1642,12 @@
       }
     },
     {
-      "SizeId": 64,
+      "SizeId": 102,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "9 - 12 months",
+      "SizeCode": "80",
       "AgeFromMonths": 9,
       "AgeToMonths": 12,
       "AgeFromYears": 0,
@@ -1051,12 +1659,12 @@
       }
     },
     {
-      "SizeId": 65,
+      "SizeId": 103,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "1 - 1.5 years",
+      "SizeCode": "86",
       "AgeFromMonths": 12,
       "AgeToMonths": 18,
       "AgeFromYears": 0,
@@ -1068,12 +1676,12 @@
       }
     },
     {
-      "SizeId": 66,
+      "SizeId": 104,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "1.5 - 2 years",
+      "SizeCode": "92",
       "AgeFromMonths": 18,
       "AgeToMonths": 24,
       "AgeFromYears": 0,
@@ -1085,12 +1693,12 @@
       }
     },
     {
-      "SizeId": 67,
+      "SizeId": 105,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "2 - 3 years",
+      "SizeCode": "98",
       "AgeFromMonths": 24,
       "AgeToMonths": 36,
       "AgeFromYears": 0,
@@ -1102,12 +1710,12 @@
       }
     },
     {
-      "SizeId": 68,
+      "SizeId": 106,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "3 - 4 years",
+      "SizeCode": "104",
       "AgeFromMonths": 36,
       "AgeToMonths": 48,
       "AgeFromYears": 0,
@@ -1119,12 +1727,12 @@
       }
     },
     {
-      "SizeId": 69,
+      "SizeId": 107,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "4 - 5 years",
+      "SizeCode": "110",
       "AgeFromMonths": 48,
       "AgeToMonths": 60,
       "AgeFromYears": 0,
@@ -1136,12 +1744,12 @@
       }
     },
     {
-      "SizeId": 70,
+      "SizeId": 108,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "5 - 6 years",
+      "SizeCode": "116",
       "AgeFromMonths": 60,
       "AgeToMonths": 72,
       "AgeFromYears": 0,
@@ -1153,12 +1761,12 @@
       }
     },
     {
-      "SizeId": 71,
+      "SizeId": 109,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "6 - 7 years",
+      "SizeCode": "122",
       "AgeFromMonths": 72,
       "AgeToMonths": 84,
       "AgeFromYears": 0,
@@ -1170,12 +1778,12 @@
       }
     },
     {
-      "SizeId": 72,
+      "SizeId": 110,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "7 - 8 years",
+      "SizeCode": "128",
       "AgeFromMonths": 84,
       "AgeToMonths": 96,
       "AgeFromYears": 0,
@@ -1187,12 +1795,12 @@
       }
     },
     {
-      "SizeId": 73,
+      "SizeId": 111,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "8 - 9 years",
+      "SizeCode": "134",
       "AgeFromMonths": 96,
       "AgeToMonths": 108,
       "AgeFromYears": 0,
@@ -1204,12 +1812,12 @@
       }
     },
     {
-      "SizeId": 74,
+      "SizeId": 112,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "9 - 10 years",
+      "SizeCode": "140",
       "AgeFromMonths": 108,
       "AgeToMonths": 120,
       "AgeFromYears": 0,
@@ -1221,12 +1829,12 @@
       }
     },
     {
-      "SizeId": 75,
+      "SizeId": 113,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "10 - 11 years",
+      "SizeCode": "146",
       "AgeFromMonths": 120,
       "AgeToMonths": 132,
       "AgeFromYears": 0,
@@ -1238,12 +1846,12 @@
       }
     },
     {
-      "SizeId": 76,
+      "SizeId": 114,
       "BrandId": 2,
       "CountryCode": "eu",
       "MeasurementUnit": "cm",
       "Category": "bottoms",
-      "SizeCode": "11 - 12 years",
+      "SizeCode": "152",
       "AgeFromMonths": 132,
       "AgeToMonths": 144,
       "AgeFromYears": 0,
@@ -1252,6 +1860,614 @@
         "waist": 70,
         "hips": 82,
         "insideLegLength": 72.5
+      }
+    },
+    {
+      "SizeId": 115,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "Premature",
+      "AgeFromMonths": 0,
+      "AgeToMonths": 0,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 6.9,
+        "footLengthTo": 8
+      }
+    },
+    {
+      "SizeId": 116,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "0 - 1 months",
+      "AgeFromMonths": 0,
+      "AgeToMonths": 1,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 6.9,
+        "footLengthTo": 8
+      }
+    },
+    {
+      "SizeId": 117,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "1 - 2 months",
+      "AgeFromMonths": 1,
+      "AgeToMonths": 2,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 8,
+        "footLengthTo": 9.5
+      }
+    },
+    {
+      "SizeId": 118,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "2 - 4 months",
+      "AgeFromMonths": 2,
+      "AgeToMonths": 4,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 8,
+        "footLengthTo": 9.5
+      }
+    },
+    {
+      "SizeId": 119,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "4 - 6 months",
+      "AgeFromMonths": 4,
+      "AgeToMonths": 6,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 9.5,
+        "footLengthTo": 11
+      }
+    },
+    {
+      "SizeId": 120,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "6 - 9 months",
+      "AgeFromMonths": 6,
+      "AgeToMonths": 9,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 9.5,
+        "footLengthTo": 11
+      }
+    },
+    {
+      "SizeId": 121,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "9 - 12 months",
+      "AgeFromMonths": 9,
+      "AgeToMonths": 12,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 11,
+        "footLengthTo": 13
+      }
+    },
+    {
+      "SizeId": 122,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "1 - 1.5 years",
+      "AgeFromMonths": 12,
+      "AgeToMonths": 18,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 13,
+        "footLengthTo": 15
+      }
+    },
+    {
+      "SizeId": 123,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "1.5 - 2 years",
+      "AgeFromMonths": 18,
+      "AgeToMonths": 24,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 13,
+        "footLengthTo": 15
+      }
+    },
+    {
+      "SizeId": 124,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "2 - 3 years",
+      "AgeFromMonths": 24,
+      "AgeToMonths": 36,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 15,
+        "footLengthTo": 17
+      }
+    },
+    {
+      "SizeId": 125,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "3 - 4 years",
+      "AgeFromMonths": 36,
+      "AgeToMonths": 48,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 15,
+        "footLengthTo": 17
+      }
+    },
+    {
+      "SizeId": 126,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "4 - 5 years",
+      "AgeFromMonths": 48,
+      "AgeToMonths": 60,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 17,
+        "footLengthTo": 19
+      }
+    },
+    {
+      "SizeId": 127,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "5 - 6 years",
+      "AgeFromMonths": 60,
+      "AgeToMonths": 72,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 17,
+        "footLengthTo": 19
+      }
+    },
+    {
+      "SizeId": 128,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "6 - 7 years",
+      "AgeFromMonths": 72,
+      "AgeToMonths": 84,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 19,
+        "footLengthTo": 21
+      }
+    },
+    {
+      "SizeId": 129,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "7 - 8 years",
+      "AgeFromMonths": 84,
+      "AgeToMonths": 96,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 19,
+        "footLengthTo": 21
+      }
+    },
+    {
+      "SizeId": 130,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "8 - 9 years",
+      "AgeFromMonths": 96,
+      "AgeToMonths": 108,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 21,
+        "footLengthTo": 23
+      }
+    },
+    {
+      "SizeId": 131,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "9 - 10 years",
+      "AgeFromMonths": 108,
+      "AgeToMonths": 120,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 21,
+        "footLengthTo": 23
+      }
+    },
+    {
+      "SizeId": 132,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "10 - 11 years",
+      "AgeFromMonths": 120,
+      "AgeToMonths": 132,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 23,
+        "footLengthTo": 25
+      }
+    },
+    {
+      "SizeId": 133,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "shoes",
+      "SizeCode": "11 - 12 years",
+      "AgeFromMonths": 132,
+      "AgeToMonths": 144,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "footLengthFrom": 25,
+        "footLengthTo": 27
+      }
+    },
+    {
+      "SizeId": 134,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "36",
+      "AgeFromMonths": 0,
+      "AgeToMonths": 0,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 36,
+        "headCircumferenceTo": 36
+      }
+    },
+    {
+      "SizeId": 135,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "36-38",
+      "AgeFromMonths": 0,
+      "AgeToMonths": 1,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 36,
+        "headCircumferenceTo": 38
+      }
+    },
+    {
+      "SizeId": 136,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "40-42",
+      "AgeFromMonths": 1,
+      "AgeToMonths": 2,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 40,
+        "headCircumferenceTo": 42
+      }
+    },
+    {
+      "SizeId": 137,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "40-42",
+      "AgeFromMonths": 2,
+      "AgeToMonths": 4,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 40,
+        "headCircumferenceTo": 42
+      }
+    },
+    {
+      "SizeId": 138,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "44-46",
+      "AgeFromMonths": 4,
+      "AgeToMonths": 6,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 44,
+        "headCircumferenceTo": 46
+      }
+    },
+    {
+      "SizeId": 139,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "44-46",
+      "AgeFromMonths": 6,
+      "AgeToMonths": 9,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 44,
+        "headCircumferenceTo": 46
+      }
+    },
+    {
+      "SizeId": 140,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "48-50",
+      "AgeFromMonths": 9,
+      "AgeToMonths": 12,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 48,
+        "headCircumferenceTo": 50
+      }
+    },
+    {
+      "SizeId": 141,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "48-50",
+      "AgeFromMonths": 12,
+      "AgeToMonths": 18,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 48,
+        "headCircumferenceTo": 50
+      }
+    },
+    {
+      "SizeId": 142,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "48-50",
+      "AgeFromMonths": 18,
+      "AgeToMonths": 24,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 48,
+        "headCircumferenceTo": 50
+      }
+    },
+    {
+      "SizeId": 143,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 24,
+      "AgeToMonths": 36,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 144,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 36,
+      "AgeToMonths": 48,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 145,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 48,
+      "AgeToMonths": 60,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 146,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 60,
+      "AgeToMonths": 72,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 147,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 72,
+      "AgeToMonths": 84,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 148,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 84,
+      "AgeToMonths": 96,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 149,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "52-54",
+      "AgeFromMonths": 96,
+      "AgeToMonths": 108,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 52,
+        "headCircumferenceTo": 54
+      }
+    },
+    {
+      "SizeId": 150,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "56-58",
+      "AgeFromMonths": 108,
+      "AgeToMonths": 120,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 56,
+        "headCircumferenceTo": 58
+      }
+    },
+    {
+      "SizeId": 151,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "56-58",
+      "AgeFromMonths": 120,
+      "AgeToMonths": 132,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 56,
+        "headCircumferenceTo": 58
+      }
+    },
+    {
+      "SizeId": 152,
+      "BrandId": 2,
+      "CountryCode": "eu",
+      "MeasurementUnit": "cm",
+      "Category": "hats",
+      "SizeCode": "56-58",
+      "AgeFromMonths": 132,
+      "AgeToMonths": 144,
+      "AgeFromYears": 0,
+      "AgeToYears": 0,
+      "Measurements": {
+        "headCircumferenceFrom": 56,
+        "headCircumferenceTo": 58
       }
     }
   ]

@@ -64,7 +64,10 @@ namespace Maukka.Data.SqlCommands
         public const string CreateSizeMeasurementsTable =
             @"CREATE TABLE IF NOT EXISTS SizeMeasurements (
                 SizeId INTEGER NOT NULL,
-                MeasurementKey TEXT NOT NULL CHECK(lower(MeasurementKey) IN ('height', 'chest', 'sizenbr', 'waist', 'hips', 'insideleglength')),
+                MeasurementKey TEXT NOT NULL CHECK(lower(MeasurementKey) IN 
+                    ('height', 'chest', 'sizenbr', 'waist', 'hips', 
+                     'insideleglength', 'footlengthfrom', 'footlengthto', 
+                     'headcircumferencefrom', 'headcircumferenceto')),
                 Value REAL NOT NULL,
                 PRIMARY KEY (SizeId, MeasurementKey),
                 FOREIGN KEY(SizeId) REFERENCES ClothingSizes(SizeId)

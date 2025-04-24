@@ -2,44 +2,211 @@
   "BrandClothing":
   [
     {
-      "BrandClothingId": 1,
       "Brand":
       {
         "BrandId": 1,
         "BrandName": "Makkest"
       },
-      "Name": "Summer Cat T-shirt",
+      "Name": "Summer Cat T-shirt 😺",
       "Category": "tops"
     },
     {
-      "BrandClothingId": 2,
       "Brand":
       {
         "BrandId": 1,
         "BrandName": "Makkest"
       },
-      "Name": "Summer Pants",
-      "Category": "bottoms"
-    },
-    {
-      "BrandClothingId": 3,
-      "Brand":
-      {
-        "BrandId": 1,
-        "BrandName": "Makkest"
-      },
-      "Name": "Winter Cat T-shirt",
+      "Name": "Summer Dog T-shirt 🐶",
       "Category": "tops"
     },
     {
-      "BrandClothingId": 4,
       "Brand":
       {
         "BrandId": 1,
         "BrandName": "Makkest"
       },
-      "Name": "Winter Pants",
+      "Name": "Summer Bambi T-shirt 🦌",
+      "Category": "tops"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Summer Pants 🌞",
       "Category": "bottoms"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Summer Cat Pants 😺",
+      "Category": "bottoms"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Summer Dog Pants 🐶",
+      "Category": "bottoms"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Summer sandaalit",
+      "Category": "shoes"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Summer kuomat",
+      "Category": "shoes"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Summer sukat",
+      "Category": "shoes"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Summer lenkkarit",
+      "Category": "shoes"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Summer hattu",
+      "Category": "hats"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Summer lakki",
+      "Category": "hats"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter Cat T-shirt 😺",
+      "Category": "tops"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter Dog T-shirt 🐶",
+      "Category": "tops"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter Bambi T-shirt 🦌",
+      "Category": "tops"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter Pants 🌞",
+      "Category": "bottoms"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter Cat Pants 😺",
+      "Category": "bottoms"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter Dog Pants 🐶",
+      "Category": "bottoms"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter sandaalit",
+      "Category": "shoes"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter kuomat",
+      "Category": "shoes"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter lenkkarit",
+      "Category": "shoes"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter hattu",
+      "Category": "hats"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter lakki",
+      "Category": "hats"
     }
   ]
 }

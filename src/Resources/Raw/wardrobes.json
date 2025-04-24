@@ -8,102 +8,110 @@
                 {
                     "ClothingId": 1,
                     "BrandClothingId": 1,
-                    "BrandName": "MakkeBrand",
-                    "ClothingName": "Summer Cat T-shirt",
-                    "Category": "tops",
                     "Quantity": 1,
                     "Size": {
-                        "SizeId": 8,
-                        "CountryCode": "eu",
-                        "MeasurementUnit": "cm",
-                        "Category": "tops",
-                        "SizeCode": "1 - 1.5 years",
-                        "AgeFromMonths": 12,
-                        "AgeToMonths": 18,
-                        "AgeFromYears": 1,
-                        "AgeToYears": 1.5,
-                        "Measurements": {
-                            "chest": 86,
-                            "height": 55,
-                            "sizeNbr": 1.5
-                        }
+                        "SizeId": 9
                     },
-                    "Alias": "Kesäpaita"
+                    "Alias": "Kesäinen kisupaita"
                 },
                 {
                     "ClothingId": 2,
                     "BrandClothingId": 2,
-                    "BrandName": "MakkeBrand",
-                    "ClothingName": "Summer Pants",
-                    "Category": "bottoms",
-                    "Quantity": 3,
+                    "Quantity": 1,
                     "Size": {
-                        "SizeId": 27,
-                        "CountryCode": "eu",
-                        "MeasurementUnit": "cm",
-                        "Category": "bottoms",
-                        "SizeCode": "1 - 1.5 years",
-                        "AgeFromMonths": 12,
-                        "AgeToMonths": 18,
-                        "AgeFromYears": 1,
-                        "AgeToYears": 1.5,
-                        "Measurements": {
-                            "waist": 50,
-                            "hips": 55,
-                            "insideLegLength": 36.5
-                        }
+                        "SizeId": 9 
                     },
-                    "Alias": "Kesähousut"
+                    "Alias": "Kesäinen koirapaita"
                 },
                 {
                     "ClothingId": 3,
                     "BrandClothingId": 3,
-                    "BrandName": "MakkeBrand",
-                    "ClothingName": "Summer Pants",
-                    "Category": "bottoms",
-                    "Quantity": 3,
+                    "Quantity": 1,
                     "Size": {
-                        "SizeId": 27,
-                        "CountryCode": "eu",
-                        "MeasurementUnit": "cm",
-                        "Category": "bottoms",
-                        "SizeCode": "1 - 1.5 years",
-                        "AgeFromMonths": 12,
-                        "AgeToMonths": 18,
-                        "AgeFromYears": 1,
-                        "AgeToYears": 1.5,
-                        "Measurements": {
-                            "waist": 50,
-                            "hips": 55,
-                            "insideLegLength": 36.5
-                        }
+                        "SizeId": 9
                     },
-                    "Alias": "Kesähousut"
+                    "Alias": "Bambipaita"
                 },
                 {
                     "ClothingId": 4,
                     "BrandClothingId": 4,
-                    "BrandName": "MakkeBrand",
-                    "ClothingName": "Summer Pants",
-                    "Category": "bottoms",
-                    "Quantity": 3,
+                    "Quantity": 2,
                     "Size": {
-                        "SizeId": 27,
-                        "CountryCode": "eu",
-                        "MeasurementUnit": "cm",
-                        "Category": "bottoms",
-                        "SizeCode": "1 - 1.5 years",
-                        "AgeFromMonths": 12,
-                        "AgeToMonths": 18,
-                        "AgeFromYears": 1,
-                        "AgeToYears": 1.5,
-                        "Measurements": {
-                            "waist": 50,
-                            "hips": 55,
-                            "insideLegLength": 36.5
-                        }
+                        "SizeId": 27
                     },
                     "Alias": "Kesähousut"
+                },
+                {
+                    "ClothingId": 5,
+                    "BrandClothingId": 5,
+                    "Quantity": 1,
+                    "Size": {
+                        "SizeId": 28
+                    },
+                    "Alias": "Kissahousut😺"
+                },
+                {
+                    "ClothingId": 6,
+                    "BrandClothingId": 6,
+                    "Quantity": 1,
+                    "Size": {
+                        "SizeId": 28
+                    },
+                    "Alias": "Koirahousut 🐶"
+                },
+                {
+                    "ClothingId": 7,
+                    "BrandClothingId": 7,
+                    "Quantity": 1,
+                    "Size": {
+                        "SizeId": 46
+                    },
+                    "Alias": "Espanjan sandaalit"
+                },
+                {
+                    "ClothingId": 8,
+                    "BrandClothingId": 8,
+                    "Quantity": 1,
+                    "Size": {
+                        "SizeId": 47
+                    },
+                    "Alias": "Kuomat"
+                },
+                {
+                    "ClothingId": 9,
+                    "BrandClothingId": 9,
+                    "Quantity": 4,
+                    "Size": {
+                        "SizeId": 47
+                    },
+                    "Alias": ""
+                },
+                {
+                    "ClothingId": 10,
+                    "BrandClothingId": 10,
+                    "Quantity": 1,
+                    "Size": {
+                        "SizeId": 47
+                    },
+                    "Alias": "Addut"
+                },
+                {
+                    "ClothingId": 11,
+                    "BrandClothingId": 11,
+                    "Quantity": 1,
+                    "Size": {
+                        "SizeId": 67
+                    },
+                    "Alias": "Mansikkahattu"
+                },
+                {
+                    "ClothingId": 12,
+                    "BrandClothingId": 12,
+                    "Quantity": 1,
+                    "Size": {
+                        "SizeId": 67
+                    },
+                    "Alias": "Rannalle"
                 }
             ]
         },

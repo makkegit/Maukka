@@ -474,8 +474,8 @@ namespace Maukka.Data
                     clothingSize.MeasurementUnit,
                     clothingSize.Category,
                     clothingSize.SizeCode,
-                    clothingSize.AgeToMonths,
-                    clothingSize.AgeFromMonths);
+                    clothingSize.AgeFromMonths,
+                    clothingSize.AgeToMonths);
 
                 var sizeId = await saveCmd.ExecuteScalarAsync();
 

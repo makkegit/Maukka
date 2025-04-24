@@ -9,11 +9,11 @@
 
     <ItemGroup>
         <PackageReference Include="coverlet.collector" Version="6.0.2"/>
-        <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.4" />
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.4"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
         <PackageReference Include="xunit.v3" Version="2.0.1"/>
-        <PackageReference Include="xunit.v3.extensibility.core" Version="2.0.1" />
-        <PackageReference Include="Xunit.DependencyInjection.Logging" Version="10.0.0" />
+        <PackageReference Include="xunit.v3.extensibility.core" Version="2.0.1"/>
+        <PackageReference Include="Xunit.DependencyInjection.Logging" Version="10.0.0"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2"/>
     </ItemGroup>
 
@@ -22,43 +22,43 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Maukka.csproj" />
+        <ProjectReference Include="..\..\src\Maukka.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="brandClothing.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Update="brands.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Update="clothingSizes.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Update="wardrobes.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Remove="bin\**" />
+        <None Update="brands.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="brandClothing.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="clothingSizes.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="wardrobes.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Remove="bin\**"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="bin\Debug\net9.0\Test.db3" />
+        <Content Include="bin\Debug\net9.0\Test.db3"/>
     </ItemGroup>
 
     <ItemGroup>
-      <MauiXaml Remove="bin\**" />
+        <MauiXaml Remove="bin\**"/>
     </ItemGroup>
 
     <ItemGroup>
-      <MauiCss Remove="bin\**" />
+        <MauiCss Remove="bin\**"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="bin\**" />
+        <Compile Remove="bin\**"/>
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Remove="bin\**" />
+        <EmbeddedResource Remove="bin\**"/>
     </ItemGroup>
-
+    
 </Project>
