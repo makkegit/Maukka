@@ -1,7 +1,7 @@
 using Maukka.Models;
 using Microsoft.Data.Sqlite;
 
-namespace Maukka.Data
+namespace Maukka.Data.SqlCommands
 {
     public static class ClothingSqlCommands
     {

@@ -2,7 +2,7 @@ using Maukka.Models;
 using Maukka.Utilities.Converters;
 using Microsoft.Data.Sqlite;
 
-namespace Maukka.Data
+namespace Maukka.Data.SqlCommands
 {
     public static class ClothingSizeSqlCommands
     {

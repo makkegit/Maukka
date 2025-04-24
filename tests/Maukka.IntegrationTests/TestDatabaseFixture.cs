@@ -1,4 +1,4 @@
-﻿using Maukka.Data;
+﻿using Maukka.Data.SqlCommands;
 
 namespace Maukka.IntegrationTests;
 

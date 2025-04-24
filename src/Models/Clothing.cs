@@ -16,8 +16,9 @@ namespace Maukka.Models
         public ClothingCategory Category { get; set; }
         public ClothingSize Size { get; set; }
         public string Alias { get; set; }
+        public int Quantity { get; set; }
 
-        public static Clothing InitClothing(ClothingId id, BrandClothing brandClothing, ClothingSize clothingSize, string? alias = null)
+        public static Clothing InitClothing(ClothingId id, BrandClothing brandClothing, ClothingSize clothingSize, int quantity = 1, string? alias = null)
         {
             return new Clothing
             {
@@ -27,6 +28,7 @@ namespace Maukka.Models
                 ClothingName = brandClothing.Name,
                 Category = brandClothing.Category,
                 Size = clothingSize,
+                Quantity = 1,
                 Alias = alias ?? string.Empty,
             };
         }

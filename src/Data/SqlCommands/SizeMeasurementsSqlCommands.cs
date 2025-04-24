@@ -1,4 +1,4 @@
-namespace Maukka.Data
+namespace Maukka.Data.SqlCommands
 {
     public static class SizeMeasurementsSqlCommands
     {

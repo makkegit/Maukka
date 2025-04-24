@@ -1,5 +1,6 @@
 using System.Data;
 using System.Text.Json;
+using Maukka.Data.SqlCommands;
 using Maukka.Models;
 using Maukka.Utilities.Converters;
 using Microsoft.Data.Sqlite;
@@ -126,6 +127,7 @@ namespace Maukka.Data
                     reader.GetInt32(reader.GetOrdinal("WardrobeId")),
                     reader.GetString(reader.GetOrdinal("Name")),
                     reader.GetString(reader.GetOrdinal("Description")),
+                    
                     []);
 
                 await using var itemsCmd = _connection.CreateCommand();
@@ -197,7 +199,7 @@ namespace Maukka.Data
 
                 sqlCmd.Parameters.AddWithValue("@Name", item.Name);
                 sqlCmd.Parameters.AddWithValue("@Description", item.Description);
-
+                
                 var result = await sqlCmd.ExecuteScalarAsync().ConfigureAwait(false);
 
                 await transaction.CommitAsync();
@@ -250,11 +252,17 @@ namespace Maukka.Data
                     sqlCmd.CommandText = ClothingXrefSqlCommands.Get;
                     sqlCmd.Parameters.AddWithValue("@WardrobeId", item.WardrobeId.Value);
                     sqlCmd.Parameters.AddWithValue("@ClothingId", clothing.ClothingId.Value);
+                    sqlCmd.Parameters.AddWithValue("@Quantity", clothing.Quantity);
                     var result = await sqlCmd.ExecuteScalarAsync();
 
                     if (result is null)
                     {
                         sqlCmd.CommandText = ClothingXrefSqlCommands.Insert;
+                        await sqlCmd.ExecuteNonQueryAsync();
+                    }
+                    else
+                    {
+                        sqlCmd.CommandText = ClothingXrefSqlCommands.Update;
                         await sqlCmd.ExecuteNonQueryAsync();
                     }
 

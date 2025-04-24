@@ -7,11 +7,12 @@ namespace Maukka.Data
 {
     public class SeedDataService
     {
+        private const string wardrobeDataFilePath = "wardrobes.json";
+        private const string brandDataFilePath = "brands.json";
+        private const string brandClothingDataFilePath = "brandClothing.json";
+        private const string clothingSizeDataFilePath = "clothingSizes.json";
+        
         private readonly WardrobeRepository _wardrobeRepository;
-        private readonly string _wardrobeDataFilePath = "wardrobes.json";
-        private readonly string _brandDataFilePath = "brands.json";
-        private readonly string _brandClothingDataFilePath = "brandClothing.json";
-        private readonly string _clothingSizeDataFilePath = "clothingSizes.json";
         private readonly ILogger<SeedDataService> _logger;
 
         public SeedDataService(
@@ -26,7 +27,7 @@ namespace Maukka.Data
             await ClearTables().ConfigureAwait(false);
             await InitSampleData().ConfigureAwait(false);
             
-            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_wardrobeDataFilePath);
+            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(wardrobeDataFilePath);
 
             WardrobesJson? payload = null;
             try
@@ -99,7 +100,7 @@ namespace Maukka.Data
         }
         private async Task InitBrandClothing()
         {
-            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_brandClothingDataFilePath);
+            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(brandClothingDataFilePath);
             var brandClothing = JsonSerializer.Deserialize(templateStream, JsonContext.Default.BrandClothingJson);
 
             foreach (var bc in brandClothing.BrandClothing)
@@ -109,7 +110,7 @@ namespace Maukka.Data
         }
         private async Task InitClothingSizeData()
         {
-            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_clothingSizeDataFilePath);
+            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(clothingSizeDataFilePath);
             var clothingSizes = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ClothingSizesJson);
 
             foreach (var clothingSize in clothingSizes.ClothingSizes)
@@ -119,7 +120,7 @@ namespace Maukka.Data
         }
         private async Task InitBrandData()
         {
-            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_brandDataFilePath);
+            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(brandDataFilePath);
             var brands = JsonSerializer.Deserialize(templateStream, JsonContext.Default.BrandsJson);
 
             foreach (var brand in brands.Brands)

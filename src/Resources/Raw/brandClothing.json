@@ -25,6 +25,24 @@
         "BrandId": 1,
         "BrandName": "Makkest"
       },
+      "Name": "Summer sandaalit",
+      "Category": "shoes"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Summer hattu",
+      "Category": "hats"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
       "Name": "Winter Cat T-shirt",
       "Category": "tops"
     },
@@ -36,6 +54,24 @@
       },
       "Name": "Winter Pants",
       "Category": "bottoms"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter Shoes",
+      "Category": "shoes"
+    },
+    {
+      "Brand":
+      {
+        "BrandId": 1,
+        "BrandName": "Makkest"
+      },
+      "Name": "Winter Pipo",
+      "Category": "hats"
     }
   ]
 }

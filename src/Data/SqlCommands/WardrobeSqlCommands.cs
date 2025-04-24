@@ -1,6 +1,6 @@
 using Maukka.Models;
 
-namespace Maukka.Data
+namespace Maukka.Data.SqlCommands
 {
     public static class WardrobeSqlCommands
     {
@@ -28,6 +28,7 @@ namespace Maukka.Data
             @"CREATE TABLE IF NOT EXISTS ClothingXref (
                 WardrobeId INTEGER NOT NULL,
                 ClothingId INTEGER NOT NULL,
+                Quantity INTEGER NOT NULL DEFAULT 1,
                 PRIMARY KEY(WardrobeId, ClothingId),
                 FOREIGN KEY(WardrobeId) REFERENCES Wardrobes(WardrobeId),
                 FOREIGN KEY(ClothingId) REFERENCES Clothing(ClothingId) 
