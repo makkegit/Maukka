@@ -1,7 +1,7 @@
 using System.Globalization;
 using Maukka.Models;
 
-namespace Maukka.Utilities.Converters
+namespace Maukka.Utilities.Converters.UI
 {
     public class ClothingCategoryToIconConverter : IValueConverter
     {

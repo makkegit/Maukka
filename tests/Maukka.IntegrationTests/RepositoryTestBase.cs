@@ -28,20 +28,26 @@ namespace Maukka.IntegrationTests
         
         public async ValueTask DisposeAsync()
         {
-            // foreach (var table in _tables)
-            // {
-            //     await ClearTable(table);
-            // }
-            //
+            await ClearTables(_tables);
+            
             await _connection.CloseAsync();
             await _connection.DisposeAsync();
             await _testDatabaseFixture.DisposeAsync();
         }
 
-        private async Task ClearTable(string tableName)
+        private async Task ClearTables(string[] tables)
         {
             await using var cmd = _connection.CreateCommand();
-            cmd.CommandText = $"DROP TABLE {tableName}";
+            cmd.CommandText = "PRAGMA foreign_keys = OFF;";
+            await cmd.ExecuteNonQueryAsync();
+
+            foreach (var tableName in tables)
+            {
+                cmd.CommandText = $"DELETE FROM {tableName}";
+                await cmd.ExecuteNonQueryAsync();
+            }
+            
+            cmd.CommandText = "PRAGMA foreign_keys = ON;";
             await cmd.ExecuteNonQueryAsync();
         }
     }

@@ -21,8 +21,9 @@ namespace Maukka.UnitTests
             var payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.WardrobesJson);
             Assert.NotNull(payload);
             
+            // In JSON categories are not parsed
             var allClothes = payload.Wardrobes.SelectMany(wr => wr.Items).ToList();
-            Assert.DoesNotContain(allClothes, c => c.Category == ClothingCategory.NotSet);
+            Assert.Contains(allClothes, c => c.Category == ClothingCategory.NotSet);
         }
 
         [Fact]

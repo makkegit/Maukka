@@ -7,82 +7,94 @@
              xmlns:controls="clr-namespace:Maukka.Pages.Controls"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:fonts="clr-namespace:Fonts"
+             xmlns:converters="clr-namespace:Maukka.Utilities.Converters.UI"
              x:Class="Maukka.Pages.WardrobeDetailPage"
              x:DataType="pageModels:WardrobeDetailPageModel"
              Title="{Binding Name}">
-    
+
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior
             EventName="Appearing"
             Command="{Binding AppearingCommand}" />
     </ContentPage.Behaviors>
-
     <Grid>
-        <VerticalStackLayout
-            BindableLayout.ItemsSource="{Binding Items}"
-            Margin="{StaticResource LayoutPadding}"
-            Spacing="{StaticResource LayoutSpacing}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate x:DataType="models:Clothing">
-                    <Border Padding="6">
-                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="16">
-                            <Border Grid.Column="0" Margin="-10"
-                                    BackgroundColor="{StaticResource Primary}">
-                                <Label Text="{Binding Category, 
-                                            Converter={StaticResource CategoryToIconConverter}}" 
-                                       FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
-                                       TextColor="{StaticResource Gray200}"
-                                       FontSize="{StaticResource IconSizeLarge}" />
-                            </Border>
-                            <!-- Content -->
-                            <VerticalStackLayout Grid.Column="1"
-                                                 VerticalOptions="Center"
-                                                 Spacing="4">
-                                <Label Text="{Binding ClothingName}"
-                                       FontSize="20"
-                                       FontAttributes="Bold" />
-                                <HorizontalStackLayout Spacing="8">
-                                    <Label Text="{Binding BrandName}"
-                                           TextColor="{StaticResource Gray300}"
-                                           FontSize="14"/>
-                                    <Label Text="•" 
-                                           TextColor="{StaticResource Gray300}"
-                                           FontSize="14"
-                                           IsVisible="{Binding Alias, 
-                                                Converter={toolkit:IsStringNotNullOrWhiteSpaceConverter}}"/>
-                                    <Label Text="{Binding Alias}"
-                                           TextColor="{StaticResource Gray300}" 
-                                           FontSize="14"
-                                           IsVisible="{Binding Alias, 
-                                                Converter={toolkit:IsStringNotNullOrWhiteSpaceConverter}}"/>
-                                </HorizontalStackLayout>
-                            </VerticalStackLayout>
-                            <Border Grid.Column="2"
-                                    BackgroundColor="{StaticResource Primary}">
-                                <Label Text="{Binding Size.SizeCode}" 
-                                       FontFamily="{x:Static fonts:FluentUI.FontFamily}"
-                                       TextColor="{StaticResource Gray200}"
-                                       FontSize="{StaticResource IconSize}" />
-                            </Border>
-                            <Border Grid.Column="3"
-                                    BackgroundColor="{StaticResource Primary}">
-                                <Label Text="{Binding Quantity, StringFormat='x {quantity}'}" 
-                                       FontFamily="{x:Static fonts:FluentUI.FontFamily}"
-                                       TextColor="{StaticResource Gray200}"
-                                       FontSize="{StaticResource IconSize}" />
-                            </Border>
-                        </Grid>
-                        <!-- <Border.GestureRecognizers> -->
-                        <!--     <TapGestureRecognizer -->
-                        <!--         Command="{Binding NavigateToClothingCommand,  -->
-                        <!--         Source={RelativeSource AncestorType={x:Type pageModels:ClothingListPageModel}}}" -->
-                        <!--         CommandParameter="{Binding .}" /> -->
-                        <!-- </Border.GestureRecognizers> -->
-                    </Border>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
-        </VerticalStackLayout>
-
+        <ScrollView>
+            <VerticalStackLayout
+                BindableLayout.ItemsSource="{Binding Items}"
+                Margin="{StaticResource LayoutPadding}"
+                Spacing="{StaticResource LayoutSpacing}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:Clothing">
+                        <Border Padding="6">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="16">
+                                <Border Grid.Column="0" Margin="-10"
+                                        BackgroundColor="{StaticResource Primary}">
+                                    <VerticalStackLayout>
+                                    <Label
+                                        Text="{Binding Category, 
+                                            Converter={StaticResource CategoryToIconConverter}}"
+                                        FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
+                                        TextColor="{StaticResource Gray200}"
+                                        FontSize="{StaticResource IconSizeLarge}" />
+                                    <Label Text="{Binding Quantity, StringFormat='x{0}'}"
+                                           HorizontalTextAlignment="Center"
+                                           IsVisible="{Binding Quantity, 
+                                           Converter={StaticResource IsGreaterThanConverter}, ConverterParameter=1}"
+                                           FontFamily="{x:Static fonts:FluentUI.FontFamily}"
+                                           TextColor="{StaticResource Gray400}"
+                                           FontSize="{StaticResource size160}" />
+                                    </VerticalStackLayout>
+                                </Border>
+                                <!-- Content -->
+                                <VerticalStackLayout Grid.Column="1"
+                                                     VerticalOptions="Center"
+                                                     Spacing="4">
+                                    <Label Text="{Binding ClothingName}"
+                                           FontSize="20"
+                                           FontAttributes="Bold" />
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Label Text="{Binding BrandName}"
+                                               TextColor="{StaticResource Gray300}"
+                                               FontSize="14" />
+                                        <Label Text="•"
+                                               TextColor="{StaticResource Gray300}"
+                                               FontSize="14"
+                                               IsVisible="{Binding Alias, 
+                                                Converter={toolkit:IsStringNotNullOrWhiteSpaceConverter}}" />
+                                        <Label Text="{Binding Alias}"
+                                               TextColor="{StaticResource Gray300}"
+                                               FontSize="14"
+                                               IsVisible="{Binding Alias, 
+                                                Converter={toolkit:IsStringNotNullOrWhiteSpaceConverter}}" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                                <Border Grid.Column="2"
+                                        BackgroundColor="{StaticResource Primary}">
+                                    <Label Text="{Binding Size.SizeCode}"
+                                           FontFamily="{x:Static fonts:FluentUI.FontFamily}"
+                                           TextColor="{StaticResource Gray200}"
+                                           FontSize="{StaticResource IconSize}" />
+                                </Border>
+                                <Border Grid.Column="3"
+                                        BackgroundColor="{StaticResource Primary}">
+                                    <Label Text="{Binding Size.SizeCode}"
+                                           HorizontalTextAlignment="Center"
+                                           FontFamily="{x:Static fonts:FluentUI.FontFamily}"
+                                           TextColor="{StaticResource Gray200}"
+                                           FontSize="{StaticResource size400}" />
+                                </Border>
+                            </Grid>
+                            <!-- <Border.GestureRecognizers> -->
+                            <!--     <TapGestureRecognizer -->
+                            <!--         Command="{Binding NavigateToClothingCommand,  -->
+                            <!--         Source={RelativeSource AncestorType={x:Type pageModels:ClothingListPageModel}}}" -->
+                            <!--         CommandParameter="{Binding .}" /> -->
+                            <!-- </Border.GestureRecognizers> -->
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </ScrollView>
         <controls:AddButton
             Command="{Binding AddClothingCommand}" />
     </Grid>

@@ -18,7 +18,7 @@ public class TestDatabaseFixture : IAsyncLifetime
 
     public async Task<SqliteConnection> GetConnectionAsync()
     {
-        _testDatabasePath = Path.Combine(Path.GetTempPath(), 
+        _testDatabasePath = Path.Combine(Directory.GetCurrentDirectory(), 
             $"test.db3");
         
         var connection = new SqliteConnection($"Data Source={_testDatabasePath};Pooling=False");

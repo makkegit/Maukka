@@ -20,97 +20,98 @@
     </ContentPage.Behaviors>
 
     <Grid>
-        <VerticalStackLayout
-            BindableLayout.ItemsSource="{Binding Wardrobes}"
-            Margin="{StaticResource LayoutPadding}"
-            Spacing="{StaticResource LayoutSpacing}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate x:DataType="models:Wardrobe">
-                    <Border Padding="6">
-                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="16">
-                            <!-- Wardrobe Icon -->
-                            <Border Grid.Column="0" Margin="-10"
-                                    BackgroundColor="{StaticResource Primary}">
-                                <Label Text="{x:Static fonts:MaterialIcons.Styler}"
-                                       FontFamily="{x:Static fonts:MaterialIcons.FontFamily}"
-                                       TextColor="{StaticResource Gray200}"
-                                       FontSize="{StaticResource IconSizeLarge}" />
-                            </Border>
-                            <!-- Content -->
-                            <VerticalStackLayout Grid.Column="1"
-                                                 VerticalOptions="Center"
-                                                 Spacing="4">
-                                <Label Text="{Binding Name}"
-                                       FontSize="20"
-                                       FontAttributes="Bold" />
-                                <HorizontalStackLayout Spacing="8">
-                                    <!-- Chips -->
-                                    <Border StrokeShape="RoundRectangle 12"
-                                            StrokeThickness="2"
-                                            Stroke="{StaticResource Gray400Brush}">
-                                        <HorizontalStackLayout Spacing="0" Padding="0" Margin="-10">
+        <ScrollView>
+            <VerticalStackLayout
+                BindableLayout.ItemsSource="{Binding Wardrobes}"
+                Margin="{StaticResource LayoutPadding}"
+                Spacing="{StaticResource LayoutSpacing}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:Wardrobe">
+                        <Border Padding="6">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="16">
+                                <!-- Wardrobe Icon -->
+                                <Border Grid.Column="0" Margin="-10"
+                                        BackgroundColor="{StaticResource Primary}">
+                                    <Label Text="{x:Static fonts:MaterialIcons.Styler}"
+                                           FontFamily="{x:Static fonts:MaterialIcons.FontFamily}"
+                                           TextColor="{StaticResource Gray200}"
+                                           FontSize="{StaticResource IconSizeLarge}" />
+                                </Border>
+                                <!-- Content -->
+                                <VerticalStackLayout Grid.Column="1"
+                                                     VerticalOptions="Center"
+                                                     Spacing="4">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="20"
+                                           FontAttributes="Bold" />
+                                    <HorizontalStackLayout Spacing="8">
+                                        <!-- Chips -->
+                                        <Border StrokeShape="RoundRectangle 12"
+                                                StrokeThickness="2"
+                                                Stroke="{StaticResource Gray400Brush}">
+                                            <HorizontalStackLayout Spacing="0" Padding="0" Margin="-10">
 
-                                            <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
-                                                   Text="{x:Static fonts:ClothesUI.Shirt}"
-                                                   FontAttributes="Bold"
-                                                   Padding="1, 1, 6, 1"
-                                                   FontSize="{StaticResource IconSize}" />
-                                            <Label Text="{Binding Statistics.TotalTops}"
-                                                   VerticalOptions="Center" />
-                                        </HorizontalStackLayout>
-                                    </Border>
+                                                <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
+                                                       Text="{x:Static fonts:ClothesUI.Shirt}"
+                                                       FontAttributes="Bold"
+                                                       Padding="1, 1, 6, 1"
+                                                       FontSize="{StaticResource IconSize}" />
+                                                <Label Text="{Binding Statistics.TotalTops}"
+                                                       VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                        </Border>
 
-                                    <Border StrokeShape="RoundRectangle 12"
-                                            StrokeThickness="2"
-                                            Stroke="{StaticResource Gray400Brush}">
-                                        <HorizontalStackLayout Spacing="0" Padding="0" Margin="-10">
-                                            <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
-                                                   Text="{x:Static fonts:ClothesUI.Trousers}"
-                                                   FontAttributes="Bold"
-                                                   Padding="1, 1, 6, 1"
-                                                   FontSize="{StaticResource IconSize}" />
-                                            <Label Text="{Binding Statistics.TotalBottoms}" />
-                                        </HorizontalStackLayout>
-                                    </Border>
-                                    <Border StrokeShape="RoundRectangle 12"
-                                            StrokeThickness="2"
-                                            Stroke="{StaticResource Gray400Brush}">
-                                        <HorizontalStackLayout Spacing="0" Padding="0" Margin="-10">
-                                            <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
-                                                   Text="{x:Static fonts:ClothesUI.Shoe}"
-                                                   FontAttributes="Bold"
-                                                   Padding="1, 1, 6, 1"
-                                                   FontSize="{StaticResource IconSize}" />
-                                            <Label Text="{Binding Statistics.TotalShoes }" />
-                                        </HorizontalStackLayout>
-                                    </Border>
-                                    <Border StrokeShape="RoundRectangle 12"
-                                            StrokeThickness="2"
-                                            Stroke="{StaticResource Gray400Brush}">
-                                        <HorizontalStackLayout Spacing="0" Padding="0" Margin="-10">
-                                            <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
-                                                   Text="{x:Static fonts:ClothesUI.Hat}"
-                                                   FontAttributes="Bold"
-                                                   Padding="1, 1, 6, 1"
-                                                   FontSize="{StaticResource IconSize}" />
-                                            <Label Text="{Binding Statistics.TotalAccessories}" />
-                                        </HorizontalStackLayout>
-                                    </Border>
-                                </HorizontalStackLayout>
-                            </VerticalStackLayout>
-                        </Grid>
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Command="{Binding NavigateToWardrobeCommand, 
+                                        <Border StrokeShape="RoundRectangle 12"
+                                                StrokeThickness="2"
+                                                Stroke="{StaticResource Gray400Brush}">
+                                            <HorizontalStackLayout Spacing="0" Padding="0" Margin="-10">
+                                                <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
+                                                       Text="{x:Static fonts:ClothesUI.Trousers}"
+                                                       FontAttributes="Bold"
+                                                       Padding="1, 1, 6, 1"
+                                                       FontSize="{StaticResource IconSize}" />
+                                                <Label Text="{Binding Statistics.TotalBottoms}" />
+                                            </HorizontalStackLayout>
+                                        </Border>
+                                        <Border StrokeShape="RoundRectangle 12"
+                                                StrokeThickness="2"
+                                                Stroke="{StaticResource Gray400Brush}">
+                                            <HorizontalStackLayout Spacing="0" Padding="0" Margin="-10">
+                                                <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
+                                                       Text="{x:Static fonts:ClothesUI.Shoe}"
+                                                       FontAttributes="Bold"
+                                                       Padding="1, 1, 6, 1"
+                                                       FontSize="{StaticResource IconSize}" />
+                                                <Label Text="{Binding Statistics.TotalShoes }" />
+                                            </HorizontalStackLayout>
+                                        </Border>
+                                        <Border StrokeShape="RoundRectangle 12"
+                                                StrokeThickness="2"
+                                                Stroke="{StaticResource Gray400Brush}">
+                                            <HorizontalStackLayout Spacing="0" Padding="0" Margin="-10">
+                                                <Label FontFamily="{x:Static fonts:ClothesUI.FontFamily}"
+                                                       Text="{x:Static fonts:ClothesUI.Hat}"
+                                                       FontAttributes="Bold"
+                                                       Padding="1, 1, 6, 1"
+                                                       FontSize="{StaticResource IconSize}" />
+                                                <Label Text="{Binding Statistics.TotalAccessories}" />
+                                            </HorizontalStackLayout>
+                                        </Border>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Grid>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding NavigateToWardrobeCommand, 
                                 Source={RelativeSource AncestorType={x:Type pageModels:WardrobeListPageModel}}, 
                                 x:DataType=pageModels:WardrobeListPageModel}"
-                                CommandParameter="{Binding .}" />
-                        </Border.GestureRecognizers>
-                    </Border>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
-        </VerticalStackLayout>
-
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </ScrollView>
         <controls:AddButton
             Command="{Binding AddWardrobeCommand}" />
     </Grid>

@@ -143,7 +143,8 @@ namespace Maukka.Data
                         ClothingName = readerItems.GetString(readerItems.GetOrdinal("BrandClothingName")),
                         BrandName = readerItems.GetString(readerItems.GetOrdinal("BrandName")),
                         Category = EnumToStringConverter.StringToEnum<ClothingCategory>(readerItems.GetString(readerItems.GetOrdinal("ClothingCategory"))),
-                        Alias = readerItems.GetString(readerItems.GetOrdinal("Alias"))
+                        Alias = readerItems.GetString(readerItems.GetOrdinal("Alias")),
+                        Quantity = readerItems.GetInt32(readerItems.GetOrdinal("Quantity"))
                     };
 
                     clothing.Size = new ClothingSize(

@@ -20,6 +20,7 @@ namespace Maukka.Data.SqlCommands
                 BrandClothingId INTEGER NOT NULL, 
                 SizeId INTEGER NOT NULL, 
                 Alias TEXT NOT NULL,
+                Quantity INTEGER NOT NULL DEFAULT 1,
                 FOREIGN KEY(BrandClothingId) REFERENCES BrandClothing(BrandClothingId),
                 FOREIGN KEY(SizeId) REFERENCES ClothingSizes(SizeId)
             );";
@@ -28,7 +29,6 @@ namespace Maukka.Data.SqlCommands
             @"CREATE TABLE IF NOT EXISTS ClothingXref (
                 WardrobeId INTEGER NOT NULL,
                 ClothingId INTEGER NOT NULL,
-                Quantity INTEGER NOT NULL DEFAULT 1,
                 PRIMARY KEY(WardrobeId, ClothingId),
                 FOREIGN KEY(WardrobeId) REFERENCES Wardrobes(WardrobeId),
                 FOREIGN KEY(ClothingId) REFERENCES Clothing(ClothingId) 

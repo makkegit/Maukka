@@ -28,7 +28,7 @@ namespace Maukka.Models
                 ClothingName = brandClothing.Name,
                 Category = brandClothing.Category,
                 Size = clothingSize,
-                Quantity = 1,
+                Quantity = quantity > 0 ? quantity : 1,
                 Alias = alias ?? string.Empty,
             };
         }
