@@ -23,6 +23,7 @@ namespace Maukka.Data.SqlCommands
                             AgeToMonths = @AgeToMonths
                         WHERE SizeId = @SizeId;";
         
+        public const string GetById = "SELECT * FROM ClothingSizes WHERE SizeId = @SizeId;";
         public const string GetByBrandId = "SELECT * FROM ClothingSizes WHERE BrandId = @BrandId ORDER BY SizeId ASC;";
         public const string SizeIdsCount = "SELECT COUNT(*) FROM ClothingSizes WHERE SizeId = @SizeId;";
 

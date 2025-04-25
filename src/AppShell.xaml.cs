@@ -11,6 +11,8 @@ namespace Maukka
             InitializeComponent();
             var currentTheme = Application.Current!.UserAppTheme;
             ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
+            // Routing.RegisterRoute("wardrobes/details", typeof(WardrobeDetailPage));
+            // Routing.RegisterRoute("clothing/details", typeof(ClothingDetailPage));
         }
 
         // protected override void OnAppearing()

@@ -1,8 +1,8 @@
 namespace Maukka.Pages
 {
-    public partial class TaskDetailPage : ContentPage
+    public partial class ClothingDetailPage : ContentPage
     {
-        public TaskDetailPage(TaskDetailPageModel model)
+        public ClothingDetailPage(ClothingDetailPageModel model)
         {
             InitializeComponent();
             BindingContext = model;

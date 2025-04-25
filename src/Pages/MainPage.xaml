@@ -46,9 +46,11 @@
                                     <DataTemplate x:DataType="models:Wardrobe">
                                         <controls:WardrobeCardView WidthRequest="200">
                                             <controls:WardrobeCardView.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding NavigateToWardrobe, 
+                                                <TapGestureRecognizer Command="{Binding 
+                                                x:DataType='pageModels:MainPageModel', 
                                                 Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, 
-                                                x:DataType=pageModels:MainPageModel}" CommandParameter="{Binding .}"/>
+                                                Path=NavigateToWardrobe}"
+                                                CommandParameter="{Binding}"/>
                                             </controls:WardrobeCardView.GestureRecognizers>
                                         </controls:WardrobeCardView>
                                     </DataTemplate>

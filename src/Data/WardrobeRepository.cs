@@ -16,6 +16,7 @@ namespace Maukka.Data
         private bool _hasBeenInitialized = false;
         private readonly SqliteConnection _connection;
         private readonly ILogger _logger;
+        private readonly ModalErrorHandler _modalErrorHandler;
 
         private readonly string[] _createTableCommands =
         [
@@ -127,7 +128,6 @@ namespace Maukka.Data
                     reader.GetInt32(reader.GetOrdinal("WardrobeId")),
                     reader.GetString(reader.GetOrdinal("Name")),
                     reader.GetString(reader.GetOrdinal("Description")),
-                    
                     []);
 
                 await using var itemsCmd = _connection.CreateCommand();
@@ -200,7 +200,7 @@ namespace Maukka.Data
 
                 sqlCmd.Parameters.AddWithValue("@Name", item.Name);
                 sqlCmd.Parameters.AddWithValue("@Description", item.Description);
-                
+
                 var result = await sqlCmd.ExecuteScalarAsync().ConfigureAwait(false);
 
                 await transaction.CommitAsync();
@@ -417,15 +417,14 @@ namespace Maukka.Data
                 selectCmd.Parameters.AddWithValue("@BrandId", id.Value);
 
                 await using var reader = await selectCmd.ExecuteReaderAsync();
-
-                if (!await reader.ReadAsync())
+                while (reader.HasRows && await reader.ReadAsync())
                 {
-                    return null;
+                    var brand = new Brand(reader.GetInt32(0), reader.GetString(1));
+
+                    return brand;
                 }
 
-                var brand = new Brand(reader.GetInt32(0), reader.GetString(1));
-
-                return brand;
+                return null;
             }
             catch (Exception e)
             {
@@ -678,6 +677,92 @@ namespace Maukka.Data
             {
                 Console.WriteLine(e);
                 throw;
+            }
+        }
+
+        #endregion
+
+        #region Clothing
+
+        public async Task<Clothing?> GetAsync(ClothingId clothingId)
+        {
+            await InitAsync().ConfigureAwait(false);
+
+            if (_connection.State is not ConnectionState.Open)
+            {
+                await _connection.OpenAsync().ConfigureAwait(false);
+            }
+
+            var cmd = _connection.CreateCommand();
+            cmd.CommandText = ClothingSqlCommands.GetById;
+            cmd.Parameters.AddWithValue("@ClothingId", clothingId.Value);
+
+            await using var reader = await cmd.ExecuteReaderAsync().ConfigureAwait(false);
+            
+            if (await reader.ReadAsync().ConfigureAwait(false))
+            {
+                var clothing = new Clothing
+                {
+                    ClothingId = new ClothingId
+                    {
+                        Value = reader.GetInt32(reader.GetOrdinal("ClothingId"))
+                    },
+                    BrandClothingId = new BrandClothingId
+                    {
+                        Value = reader.GetInt32(reader.GetOrdinal("BrandClothingId"))
+                    },
+                    Size = new ClothingSize
+                    {
+                        SizeId = reader.GetInt32(reader.GetOrdinal("SizeId"))
+                    },
+                    Alias = reader.GetString(reader.GetOrdinal("Alias")),
+                    Quantity = reader.GetInt32(reader.GetOrdinal("Quantity")),
+                };
+
+                await PopulateClothingBrandData(clothing);
+                await PopulateClothingSizeData(clothing);
+
+                return clothing;
+            }
+
+            throw new Exception($"No Clothing found with id: {clothingId}");
+        }
+
+        private async Task PopulateClothingSizeData(Clothing clothing)
+        {
+            var cmd = _connection.CreateCommand();
+            cmd.CommandText = ClothingSizeSqlCommands.GetById;
+            cmd.Parameters.AddWithValue("@SizeId", clothing.Size.SizeId);
+            await using var reader = await cmd.ExecuteReaderAsync().ConfigureAwait(false);
+
+            if (await reader.ReadAsync().ConfigureAwait(false))
+            {
+                clothing.Size = new ClothingSize(
+                    reader.GetInt32(reader.GetOrdinal("SizeId")),
+                    reader.GetInt32(reader.GetOrdinal("BrandId")),
+                    EnumToStringConverter.StringToEnum<CountryCode>(reader.GetString(reader.GetOrdinal("CountryCode"))),
+                    EnumToStringConverter.StringToEnum<MeasurementUnit>(reader.GetString(reader.GetOrdinal("Unit"))),
+                    clothing.Category,
+                    reader.GetString(reader.GetOrdinal("SizeCode")),
+                    reader.GetInt32(reader.GetOrdinal("AgeFromMonths")),
+                    reader.GetInt32(reader.GetOrdinal("AgeToMonths"))
+                );
+                await RetrieveMeasurements(clothing.Size);
+            }
+        }
+
+        private async Task PopulateClothingBrandData(Clothing clothing)
+        {
+            var cmd = _connection.CreateCommand();
+            cmd.CommandText = BrandClothingSqlCommands.GetSingleById;
+            cmd.Parameters.AddWithValue("@BrandClothingId", clothing.BrandClothingId.Value);
+            await using var reader = await cmd.ExecuteReaderAsync().ConfigureAwait(false);
+
+            if (await reader.ReadAsync().ConfigureAwait(false))
+            {
+                clothing.BrandName = reader.GetString(reader.GetOrdinal("BrandName"));
+                clothing.ClothingName = reader.GetString(reader.GetOrdinal("Name"));
+                clothing.Category = EnumToStringConverter.StringToEnum<ClothingCategory>(reader.GetString(reader.GetOrdinal("Category")));
             }
         }
 

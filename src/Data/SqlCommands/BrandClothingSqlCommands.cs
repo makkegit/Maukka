@@ -14,8 +14,9 @@ namespace Maukka.Data.SqlCommands
                                             WHERE b.BrandId = @BrandId;";
 
         public const string GetSingleById = @"SELECT bc.*, b.BrandName FROM BrandClothing as bc
-                                        LEFT JOIN Brands as b ON b.BrandId = bc.BrandId
-                                        WHERE b.BrandId = @BrandId AND bc.BrandClothingId = @BrandClothingId;";
+                                                LEFT JOIN Brands as b ON b.BrandId = bc.BrandId
+                                                WHERE bc.BrandClothingId = @BrandClothingId;";
+        
 
         public const string GetBrandNameById = @"SELECT b.BrandName FROM BrandClothing as bc 
                                                  INNER JOIN Brands as b ON b.BrandId = bc.BrandId

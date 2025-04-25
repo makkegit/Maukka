@@ -1,10 +1,7 @@
 #nullable disable
-using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Maukka.Data;
 using Maukka.Models;
-using Maukka.Services;
 using Microsoft.Extensions.Logging;
 
 namespace Maukka.PageModels
@@ -41,7 +38,7 @@ namespace Maukka.PageModels
         private async Task NavigateToWardrobe(Wardrobe wardrobe)
         {
             _logger.LogDebug("Navigate to wardrobe with id: {wardrobeId}", wardrobe.WardrobeId);
-            await Shell.Current.GoToAsync($"wardrobe?id={wardrobe.WardrobeId.Value}");
+            await Shell.Current.GoToAsync($"details?id={wardrobe.WardrobeId.Value}");
         }
 
         [RelayCommand]

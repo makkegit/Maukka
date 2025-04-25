@@ -42,10 +42,13 @@ namespace Maukka
             builder.Services.AddSingleton<ModalErrorHandler>();
             builder.Services.AddSingleton<MainPageModel>();
             builder.Services.AddSingleton<WardrobeListPageModel>();
+            builder.Services.AddSingleton<ClothingListPageModel>();
+            
             builder.Services.AddSingleton<ManageMetaPageModel>();
 
-            builder.Services.AddTransientWithShellRoute<WardrobeDetailPage, WardrobeDetailPageModel>("wardrobe");
-            builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
+            builder.Services.AddTransientWithShellRoute<WardrobeDetailPage, WardrobeDetailPageModel>("wardrobes/details");
+            builder.Services.AddTransientWithShellRoute<ClothingDetailPage, ClothingDetailPageModel>("wardrobes/details/clothing");
+            //builder.Services.AddTransientWithShellRoute<ClothingDetailPage, ClothingDetailPageModel>("clothing/details");
 
             return builder.Build();
         }

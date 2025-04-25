@@ -19,6 +19,11 @@
         Icon="{StaticResource IconProjects}"
         ContentTemplate="{DataTemplate pages:WardrobeListPage}"
         Route="wardrobes" />
+    <ShellContent
+        Title="Clothing"
+        Icon="{StaticResource IconShirt}" 
+        ContentTemplate="{DataTemplate pages:ClothingListPage}"
+        Route="clothing"/>
 
     <Shell.FlyoutFooter>
         <Grid Padding="15">

@@ -7,7 +7,6 @@
              xmlns:controls="clr-namespace:Maukka.Pages.Controls"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:fonts="clr-namespace:Fonts"
-             xmlns:converters="clr-namespace:Maukka.Utilities.Converters.UI"
              x:Class="Maukka.Pages.WardrobeDetailPage"
              x:DataType="pageModels:WardrobeDetailPageModel"
              Title="{Binding Name}">
@@ -84,12 +83,13 @@
                                            FontSize="{StaticResource size400}" />
                                 </Border>
                             </Grid>
-                            <!-- <Border.GestureRecognizers> -->
-                            <!--     <TapGestureRecognizer -->
-                            <!--         Command="{Binding NavigateToClothingCommand,  -->
-                            <!--         Source={RelativeSource AncestorType={x:Type pageModels:ClothingListPageModel}}}" -->
-                            <!--         CommandParameter="{Binding .}" /> -->
-                            <!-- </Border.GestureRecognizers> -->
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding NavigateToClothingCommand,
+                                    Source={RelativeSource AncestorType={x:Type pageModels:WardrobeDetailPageModel}},
+                                    x:DataType=pageModels:WardrobeDetailPageModel}"
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
                         </Border>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>

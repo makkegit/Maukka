@@ -77,5 +77,18 @@
 	<ItemGroup>
 	  <None Remove=".gitignore" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\ClothingListPage.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\ClothingListPage.xaml.cs">
+	    <DependentUpon>ClothingListPage.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	</ItemGroup>
 	
 </Project>

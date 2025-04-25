@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pageModel="clr-namespace:Maukka.PageModels"
+             xmlns:models="clr-namespace:Maukka.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Maukka.Pages.ClothingDetailPage"
+             x:DataType="pageModel:ClothingDetailPageModel"
+             Title="{Binding ClothingName}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Delete"
+            Command="{Binding DeleteCommand}"
+            Order="Primary"
+            Priority="0"
+            IconImageSource="{StaticResource IconDelete}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="15">
+                <!-- Read-only Information Section -->
+                <Border StrokeShape="Rectangle 20" BackgroundColor="{StaticResource Gray100}">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Product Information" FontSize="16" FontAttributes="Bold" />
+
+                        <Grid ColumnDefinitions="Auto,1*" RowDefinitions="*,*,*,*" ColumnSpacing="10" RowSpacing="8">
+                            <Label Text="Brand:" Grid.Row="0" Grid.Column="0" />
+                            <Label Text="{Binding BrandName}" Grid.Row="0" Grid.Column="1" />
+
+                            <Label Text="Name:" Grid.Row="1" Grid.Column="0" />
+                            <Label Text="{Binding ClothingName}" Grid.Row="1" Grid.Column="1" />
+
+                            <Label Text="Category:" Grid.Row="2" Grid.Column="0" />
+                            <Label Text="{Binding Category}" Grid.Row="2" Grid.Column="1" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Editable Fields -->
+                <Border StrokeShape="Rectangle 20" BackgroundColor="{StaticResource Gray100}">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Details" FontSize="16" FontAttributes="Bold" />
+
+                        <Grid ColumnDefinitions="Auto,*,Auto,Auto" RowDefinitions="*,*,*,*" ColumnSpacing="10"
+                              RowSpacing="12">
+                            <!-- Alias -->
+                            <Label Text="Alias:" VerticalOptions="Center"
+                                   Grid.Row="1" Grid.Column="0" />
+                            <Entry Text="{Binding Alias}"
+                                   Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+                                   Placeholder="Enter custom name"
+                                   ClearButtonVisibility="WhileEditing" />
+
+                            <!-- Quantity with + and - buttons -->
+                            <Label Text="Quantity: " VerticalOptions="Center"
+                                   Grid.Row="2" Grid.Column="0" />
+                            <Label Text="{Binding Quantity}" VerticalOptions="Center"
+                                   Grid.Row="2" Grid.Column="1" FontSize="{StaticResource size360}" />
+                            <Button Command="{Binding DecrementQuantityCommand}"
+                                    Text="-"
+                                    WidthRequest="50" HeightRequest="50"
+                                    Grid.Row="2" Grid.Column="2" />
+                            <Button Command="{Binding IncrementQuantityCommand}"
+                                    Text="+"
+                                    WidthRequest="50" HeightRequest="50"
+                                    Grid.Row="2" Grid.Column="3" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Size Information -->
+                <Border StrokeShape="Rectangle 20" BackgroundColor="{StaticResource Gray100}">
+                    <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="10">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Size Details" FontSize="16" FontAttributes="Bold" />
+                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding Measurements}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="models:MeasurementItem">
+                                    <Grid ColumnDefinitions="1*,1*" Padding="0,5">
+                                        <Label Text="{Binding Key, StringFormat='{} {0}'}"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="{Binding Value}"
+                                               Grid.Column="1"
+                                               HorizontalOptions="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2">
+                            <Label Text="Size" HorizontalOptions="Center"></Label>
+                            <Label  Text="{Binding Size.SizeCode}"
+                                    IsVisible="{Binding Size.SizeCode, 
+                                    Converter={toolkit:IsStringNotNullOrWhiteSpaceConverter}}"
+                                    FontAttributes="Bold" FontSize="{StaticResource size560}"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

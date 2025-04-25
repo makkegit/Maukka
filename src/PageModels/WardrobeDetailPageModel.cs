@@ -58,7 +58,7 @@ namespace Maukka.PageModels
             _errorHandler = errorHandler;
             Items = [];
         }
-
+        
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             if (query.ContainsKey("id"))
@@ -186,7 +186,7 @@ namespace Maukka.PageModels
         }
 
         [RelayCommand]
-        private async Task AddTask()
+        private async Task AddClothing()
         {
             if (_wardrobe is null)
             {
@@ -198,9 +198,9 @@ namespace Maukka.PageModels
 
             // Pass the project so if this is a new project we can just add
             // the tasks to the project and then save them all from here.
-            await Shell.Current.GoToAsync($"task",
+            await Shell.Current.GoToAsync($"clothing",
                 new ShellNavigationQueryParameters(){
-                    {TaskDetailPageModel.ProjectQueryKey, _wardrobe}
+                    {ClothingDetailPageModel.WardrobeQueryKey, _wardrobe}
                 });
         }
 
@@ -220,7 +220,7 @@ namespace Maukka.PageModels
 
         [RelayCommand]
         private Task NavigateToClothing(Clothing clothing) =>
-            Shell.Current.GoToAsync($"clothing?id={clothing.ClothingId}");
+            Shell.Current.GoToAsync($"clothing?id={clothing.ClothingId.Value}");
 
         // [RelayCommand]
         // private async Task ToggleTag(Tag tag)

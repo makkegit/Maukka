@@ -8,21 +8,21 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:chips="clr-namespace:Syncfusion.Maui.Toolkit.Chips;assembly=Syncfusion.Maui.Toolkit"
              xmlns:fonts="clr-namespace:Fonts"
-             x:Class="Maukka.Pages.WardrobeListPage"
-             x:DataType="pageModels:WardrobeListPageModel"
-             Title="Wardrobes">
+             x:Class="Maukka.Pages.ClothingListPage"
+             x:DataType="pageModels:ClothingListPageModel"
+             Title="Clothing">
 
 
-    <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior
-            EventName="Appearing"
-            Command="{Binding AppearingCommand}" />
-    </ContentPage.Behaviors>
+    <!-- <ContentPage.Behaviors> -->
+    <!--     <toolkit:EventToCommandBehavior -->
+    <!--         EventName="Appearing" -->
+    <!--         Command="{Binding AppearingCommand}" /> -->
+    <!-- </ContentPage.Behaviors> -->
 
     <Grid>
         <ScrollView>
             <VerticalStackLayout
-                BindableLayout.ItemsSource="{Binding Wardrobes}"
+                BindableLayout.ItemsSource="{Binding Clothing}"
                 Margin="{StaticResource LayoutPadding}"
                 Spacing="{StaticResource LayoutSpacing}">
                 <BindableLayout.ItemTemplate>
@@ -102,9 +102,9 @@
                             </Grid>
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer
-                                    Command="{Binding NavigateToWardrobeCommand, 
-                                    Source={RelativeSource AncestorType={x:Type pageModels:WardrobeListPageModel}}, 
-                                    x:DataType=pageModels:WardrobeListPageModel}"
+                                    Command="{Binding NavigateToClothingCommand, 
+                                    Source={RelativeSource AncestorType={x:Type pageModels:ClothingListPageModel}}, 
+                                    x:DataType=pageModels:ClothingListPageModel}"
                                     CommandParameter="{Binding .}" />
                             </Border.GestureRecognizers>
                         </Border>
@@ -113,6 +113,6 @@
             </VerticalStackLayout>
         </ScrollView>
         <controls:AddButton
-            Command="{Binding AddWardrobeCommand}" />
+            Command="{Binding AddClothingCommand}" />
     </Grid>
 </ContentPage>
